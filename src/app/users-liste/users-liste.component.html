@@ -15,13 +15,12 @@
               <th scope="col">Email</th>
               <th scope="col">Sexe</th>
               <th scope="col">Age</th>
-              <th scope="col">Se pese tout les </th>
-              <th scope="col">Se mesure tout les </th>
+              <th scope="col">Se pese tous les </th>
+              <th scope="col">Se mesure tous les </th>
             </tr>
           </thead>
           <tbody>
-            <div *ngIf="!isLoadingUsers">
-              <tr *ngFor="let user of users">
+              <tr *ngFor="let user of users ">
                 <td>{{ user.username }}</td>
                 <td>{{ user.password }}</td>
                 <td>{{ user.mail }}</td>
@@ -30,7 +29,6 @@
                 <td>{{ user.reminderweight}} jours</td>
                 <td>{{ user.remindermeasurements }} jours</td>
               </tr>
-            </div>
           </tbody>
         </table>
       </div>

@@ -15,20 +15,25 @@ export class UserService {
 
   private users: User[] = [];
 
+  private urlApi = "http://localhost:5000";
+
   emitUserSubject() {
-    this.userSubject.next(this.users.slice(0,0));
+    this.userSubject.next(this.users.slice());
   }
 
   // Recupère les utilisateurs
-  getAllUsers() {
-    return this.http.get<any[]>('http://localhost:5000/test/user/all');
-
-    // this.http.get<any[]>('http://localhost:5000/test/user/all').subscribe(
-    //   (response) => {
-    //     this.users = response;
-    //     console.log('Chargement réussie\n' + this.users[0]);
-    //     this.emitUserSubject();
-    //   }
-    // );
+  getUsersApi() {
+    // Requete http pour récupéreer les utilisateurs
+    // return this.http.get<any[]>(this.urlApi + '/test/user/all');
+    this.http.get<any[]>(this.urlApi + '/test/user/all').subscribe(
+      (response) => {
+        this.users = response['users'];
+        //console.log(this.users[0]);
+        this.emitUserSubject();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

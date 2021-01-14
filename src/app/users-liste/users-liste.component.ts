@@ -11,23 +11,22 @@ import { Subscription } from 'rxjs';
 export class UsersListeComponent implements OnInit {
 
   users: User[];
-  usersSubscription: Subscription;
-
-  isLoadingUsers = true;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUsersApi();
     this.getAllUsers();
   }
 
   getAllUsers() {
-    this.userService.getAllUsers().subscribe(
-      (reponse) => {  this.users = reponse;
-                      this.isLoadingUsers = false;
-                      console.log(this.users);
-                    },
-      (error) => { //this.isLoadingUsers = true;
-                  });;
+    this.userService.userSubject.subscribe(
+      (response: any[]) => {
+        this.users = response;
+        //console.log(this.users);
+      }
+    );
+    this.userService.emitUserSubject();
   }
+
 }
