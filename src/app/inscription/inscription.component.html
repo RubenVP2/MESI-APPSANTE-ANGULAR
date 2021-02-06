@@ -1,0 +1,28 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Mon nom d'utilisateur">
+    </div>
+    <div class="form-group">
+        <label for="email">Adresse E-mail</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Mon adresse mail">
+    </div>
+     <div class="form-group">
+        <label for="age">Àge</label>
+        <input type="text" class="form-control" name="age" id="age" aria-describedby="emailHelp" placeholder="Mon age">
+    </div>
+    <div class="form-group">
+        <label for="sexe">Àge</label>
+        <input type="text" class="form-control" name="age" id="age" aria-describedby="emailHelp" placeholder="Mon age">
+    </div>
+    <div class="form-group">
+        <label for="pswd">Mot de passe</label>
+        <input type="password" class="form-control" name="pswd" id="pswd" placeholder="Mon mot de passe">
+    </div>
+    <div class="form-group">
+        <label for="pswd1">Confirmer votre mot de passe</label>
+        <input type="password" class="form-control" name="pswd1" id="pswd1" aria-describedby="emailHelp" placeholder="Confirmation de mon mot de passe">
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Soumettre</button>
+</form>

@@ -36,4 +36,9 @@ export class UserService {
       }
     );
   }
+
+  addUser(user : NewUser){
+    const body = JSON.stringify(user);
+    this.http.post(this.urlApi + '/inscription', body);
+  }
 }

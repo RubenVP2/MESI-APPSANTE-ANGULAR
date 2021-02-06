@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UsersListeComponent } from './users-liste/users-liste.component';
     NavbarComponent,
     LoginComponent,
     IndexComponent,
-    UsersListeComponent
+    UsersListeComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
