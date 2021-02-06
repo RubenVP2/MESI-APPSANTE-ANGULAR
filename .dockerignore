@@ -3,9 +3,10 @@
 .gitignore
 <<<<<<< HEAD
 .dockerignore
-Dockerfile
+.Dockerfile
 =======
 .vscode
+.Dockerfile
 
 
 >>>>>>> 4d42aaf6b0564a93e91ff07dec6e63c39aeb7dd7

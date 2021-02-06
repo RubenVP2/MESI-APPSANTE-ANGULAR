@@ -27,6 +27,7 @@ export class UserService {
     // return this.http.get<any[]>(this.urlApi + '/test/user/all');
     this.http.get<any[]>(this.urlApi + '/test/user/all').subscribe(
       (response) => {
+        //users etant le nom de {} dans l'url de l'api
         this.users = response['users'];
         //console.log(this.users[0]);
         this.emitUserSubject();

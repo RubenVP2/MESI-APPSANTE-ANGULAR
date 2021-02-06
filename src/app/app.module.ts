@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { UsersListeComponent } from './users-liste/users-liste.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
