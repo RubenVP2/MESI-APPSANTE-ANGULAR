@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

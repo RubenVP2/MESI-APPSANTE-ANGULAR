@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User.model';
+import { NewUser } from '../models/NewUser.model';
+
 import { Subject } from 'rxjs';
 
 
@@ -37,7 +39,7 @@ export class UserService {
     );
   }
 
-  addUser(user : NewUser){
+  addUser(user: NewUser) {
     const body = JSON.stringify(user);
     this.http.post(this.urlApi + '/inscription', body);
   }
