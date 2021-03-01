@@ -1,0 +1,32 @@
+<div  class="row align-items-center">
+  <div class="col-8">
+    <h3>   Historique de ma consommation d'eau </h3>
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn btn-secondary">Ajouter</button>
+  </div>
+</div>
+
+<div class="col-sm-12 col-sm-offset-2">
+    <ul class="list-group">
+      <li *ngFor="let wellBeing of wellBeings ; let i=index"
+      [ngClass]="{'list-group-item ': true,
+      'list-group-item-success': getColor(i) ==='green',
+      'list-group-item-danger': getColor(i) === 'red'}" >
+        <div>
+            <h3 [ngStyle]="{color: getColor(i)}"> Date : {{wellBeing.date}}  {{wellBeings[i].water}}</h3>
+            <p>Mon poids : <strong>{{wellBeing.weight}} kg</strong>  Quantité d'eau :<strong> {{wellBeing.water}} Litre(s)</strong> <img src="https://img.icons8.com/color/48/000000/bottle-of-water.png"/></p>
+            <div class="float-left" >
+              <p>Nous vous conseillons de boire au minimum : {{this.result}} <strong>Litre(s)</strong> pour ce jour</p>
+            </div>
+            <div class="float-right" >
+              <div class="panel-body">
+                <button type="button" class="btn btn-primary" routerLink="view/{{wellBeing.id_well_being}}">Détail</button>
+                <button type="button" class="btn btn-secondary" routerLink="modification/{{wellBeing.id_well_being}}">Modifier</button>
+                <button type="button" class="btn btn-danger" routerLink="delete/{{wellBeing.id_well_being}}">Supprimer</button>
+              </div>
+            </div>
+        </div>
+      </li>
+      </ul>
+</div>
