@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <a routerLink="../suggestionbugtrackeradmin" class="col-2 mt-5 ml-1">Retour</a>
+  </div>
+  <div class="row mt-5">
+    <form class="col-12">
+      <div class="form-group row col-sm-5">
+        <label for="utilisateurTicket">Nom de l'utilisateur</label>
+        <input type="text" class="form-control" id="utilisateurTicket" value="" readonly>
+      </div>
+      <div class="form-group row col-sm-5">
+        <label for="emailTicket">Email de l'utilisateur</label>
+        <input type="text" class="form-control" id="emailTicket" value="" readonly>
+      </div>
+      <div class="form-group row col-sm-5">
+        <label for="dateTicket">Date de création</label>
+        <input type="text" class="form-control" id="dateTicket" value="" readonly>
+      </div>
+      <div class="form-group row col-7">
+        <label for="natureTicket">Bug/Suggestion</label>
+        <input type="text" class="form-control" name="sujet" id="natureTicket" value="" readonly>
+      </div>
+      <div class="form-group row col-10">
+        <label for="topicTicket">Sujet</label>
+        <input type="text" class="form-control" name="sujet" id="topicTicket" value="" readonly>
+      </div>
+      <div class="form-group">
+        <label for="descriptionTicket">Description du Ticket</label>
+        <textarea class="form-control" name="description" id="descriptionTicket" rows="3" readonly></textarea>
+      </div>
+      <!-- Checkbox -->
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radioEtat" id="radioNoneResolute" value="non résolu" required>
+        <label class="form-check-label" for="radioNoneResolute">Ouvert</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="radioEtat" id="radioCurrent" value="en cours de résolution">
+        <label class="form-check-label" for="radioCurrent">En cours de traitement</label>
+      </div>
+      <div class="form-check form-check-inline mb-5">
+        <input class="form-check-input" type="radio" name="radioEtat" id="radioResolute" value="résolu">
+        <label class="form-check-label" for="radioResolute">Fermé</label>
+      </div>
+      <!-- Buttons -->
+      <div class="form-row">
+        <!-- Ask if user want to delete ticket -->
+        <div class="col-auto">
+          <div class="input-group">
+            <!-- to delete ticket-->
+            <button id="statusTicket" class="btn btn-danger mr-3"><a style="color: white;text-decoration: none;" href="#">Suppresion</a></button>
+          </div>
+        </div>
+        <div class="col-auto">
+          <button type="submit" id="statusTicket" class="btn btn-primary">Modifier</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

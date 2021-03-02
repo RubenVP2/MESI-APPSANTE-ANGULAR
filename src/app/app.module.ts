@@ -9,6 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
 import { UserService } from './services/user.service';
+import { SuggestionbugtrackerComponent } from './suggestionbugtracker/suggestionbugtracker.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SuggestionbugtrackeradminComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmin.component';
+import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmindetails/suggestionbugtrackeradmindetails.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,16 @@ import { UserService } from './services/user.service';
     NavbarComponent,
     LoginComponent,
     IndexComponent,
-    UsersListeComponent
+    UsersListeComponent,
+    SuggestionbugtrackerComponent,
+    SuggestionbugtrackeradminComponent,
+    SuggestionbugtrackeradmindetailsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [
     UserService
