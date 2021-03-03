@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User.model';
 import { NewUser } from '../models/NewUser.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 
 import { Subject } from 'rxjs';
@@ -47,11 +49,11 @@ export class UserService {
     this.http.post<any>(this.urlApi + "/register", body, {'headers':headers}).subscribe((response) => {
         var message = response['message'];
         if (message == "Inscription réussie"){
-          alert(message);
+          Swal.fire(message);
           this.router.navigate(['/login']);
         }
         else {
-          alert(message);
+          Swal.fire(message);
         }
 },(error) => {
       console.log(error);
@@ -65,12 +67,12 @@ export class UserService {
             var message = response['message'];
             if (message == "Connexion réussie"){
               var user = response['user'];
-              alert("Bienvenue "+ user);
+              Swal.fire("Bienvenue "+ user);
               sessionStorage.setItem("user",user)
               this.router.navigate(['/users']);
             }
             else {
-              alert(message);
+              Swal.fire(message);
             }
     },(error) => {
       console.log(error);

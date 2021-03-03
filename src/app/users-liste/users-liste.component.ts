@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/User.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 
 @Component({
@@ -32,11 +34,11 @@ export class UsersListeComponent implements OnInit {
 
   logout(){
     sessionStorage.clear();
-    //this.router.navigate(['/users']);
+    this.router.navigate(['/login']);
 
   }
   checksession(){
-    alert(sessionStorage.getItem("user"))
+    Swal.fire(sessionStorage.getItem("user"))
   }
 
 }

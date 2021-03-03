@@ -3,6 +3,7 @@ import { NewUser } from '../models/NewUser.model';
 import { FormArray, FormBuilder, FormGroup, Validators, FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-inscription',
@@ -33,8 +34,8 @@ export class InscriptionComponent implements OnInit {
   onSubmitForm(form : NgForm) {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
     const formValue = form.value;
-    if(formValue['password'] == formValue['passwordC']){
-      alert("Mots de passe différents");
+    if(formValue['password'] != formValue['passwordC']){
+      Swal.fire("Mots de passe différents");
     }
     else {
       //On créé l'instance User qu'on va ensuite ajouter a notre liste
