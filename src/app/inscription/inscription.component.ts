@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NewUser } from '../models/NewUser.model';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 @Component({
   selector: 'app-inscription',
@@ -13,7 +15,7 @@ export class InscriptionComponent implements OnInit {
 
   userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router : Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -30,18 +32,19 @@ export class InscriptionComponent implements OnInit {
     });
   }
 
-  onSubmitForm() {
+  onSubmitForm(form : NgForm) {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
-    const formValue = this.userForm.value;
+    const formValue = form.value;
     //On créé l'instance User qu'on va ensuite ajouter a notre liste
     const newUser = new NewUser(
       formValue['username'],
       formValue['password'],
       formValue['email'],
-      formValue['age'],
       formValue['sexe'],
+      formValue['age'],
     );
     this.userService.addUser(newUser);
+    this.router.navigate(['/login'])
   }
 
 }

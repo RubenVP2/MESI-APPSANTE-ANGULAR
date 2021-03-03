@@ -4,7 +4,7 @@ import { User } from '../models/User.model';
 import { NewUser } from '../models/NewUser.model';
 
 import { Subject } from 'rxjs';
-
+import { LogUser } from '../models/LogUser.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +40,20 @@ export class UserService {
   }
 
   addUser(user: NewUser) {
+    const headers = { 'content-type': 'application/json'}
     const body = JSON.stringify(user);
-    this.http.post(this.urlApi + '/inscription', body);
+    alert(body)
+    this.http.post(this.urlApi + "/register", body, {'headers':headers}).subscribe((error) => {
+      console.log(error);
+    });
+  }
+
+  login(loguser: LogUser){
+    const headers = { 'content-type': 'application/json'}
+    const body = JSON.stringify(loguser);
+    alert(body)
+    this.http.post(this.urlApi + '/login', body, {'headers':headers}).subscribe((error) => {
+      console.log(error);
+    });
   }
 }
