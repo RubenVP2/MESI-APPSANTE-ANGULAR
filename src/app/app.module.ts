@@ -9,6 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
 import { UserService } from './services/user.service';
+import { ProgrammesportifslisteComponent } from './programmesportifsliste/programmesportifsliste.component';
+import { CreateprogrammesportifsComponent } from './createprogrammesportifs/createprogrammesportifs.component';
+import { ProgrammesportifsdetailsComponent } from './programmesportifsdetails/programmesportifsdetails.component';
+import { UpdateprogrammesportifsComponent } from './updateprogrammesportifs/updateprogrammesportifs.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { UserService } from './services/user.service';
     NavbarComponent,
     LoginComponent,
     IndexComponent,
-    UsersListeComponent
+    UsersListeComponent,
+    ProgrammesportifslisteComponent,
+    CreateprogrammesportifsComponent,
+    ProgrammesportifsdetailsComponent,
+    UpdateprogrammesportifsComponent
   ],
   imports: [
     BrowserModule,

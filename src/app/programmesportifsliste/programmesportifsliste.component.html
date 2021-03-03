@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="back">
+  <div class="center">
+    <div class="form">
+      <div class="text">
+        <div>
+          <p class="col-9">Liste de mes programmes</p>
+          <!-- <p>{{ users[0] }}</p> -->
+        </div>
+        <a routerLink="../createprogrammessportifs"><button type="button" class="btn btn-primary">Créer un nouveau programme</button></a>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Créer par</th>
+              <th scope="col">Modifié le</th>
+              <th scope="col">Muscle</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Niveau</th>
+              <th scope="col">Détails</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>Ruben VELOSO-PAULOS</td>
+                <td>02/03/2021 22:42</td>
+                <td>Jambes</td>
+                <td>Séances Jambes</td>
+                <td>Confirmé</td>
+                <td><a routerLink="../programmesportifsdetails"><button class="btn btn btn-primary">Détails</button></a></td>
+              </tr>
+              <tr>
+                <td>Ruben VELOSO-PAULOS</td>
+                <td>02/03/2021 22:42</td>
+                <td>Bras</td>
+                <td>Séances Bras</td>
+                <td>Intermédiaire</td>
+                <td><a routerLink="../programmesportifsdetails"><button class="btn btn btn-primary">Détails</button></a></td>
+              </tr>
+              <tr>
+                <td>Ruben VELOSO-PAULOS</td>
+                <td>02/03/2021 22:42</td>
+                <td>Pecs</td>
+                <td>Séances Pecs</td>
+                <td>Débutant</td>
+                <td><a routerLink="../programmesportifsdetails"><button class="btn btn btn-primary">Détails</button></a></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
