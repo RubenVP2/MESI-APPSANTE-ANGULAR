@@ -33,7 +33,11 @@ export class InscriptionComponent implements OnInit {
   onSubmitForm(form : NgForm) {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
     const formValue = form.value;
-    //On créé l'instance User qu'on va ensuite ajouter a notre liste
+    if(formValue['password'] == formValue['passwordC']){
+      alert("Mots de passe différents");
+    }
+    else {
+      //On créé l'instance User qu'on va ensuite ajouter a notre liste
     const newUser = new NewUser(
       formValue['username'],
       formValue['password'],
@@ -43,5 +47,6 @@ export class InscriptionComponent implements OnInit {
     );
     this.userService.addUser(newUser);
   }
+    }
 
 }
