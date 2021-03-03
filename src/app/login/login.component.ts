@@ -37,10 +37,11 @@ export class LoginComponent implements OnInit {
       formValue['password'],
     );
     this.userService.login(user);
-    this.router.navigate(['/'])
+    //sessionStorage.setItem("email", status['message'])
+    //sessionStorage.clear();
   }
 
   register(){
-    this.router.navigate(['/inscription'])
+    this.router.navigate(['/inscription']);
   }
 }

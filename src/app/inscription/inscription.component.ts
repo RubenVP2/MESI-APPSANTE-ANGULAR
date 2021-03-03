@@ -3,8 +3,6 @@ import { NewUser } from '../models/NewUser.model';
 import { FormArray, FormBuilder, FormGroup, Validators, FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-
 
 @Component({
   selector: 'app-inscription',
@@ -44,7 +42,6 @@ export class InscriptionComponent implements OnInit {
       formValue['age'],
     );
     this.userService.addUser(newUser);
-    this.router.navigate(['/login'])
   }
 
 }
