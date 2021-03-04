@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="back">
   <div class="center">
     <div class="form">
@@ -20,33 +21,15 @@
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <td>Bug</td>
-                <td>02/03/2021 22:42</td>
-                <td>Antoine BOUARD</td>
-                <td>antoinebouardain@gmail.com</td>
-                <td>Bug suivi eau</td>
-                <td>Ouvert</td>
-                <td><a routerLink="../suggestionbugtrackeradmindetails"><button class="btn btn btn-primary">Détails</button></a></td>
-              </tr>
-              <tr>
-                <td>Suggestion</td>
-                <td>02/03/2021 22:44</td>
-                <td>Antoine BOUARD</td>
-                <td>antoinebouardain@gmail.com</td>
-                <td>Forum</td>
-                <td>En cours de traitement</td>
-                <td><a routerLink="../suggestionbugtrackeradmindetails"><button class="btn btn btn-primary">Détails</button></a></td>
-              </tr>
-              <tr>
-                <td>Bug</td>
-                <td>02/03/2021 22:45</td>
-                <td></td>
-                <td></td>
-                <td>Bug connexion</td>
-                <td>Fermé</td>
-                <td><a routerLink="../suggestionbugtrackeradmindetails"><button class="btn btn btn-primary">Détails</button></a></td>
-              </tr>
+            <tr *ngFor="let feedback of feedbacks ">
+              <td>{{ feedback.nature }}</td>
+              <td>{{ feedback.date }}</td>
+              <td>{{ feedback.username }}</td>
+              <td>{{ feedback.mail }}</td>
+              <td>{{ feedback.title }}</td>
+              <td>{{ feedback.etat }}</td>
+              <td><a routerLink="../suggestionbugtrackeradmindetails/{{feedback.id}}"><button class="btn btn btn-primary">Détails</button></a></td>
+            </tr>
           </tbody>
         </table>
       </div>
