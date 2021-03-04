@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
