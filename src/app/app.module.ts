@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { SuggestionbugtrackerComponent } from './suggestionbugtracker/suggestionbugtracker.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,12 +26,15 @@ import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracke
     SuggestionbugtrackerComponent,
     SuggestionbugtrackeradminComponent,
     SuggestionbugtrackeradmindetailsComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService
