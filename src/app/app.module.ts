@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -16,12 +18,15 @@ import { UserService } from './services/user.service';
     NavbarComponent,
     LoginComponent,
     IndexComponent,
-    UsersListeComponent
+    UsersListeComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService
