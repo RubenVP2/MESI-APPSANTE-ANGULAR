@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
 
@@ -10,29 +10,32 @@ import { UserWaterService } from '../services/user-water.service';
 })
 export class WaterDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private userWaterService: UserWaterService ) {}
-  wellBeings :WellBeing [];
-  wellBeing :WellBeing = {};
+  constructor(private route: ActivatedRoute, private userWaterService: UserWaterService) {
+
+
+  }
+  wellBeings;
+  wellBeing: WellBeing = new WellBeing();
+  id: any;
 
 
 
   ngOnInit(): void {
-    this.userWaterService.getUsersWatersApi();
-    this.getUserWater();
-    //On recupere le parametre :id qu'on a mis dans app-routing.module.ts
-    const id = this.route.snapshot.params['id'];
-    this.getWaterById(id);
-    // this.wellBeing.water = this.userWaterService.getWaterById(+id);
-    console.log(id);
-    //this.getWaterById(id);
-
-    //this.wellBeing.weight = this.userWaterService.getweightById(+id)
+    // Récupération id de l'url
+    this.id = this.route.snapshot.params['id'];
+    // subscribe à l'appel de l'api et copie le tableau t'as capté
+    this.userWaterService.getTest().subscribe(response => {
+      this.wellBeings = response;
+      console.log('Tableau = ' + this.wellBeings);
+      // Appel function pour récupérer le
+      this.getWaterById();
+    });
   }
 
 
-  getWaterById(id :number){
-    this.wellBeing.water = this.userWaterService.getWaterById(+id);
-    return this.wellBeing.water;
+  getWaterById() {
+    this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
+    console.log('Well being actuel : ' + this.wellBeing);
   }
 
   getUserWater() {
