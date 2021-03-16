@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { AddWaterComponent } from './add-water/add-water.component';
 import { UserWaterService } from './services/user-water.service';
@@ -24,17 +26,26 @@ import { DatePipe } from '@angular/common';
     LoginComponent,
     IndexComponent,
     UsersListeComponent,
+<<<<<<< HEAD
     HistoriqueWaterComponent,
     AddWaterComponent,
     WaterDetailComponent,
     WaterModificationComponent,
+=======
+    InscriptionComponent
+>>>>>>> develop
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+<<<<<<< HEAD
     ReactiveFormsModule,
     FormsModule
+=======
+    FormsModule,
+    ReactiveFormsModule
+>>>>>>> develop
   ],
   providers: [
     UserService,
