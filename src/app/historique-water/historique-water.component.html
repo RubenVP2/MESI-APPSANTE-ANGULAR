@@ -3,7 +3,7 @@
     <h3>   Historique de ma consommation d'eau </h3>
   </div>
   <div class="col-4">
-    <button type="button" class="btn btn-secondary">Ajouter</button>
+    <button type="button" routerLink="/addWater" class="btn btn-secondary">Ajouter</button>
   </div>
 </div>
 
@@ -23,7 +23,6 @@
               <div class="panel-body">
                 <button type="button" class="btn btn-primary" routerLink="view/{{wellBeing.id_well_being}}">Détail</button>
                 <button type="button" class="btn btn-secondary" routerLink="modification/{{wellBeing.id_well_being}}">Modifier</button>
-                <button type="button" class="btn btn-danger" routerLink="delete/{{wellBeing.id_well_being}}">Supprimer</button>
               </div>
             </div>
         </div>

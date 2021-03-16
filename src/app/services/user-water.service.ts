@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { WellBeing } from "../models/WellBeing.model";
 import { UserService } from "./user.service";
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,69 +28,32 @@ export class UserWaterService{
       this.wellBeingWaterSubject.next(this.wellBeings.slice());
     }
 
-
-    // Recupère les utilisateurs
+    // Recupère les informations de la tables WELL_BEING (water date poids)
     getUsersWatersApi() {
-      // Requete http pour récupéreer les utilisateurs
-      // return this.http.get<any[]>(this.urlApi + '/test/user/all');
-      this.http.get<any[]>(this.urlApi + '/user/water/'+ this.idSession).subscribe(
-        (response) => {
-          //users etant le nom de {} dans l'url de l'api
-          this.wellBeings = response['userWater'];
-          //console.log(this.users[0]);
-          this.emitUserWaterSubject();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      return this.http.get(this.urlApi + '/user/water/' + this.idSession).pipe(map((res: any) => res['userWater']));
     }
 
-    getWaterById(id: number) {
-      const wellBeing = this.wellBeings.find(
-        (s) => {
-          return s.id_well_being === id;
-        }
-      );
-      this.emitUserWaterSubject();
-      return wellBeing.water;
-    }
 
-    getWeightById(id: number) {
-      const wellBeing = this.wellBeings.find(
-        (s) => {
-          return s.id_well_being === id;
-        }
-      );
-      return wellBeing.weight;
-  }
 
-  getDateById(id: number) {
-    const wellBeing = this.wellBeings.find(
-      (s) => {
-        return s.id_well_being === id;
+  saveAppareilsToServer(){
+    this.http.put(this.urlApi, this.wellBeings).subscribe(
+      ()=>{
+        console.log("enregistrement terminus")
+      },
+      (error)=>{
+        console.log("erreur")
       }
-    );
-    return wellBeing.date;
-  }
-
-  getTotalNecessaryById(id: number) {
-    const wellBeing = this.wellBeings.find(
-      (s) => {
-        return s.id_well_being === id;
-      }
-    );
-    this.resultatById = ((wellBeing.weight-20)*15+1500)/1000;
-    this.resultatById = Math.round(this.resultatById * 100) / 100;
-    return this.resultatById;
+    )
   }
 
 
-  getTotalNecessary(id: number){
-    //On recupere le poids de la personne sur l'id envoyé en param a l'aide de la méthode getColor(id :number)
-    this.resultatF = ((this.wellBeings[id].weight-20)*15+1500)/1000;
-    this.resultatF =  Math.round(this.resultatF * 10) / 10
-    return this.resultatF;
+  modifWater(wellBeing :WellBeing){
+    const wellBeingObject = new WellBeing();
+    wellBeingObject.water = wellBeing.water;
+    wellBeingObject.date = wellBeing.date;
+
+    this.wellBeings.push(wellBeingObject);
+    this.emitUserWaterSubject();
   }
 
 }

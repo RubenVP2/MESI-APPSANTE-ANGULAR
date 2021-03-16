@@ -11,40 +11,32 @@ import { UserWaterService } from '../services/user-water.service';
 export class WaterDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private userWaterService: UserWaterService ) {}
-  wellBeings :WellBeing [];
-  wellBeing :WellBeing = {};
+  wellBeings;
+  wellBeing: WellBeing = new WellBeing();
+  id: any;
 
 
 
   ngOnInit(): void {
-    this.userWaterService.getUsersWatersApi();
-    this.getUserWater();
+
     //On recupere le parametre :id qu'on a mis dans app-routing.module.ts
-    const id = this.route.snapshot.params['id'];
-    this.getWaterById(id);
-    // this.wellBeing.water = this.userWaterService.getWaterById(+id);
-    console.log(id);
+    this.id = this.route.snapshot.params['id'];
+
+    this.userWaterService.getUsersWatersApi().subscribe(response => {
+      this.wellBeings = response;
+      console.log('Tableau = ' + this.wellBeings);
+      // Appel function pour récupérer le
+      this.getWaterById();
+    });
     //this.getWaterById(id);
 
     //this.wellBeing.weight = this.userWaterService.getweightById(+id)
   }
 
 
-  getWaterById(id :number){
-    this.wellBeing.water = this.userWaterService.getWaterById(+id);
-    return this.wellBeing.water;
+  getWaterById() {
+    this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
+    //console.log('Well being actuel : ' + this.wellBeing);
   }
-
-  getUserWater() {
-    this.userWaterService.wellBeingWaterSubject.subscribe(
-      (response: any[]) => {
-        this.wellBeings = response;
-        //console.log(this.users);
-      }
-    );
-    this.userWaterService.emitUserWaterSubject();
-  }
-
-
 
 }

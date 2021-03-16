@@ -15,6 +15,7 @@ import { WaterDetailComponent } from './water-detail/water-detail.component';
 import { WaterModificationComponent } from './water-modification/water-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HistoriqueWaterComponent } from './historique-water/historique-water.co
   ],
   providers: [
     UserService,
-    UserWaterService
+    UserWaterService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
