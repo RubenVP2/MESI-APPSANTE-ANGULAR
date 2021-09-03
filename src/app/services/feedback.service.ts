@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { Subject } from 'rxjs';
-import { Feedback } from '../models/Feedback.model';
+import { NewFeedback } from '../models/NewFeedback.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +14,7 @@ export class FeedbackService {
 
   constructor(private http: HttpClient,private router : Router) { }
 
-  private feedbacks: Feedback[] = [];
+  private feedbacks: NewFeedback[] = [];
 
   private urlApi = "http://localhost:5000";
 
@@ -56,19 +56,35 @@ export class FeedbackService {
     );
   }
 
-  addFeedback() {
-
+  addFeedback(feedback: NewFeedback) {
+    const headers = { 'content-type': 'application/json'};
+    const body = JSON.stringify(feedback);
+    this.http.post<any>(this.urlApi + "/suggestionbugtrackerdetails/add", body, {'headers':headers}).subscribe((response) => {
+        var message = response['message'];
+        if (message == "Feedback envoyé"){
+          Swal.fire({
+            text: message,
+            icon : "sucess",
+          });
+        }
+        else {
+          Swal.fire(message);
+        }
+    },(error) => {
+      console.log(error);
+    });
   }
 
-  deleteFeedback(id : string, username: string) {
+  deleteFeedback(id : string, pUsername: string) {
     const headers = { 'content-type': 'application/json'};
-    const body = JSON.stringify(username);
-    this.http.post<any>(this.urlApi + `/suggestionbugtrackerdetails/${id}/delete`, body, {'headers' : headers}).subscribe((response) =>
-    {
+    const body = JSON.stringify({ username: pUsername, idFeedback: id });
+    console.log(body);
+    this.http.post<any>(this.urlApi + `/suggestionbugtrackerdetails/delete`, body, {'headers' : headers}).subscribe((response) => {
       var message = response['message'];
       if (message == "Suppresion réussie"){
+        console.log(message);
         Swal.fire(message);
-        // this.router.navigate(['/suggestionbugtrackeradmin']);
+        //this.router.navigate(['/suggestionbugtrackeradmin']);
       }
       else {
         Swal.fire(message);

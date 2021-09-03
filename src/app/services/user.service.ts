@@ -56,7 +56,7 @@ export class UserService {
         else {
           Swal.fire(message);
         }
-},(error) => {
+    },(error) => {
       console.log(error);
     });
   }
@@ -79,5 +79,5 @@ export class UserService {
       console.log(error);
     });
   }
-  
+
 }

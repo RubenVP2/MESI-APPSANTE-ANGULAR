@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'users', component: UsersListeComponent ,canActivate: [AuthGuard]},
   { path: 'suggestionbugtracker', component: SuggestionbugtrackerComponent}, // TODO : Route à supprimer avant release
-  { path: 'suggestionbugtrackeradmin', component: SuggestionbugtrackeradminComponent}, // TODO : authguard admin
-  { path: 'suggestionbugtrackeradmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent}, // TODO : authguard admin
+  { path: 'suggestionbugtrackeradmin', component: SuggestionbugtrackeradminComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
+  { path: 'suggestionbugtrackeradmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
   { path: 'inscription', component: InscriptionComponent },
 ];
 
