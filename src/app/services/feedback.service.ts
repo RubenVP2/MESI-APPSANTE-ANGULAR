@@ -26,7 +26,7 @@ export class FeedbackService {
   getFeedbacks() {
     // Requete http pour récupéreer les utilisateurs
     // return this.http.get<any[]>(this.urlApi + '/test/user/all');
-    this.http.get<any[]>(this.urlApi + '/suggestionbugtracker').subscribe(
+    this.http.get<any[]>(this.urlApi + '/feedbacks').subscribe(
       (response) => {
         //users etant le nom de {} dans l'url de l'api
         this.feedbacks = response['feedbacks'];
@@ -43,7 +43,7 @@ export class FeedbackService {
   getFeedbackById(id : string) {
     // Requete http pour récupéreer les utilisateurs
     // return this.http.get<any[]>(this.urlApi + '/test/user/all');
-    this.http.get<any[]>(this.urlApi + `/suggestionbugtrackerdetails/${id}`).subscribe(
+    this.http.get<any[]>(this.urlApi + `/feedbacksdetails/${id}`).subscribe(
       (response) => {
         //users etant le nom de {} dans l'url de l'api
         var message = response['message'];
@@ -52,7 +52,7 @@ export class FeedbackService {
             text: message,
             icon : "error",
           });
-          this.router.navigate(['/suggestionbugtrackeradmin']);
+          this.router.navigate(['/feedbacksadmin']);
         } else {
           this.feedbacks = response['feedbacks'];
           //console.log(this.users[0]);
@@ -69,7 +69,7 @@ export class FeedbackService {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify(feedback);
     console.log(body);
-    this.http.post<any>(this.urlApi + "/suggestionbugtrackerdetails/add", body, {'headers':headers}).subscribe((response) => {
+    this.http.post<any>(this.urlApi + "/feedbacksdetails/add", body, {'headers':headers}).subscribe((response) => {
         var message = response['message'];
         if (message == "Feedback envoyé"){
           Swal.fire({
@@ -92,15 +92,15 @@ export class FeedbackService {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify({ username: pUsername, idFeedback: id });
     console.log(body);
-    this.http.post<any>(this.urlApi + `/suggestionbugtrackerdetails/delete`, body, {'headers' : headers}).subscribe((response) => {
+    this.http.post<any>(this.urlApi + `/feedbacksdetails/delete`, body, {'headers' : headers}).subscribe((response) => {
       var message = response['message'];
-      if (message == "Suppresion réussie"){
+      if (message == "Action réussie"){
         console.log(message);
         Swal.fire({
           text: message,
           icon : "success",
         });
-        this.router.navigate(['/suggestionbugtrackeradmin']);
+        this.router.navigate(['/feedbacksadmin']);
       }
       else {
         Swal.fire({
@@ -119,9 +119,9 @@ export class FeedbackService {
     const body = JSON.stringify({ username: pUsername, idFeedback: id, state: pState});
     console.log(pState);
     console.log(body);
-    this.http.post<any>(this.urlApi + `/suggestionbugtrackerdetails/update`, body, {'headers' : headers}).subscribe((response) => {
+    this.http.post<any>(this.urlApi + `/feedbacksdetails/update`, body, {'headers' : headers}).subscribe((response) => {
       var message = response['message'];
-      if (message == "Modification réussie"){
+      if (message == "Action réussie"){
         console.log(message);
         Swal.fire({
           text: message,

@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: '', component: IndexComponent},
   { path: 'login', component: LoginComponent},
   { path: 'users', component: UsersListeComponent ,canActivate: [AuthGuard]},
-  { path: 'suggestionbugtrackeradmin', component: SuggestionbugtrackeradminComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
-  { path: 'suggestionbugtrackeradmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
+  { path: 'feedbacksadmin', component: SuggestionbugtrackeradminComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
+  { path: 'feedbacksadmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
   { path: 'inscription', component: InscriptionComponent },
 ];
 
