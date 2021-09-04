@@ -59,6 +59,7 @@ export class FeedbackService {
   addFeedback(feedback: NewFeedback) {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify(feedback);
+    console.log(body);
     this.http.post<any>(this.urlApi + "/suggestionbugtrackerdetails/add", body, {'headers':headers}).subscribe((response) => {
         var message = response['message'];
         if (message == "Feedback envoyé"){
@@ -86,12 +87,43 @@ export class FeedbackService {
       var message = response['message'];
       if (message == "Suppresion réussie"){
         console.log(message);
-        Swal.fire(message);
-        //this.router.navigate(['/suggestionbugtrackeradmin']);
+        Swal.fire({
+          text: message,
+          icon : "success",
+        });
+        this.router.navigate(['/suggestionbugtrackeradmin']);
       }
       else {
-        Swal.fire(message);
-        //this.router.navigate(['../../suggestionbugtrackeradmin']);
+        Swal.fire({
+          text: message,
+          icon : "error",
+        });
+      }
+    },(error) =>
+    {
+      console.log(error);
+    });
+  }
+
+  updateFeedback(id: string, pUsername: string, pState: string) {
+    const headers = { 'content-type': 'application/json'};
+    const body = JSON.stringify({ username: pUsername, idFeedback: id, state: pState});
+    console.log(pState);
+    console.log(body);
+    this.http.post<any>(this.urlApi + `/suggestionbugtrackerdetails/update`, body, {'headers' : headers}).subscribe((response) => {
+      var message = response['message'];
+      if (message == "Modification réussie"){
+        console.log(message);
+        Swal.fire({
+          text: message,
+          icon : "success",
+        });
+      }
+      else {
+        Swal.fire({
+          text: message,
+          icon : "error",
+        });
       }
     },(error) =>
     {
