@@ -46,9 +46,18 @@ export class FeedbackService {
     this.http.get<any[]>(this.urlApi + `/suggestionbugtrackerdetails/${id}`).subscribe(
       (response) => {
         //users etant le nom de {} dans l'url de l'api
-        this.feedbacks = response['feedbacks'];
-        //console.log(this.users[0]);
-        this.emitFeedbackSubject();
+        var message = response['message'];
+        if (message == "Ce feedback n'existe pas") {
+          Swal.fire({
+            text: message,
+            icon : "error",
+          });
+          this.router.navigate(['/suggestionbugtrackeradmin']);
+        } else {
+          this.feedbacks = response['feedbacks'];
+          //console.log(this.users[0]);
+          this.emitFeedbackSubject();
+        }
       },
       (error) => {
         console.log(error);
