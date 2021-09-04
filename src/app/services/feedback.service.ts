@@ -64,11 +64,14 @@ export class FeedbackService {
         if (message == "Feedback envoyé"){
           Swal.fire({
             text: message,
-            icon : "sucess",
+            icon : "success",
           });
         }
         else {
-          Swal.fire(message);
+          Swal.fire({
+            text: message,
+            icon : "error",
+          });
         }
     },(error) => {
       console.log(error);

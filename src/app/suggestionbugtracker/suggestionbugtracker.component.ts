@@ -35,18 +35,55 @@ export class SuggestionbugtrackerComponent implements OnInit {
   onSubmitForm(form : NgForm) {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
     const formValue = form.value;
+    if (this.isValidForm(formValue)) {
+      this.username = sessionStorage.getItem("user");
+      console.log(this.username);
+      console.log(formValue['nature']);
+      //On créé l'instance User qu'on va ensuite ajouter a notre liste
+      const feedback = new NewFeedback(
+        this.username, // TODO : mettre direct sessionStorage.getItem("user")
+        formValue['nature'],
+        formValue['title'],
+        formValue['description'],
+      );
+      console.log(feedback);
+      this.feedbackService.addFeedback(feedback);
+    }
+  }
 
-    this.username = sessionStorage.getItem("user");
-    console.log(this.username);
-    //On créé l'instance User qu'on va ensuite ajouter a notre liste
-    const feedback = new NewFeedback(
-      this.username, // TODO : mettre direct sessionStorage.getItem("user")
-      formValue['nature'],
-      formValue['title'],
-      formValue['description'],
-    );
-    console.log(feedback);
-    this.feedbackService.addFeedback(feedback);
+  isValidForm(formValue : any) : boolean {
+    // WARNING : user can be null, care about how it react
+    if (formValue['nature'] == "") {
+      console.log("La nature ne peut être vide.")
+      Swal.fire({
+        text: "La nature ne peut être vide.",
+        icon : "error",
+      });
+      return false;
+    } else if (formValue['title'] == "") {
+      console.log("Le titre ne peut être vide.")
+      Swal.fire({
+        text: "Le titre ne peut être vide.",
+        icon : "error",
+      });
+      return false;
+    } else if (formValue['title'].length > 50) {
+      console.log("Le titre ne peut excéder 50 caractère.")
+      Swal.fire({
+        text: "Le titre ne peut excéder 50 caractère.",
+        icon : "error",
+      });
+      return false;
+    } else if (formValue['description'] == "") {
+      console.log("La description ne peut être vide.")
+      Swal.fire({
+        text: "La description ne peut être vide.",
+        icon : "error",
+      });
+      return false;
+    }
+    console.log("La formulaire est bon")
+    return true;
   }
 
   open(content) {
@@ -67,3 +104,4 @@ export class SuggestionbugtrackerComponent implements OnInit {
     }
   }
 }
+
