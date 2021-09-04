@@ -1,20 +1,49 @@
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="../">
       <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Fit-icon.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Python" loading="lazy">
        HealthDiary
   </a>
-      <!-- <form class="form-inline my-2 my-lg-1">
-          <div class="btn-group">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Affiche le nom d'utilisateur avec un majuscule au début et si il est admin ou client
-                  Antoine - Administrateur
-              </button>
-              <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/profile">Mon profil</a>
-                  <a class="dropdown-item" href="/logout">Se déconnecter</a>
-              </div>
-          </div>
-      </form> -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- TODO : Faire affichage active dynamique -->
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/">Accueil</a>
+        </li>
+        <li class="nav-item" *ngIf="this.username != null">
+          <a class="nav-link" href="#">Lorem</a>
+        </li>
+        <li class="nav-item" *ngIf="this.username != null" >
+          <a class="nav-link" href="#">Lorem</a>
+        </li>
+        <li class="nav-item" *ngIf="this.username != null">
+          <a class="nav-link" href="#">Lorem</a>
+        </li>
+        <li class="nav-item" *ngIf="this.username == null">
+          <a class="nav-link" href="#" routerLink="login">Se connecter</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="suggestionbugtrackeradmin">Feedbacks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <form class="form-inline my-2 my-lg-1" *ngIf="this.username != null">
+    <div class="btn-group">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <!-- Affiche le nom d'utilisateur avec un majuscule au début et si il est admin ou client -->
+            {{ this.username }} - <span *ngIf="isAdmin()">Administrateur</span> <span *ngIf="!isAdmin()">Utilisateur</span>
+        </button>
+        <!-- TODO : Dropdown not working -->
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/profile">Mon profil</a>
+            <a class="dropdown-item" href="/logout">Se déconnecter</a>
+        </div>
+    </div>
+  </form>
 </nav>
 <app-suggestionbugtracker></app-suggestionbugtracker>

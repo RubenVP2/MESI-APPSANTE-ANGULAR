@@ -70,12 +70,26 @@ export class UserService {
               var user = response['user'];
               Swal.fire("Bienvenue "+ user);
               sessionStorage.setItem("user",user)
-              this.router.navigate(['/users']);
+              this.router.navigate(['/']);
             }
             else {
               Swal.fire(message);
             }
     },(error) => {
+      console.log(error);
+    });
+  }
+
+  isAdmin(pUsername: string) {
+    const headers = { 'content-type': 'application/json'};
+    const body = JSON.stringify({ username: pUsername});
+    console.log(body);
+    this.http.post<any>(this.urlApi + `/isAdmin`, body, {'headers' : headers}).subscribe((response) => {
+      this.users = response['role'];
+      //console.log(this.users[0]);
+      this.emitUserSubject();
+    },(error) =>
+    {
       console.log(error);
     });
   }
