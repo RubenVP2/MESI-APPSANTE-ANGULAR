@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'programmesportifsliste', component: ProgrammesportifslisteComponent},
   { path: 'programmesportifsdetails', component: ProgrammesportifsdetailsComponent},
   { path: 'createprogrammessportifs', component: CreateprogrammesportifsComponent},
-  { path: 'updateprogrammesportifs', component: UpdateprogrammesportifsComponent}
+  { path: 'updateprogrammesportifs', component: UpdateprogrammesportifsComponent},
   { path: 'users', component: UsersListeComponent ,canActivate: [AuthGuard]},
   { path: 'feedbacksadmin', component: SuggestionbugtrackeradminComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
   { path: 'feedbacksadmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
