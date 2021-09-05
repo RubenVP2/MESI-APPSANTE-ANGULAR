@@ -1,0 +1,16 @@
+.btn-circle {
+  width: 85px;
+  height: 85px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 42.5px;
+}
+
+.suggestion-button {
+  position : fixed;
+  bottom : 0;
+  right : 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}

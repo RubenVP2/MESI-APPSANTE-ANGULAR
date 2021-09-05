@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/User.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
+  username: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem("user");
+    this.userService.isAdmin(this.username);
+    this.isAdmin();
   }
 
+  isAdmin() : boolean{
+    this.userService.userSubject.subscribe(
+      (response: any[]) => {
+        this.users = response;
+        //console.log(this.users);
+      }
+    );
+    this.userService.emitUserSubject();
+    return this.users[0].isAdmin;
+  }
 }
