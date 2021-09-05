@@ -1,0 +1,39 @@
+<div class="back">
+  <div class="center">
+    <div class="form">
+      <div class="text">
+        <div>
+          <p class="col-9">Liste des utilisateurs</p>
+          <!-- <p>{{ users[0] }}</p> -->
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nom d'utilisateur</th>
+              <th scope="col">Mot de passe</th>
+              <th scope="col">Email</th>
+              <th scope="col">Sexe</th>
+              <th scope="col">Age</th>
+              <th scope="col">Se pese tous les </th>
+              <th scope="col">Se mesure tous les </th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users ">
+                <td>{{ user.username }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.mail }}</td>
+                <td>{{ user.sexe }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.reminderweight}} jours</td>
+                <td>{{ user.remindermeasurements }} jours</td>
+              </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-secondary" (click)="logout()">logout</button>
+        <button class="btn btn-secondary" (click)="checksession()">check</button>
+      </div>
+    </div>
+  </div>
+</div>
