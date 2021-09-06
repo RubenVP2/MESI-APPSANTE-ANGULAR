@@ -1,14 +1,11 @@
 /node_modules
 .git
 .gitignore
-<<<<<<< HEAD
 .dockerignore
 Dockerfile
-=======
+.Dockerfile
 .vscode
 
-
->>>>>>> 4d42aaf6b0564a93e91ff07dec6e63c39aeb7dd7
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output

@@ -8,6 +8,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
@@ -17,14 +20,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     IndexComponent,
     UsersListeComponent,
-    DashboardComponent
+    DashboardComponent,
+    UsersListeComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

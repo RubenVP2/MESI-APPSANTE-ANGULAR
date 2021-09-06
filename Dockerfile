@@ -1,6 +1,6 @@
 FROM node:15.3.0-alpine3.10
 
-RUN mkdir -p /usr/src/mesi-appsante
+RUN mkdir -p /usr/src/MESI-APPSANTE-ANGULAR
 
 COPY . /usr/src/mesi-appsante
 
