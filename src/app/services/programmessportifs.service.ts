@@ -18,7 +18,7 @@ export class ProgrammessportifsService {
   constructor(private http: HttpClient,private router : Router) { }
 
   private sportsprogram: NewSportsprogram[] = [];
-  private exercice : NewExercice[] = [];
+  private exercices : NewExercice[] = [];
 
   private urlApi = "http://localhost:5000";
 
@@ -27,7 +27,7 @@ export class ProgrammessportifsService {
   }
 
   emitExerciceSubject() {
-    this.exerciceSubject.next(this.exercice.slice());
+    this.exerciceSubject.next(this.exercices.slice());
   }
 
   // Récupére tout les sports programs
@@ -36,6 +36,7 @@ export class ProgrammessportifsService {
     this.http.get<any[]>(this.urlApi + '/sportsprogram').subscribe(
       (response) => {
         //users etant le nom de {} dans l'url de l'api
+        
         this.sportsprogram = response['sportsprogram'];
         this.emitSportsProgramSubject();
       },
@@ -87,7 +88,9 @@ export class ProgrammessportifsService {
           this.router.navigate(['/feedbacksadmin']);
         } else {
           this.sportsprogram = response['sportsprogram'];
-          this.exercice = response['exercice']
+          this.exercices = response['exercice']
+          console.log(response['sportsprogram']);
+          console.log(response['exercice']);
           //console.log(this.users[0]);
           this.emitSportsProgramSubject();
           this.emitExerciceSubject();

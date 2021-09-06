@@ -12,18 +12,20 @@ import { SuggestionbugtrackeradminComponent } from './suggestionbugtracker/sugge
 import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmindetails/suggestionbugtrackeradmindetails.component';
 import { UsersListeComponent } from './users-liste/users-liste.component';
 import { AuthGuard } from './auth.guard'
+import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent},
   { path: 'login', component: LoginComponent},
   { path: 'programmesportifsliste', component: ProgrammesportifslisteComponent},
-  { path: 'programmesportifsdetails', component: ProgrammesportifsdetailsComponent},
+  { path: 'programmesportifsdetails/:id', component: ProgrammesportifsdetailsComponent},
   { path: 'createprogrammessportifs', component: CreateprogrammesportifsComponent},
   { path: 'updateprogrammesportifs', component: UpdateprogrammesportifsComponent},
   { path: 'users', component: UsersListeComponent ,canActivate: [AuthGuard]},
   { path: 'feedbacksadmin', component: SuggestionbugtrackeradminComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
   { path: 'feedbacksadmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'exercicedetails', component: ExercicedetailsComponent},
 ];
 
 @NgModule({

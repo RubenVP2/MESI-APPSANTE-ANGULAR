@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NewSportsprogram } from '../models/NewSportsprogram.model';
+import { ProgrammessportifsService } from '../services/programmessportifs.service';
 
 @Component({
   selector: 'app-programmesportifsliste',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgrammesportifslisteComponent implements OnInit {
 
-  constructor() { }
+  sportsprogram: NewSportsprogram[];
+
+  constructor(private sportsprogramService: ProgrammessportifsService, private router : Router) { }
 
   ngOnInit(): void {
+    this.sportsprogramService.getAllSportsProgramsOfUser(sessionStorage.getItem("user"));
+    this.getSportsProgramsOfUser()
+  }
+
+  getSportsProgramsOfUser() {
+    this.sportsprogramService.sportsprogramSubject.subscribe(
+      (response: any[]) => {
+        this.sportsprogram = response;
+        //console.log(this.feedbacks);
+      }
+    );
+    this.sportsprogramService.emitSportsProgramSubject();
   }
 
 }

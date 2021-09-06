@@ -19,26 +19,12 @@
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <td>Ruben VELOSO-PAULOS</td>
-                <td>Jambes</td>
-                <td>Séances Jambes</td>
-                <td>Confirmé</td>
-                <td><a routerLink="../programmesportifsdetails"><button class="btn btn btn-primary">Détails</button></a></td>
-              </tr>
-              <tr>
-                <td>Ruben VELOSO-PAULOS</td>
-                <td>Bras</td>
-                <td>Séances Bras</td>
-                <td>Intermédiaire</td>
-                <td><a routerLink="../programmesportifsdetails"><button class="btn btn btn-primary">Détails</button></a></td>
-              </tr>
-              <tr>
-                <td>Ruben VELOSO-PAULOS</td>
-                <td>Pecs</td>
-                <td>Séances Pecs</td>
-                <td>Débutant</td>
-                <td><a routerLink="../programmesportifsdetails"><button class="btn btn btn-primary">Détails</button></a></td>
+              <tr *ngFor="let onesportsprogram of sportsprogram">
+                <td>{{ onesportsprogram.creator }}</td>
+                <td>{{ onesportsprogram.title }}</td>
+                <td>{{ onesportsprogram.description }}</td>
+                <td>{{ onesportsprogram.level }}</td>
+                <td><a routerLink="../programmesportifsdetails/{{onesportsprogram.id_sports_program}}"><button class="btn btn btn-primary">Détails</button></a></td>
               </tr>
           </tbody>
         </table>

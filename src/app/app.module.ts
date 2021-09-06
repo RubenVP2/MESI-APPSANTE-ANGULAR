@@ -20,6 +20,7 @@ import { SuggestionbugtrackerComponent } from './suggestionbugtracker/suggestion
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SuggestionbugtrackeradminComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmin.component';
 import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmindetails/suggestionbugtrackeradmindetails.component';
+import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracke
     SuggestionbugtrackerComponent,
     SuggestionbugtrackeradminComponent,
     SuggestionbugtrackeradmindetailsComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ExercicedetailsComponent
   ],
   imports: [
     BrowserModule,
