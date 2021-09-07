@@ -12,6 +12,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UsersListeComponent,
     DashboardComponent,
     UsersListeComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

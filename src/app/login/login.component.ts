@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // Si l'user est déjà connecté on le redirige vers la page d'accueil
     if (sessionStorage.getItem("user") != null) {
-      this.router.navigate(['/users']);
+      this.router.navigate(['/']);
     }
   }
 
