@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <a (click)="this.getBack()" class="col-2 mt-5 ml-1">Retour</a>
+  </div>
+  <div class="row mt-5">
+    <form class="col-12" #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
+      <div class="form-group row col-sm-5">
+        <label for="nomProgramme">Nom du programme:</label>
+        <input type="text" class="form-control" name="nomProgramme" id="nomProgramme" ngModel>
+      </div>
+      <div class="form-group row col-sm-5">
+        <label for="descriptionProgramme">Description du programme :</label>
+        <textarea class="form-control" name="descriptionProgramme" id="descriptionProgramme" ngModel></textarea>
+      </div>
+      <div class="form-group row col-7">
+        <label for="levelProgramme">Niveau du programme :</label>
+        <input type="text" class="form-control" name="levelProgramme" id="levelProgramme" ngModel>
+      </div>
+      <!-- Buttons -->
+      <div class="form-row">
+        <!-- Ask if user want to delete ticket -->
+        <div class="col-auto">
+          <button type="submit" id="createExercice" class="btn btn-primary">Créer</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

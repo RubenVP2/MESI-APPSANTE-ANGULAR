@@ -120,23 +120,3 @@
   <!-- End Left Sidebar -->
   <!-- ============================================================== -->
 </div>
-
-
-<li class="nav-item" *ngIf="isAdmin()">
-<a class="nav-link" routerLink="feedbacksadmin">Feedbacks</a>
-</li>
-
-<form class="form-inline my-2 my-lg-1" *ngIf="this.username != null">
-  <div class="btn-group">
-      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <!-- Affiche le nom d'utilisateur avec un majuscule au début et si il est admin ou client -->
-          {{ this.username }} - <span *ngIf="isAdmin()">Administrateur</span> <span *ngIf="!isAdmin()">Utilisateur</span>
-      </button>
-      <!-- TODO : Dropdown not working -->
-      <div class="dropdown-menu">
-          <a class="dropdown-item" href="/profile">Mon profil</a>
-          <a class="dropdown-item" href="/logout">Se déconnecter</a>
-      </div>
-  </div>
-</form>
-<app-suggestionbugtracker></app-suggestionbugtracker>
