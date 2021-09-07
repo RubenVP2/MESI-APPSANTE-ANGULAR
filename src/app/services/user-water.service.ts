@@ -6,6 +6,7 @@ import { UserService } from "./user.service";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from "@angular/router";
 import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,7 @@ export class UserWaterService{
       return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWater']));
     }
 
+    //Ajout dans la table wellBeing
     addWater(wellBeing: WellBeing) {
       const headers = { 'content-type': 'application/json'};
       const body = JSON.stringify(wellBeing);
@@ -67,7 +69,7 @@ export class UserWaterService{
        console.log(error);
      });
   }
-
+  // Recupère les informations de la tables WELL_BEING (water date poids) en fonction du filtre - Date Debut / Date Fin
   getUsersWatersFilterApi(wellBeingWaterFilter: WellBeingWaterFilter) {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify(wellBeingWaterFilter);
@@ -82,7 +84,6 @@ export class UserWaterService{
       }
     },(error) => {
       console.log(error);
-
     }));
   }
 

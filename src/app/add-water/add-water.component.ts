@@ -16,7 +16,6 @@ export class AddWaterComponent implements OnInit {
   waterAddForm: FormGroup;
 
   wellBeings :WellBeing[];
-  wellBeing: WellBeing = new WellBeing();
 
   constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { }
 
@@ -35,18 +34,18 @@ export class AddWaterComponent implements OnInit {
     this.waterAddForm = this.formBuilder.group({
       userWater: ['',Validators.required],
       userDate: ['',Validators.required]
-    })
+    });
   }
 
   onSubmitForm(){
-    //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
-      const formValue = this.waterAddForm.value;
-      //On créé l'instance User qu'on va ensuite ajouter a notre liste
-       const addWater = new WellBeing(0,0,
-        formValue['userWater'],0,0,0,0,
-        formValue['userDate'], sessionStorage.getItem("user")
-      );
-      this.userWaterService.addWater(addWater);
-      //this.router.navigate(['/historiqueWater']);
+      //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
+        const formValue = this.waterAddForm.value;
+        //On créé l'instance User qu'on va ensuite ajouter a notre liste
+         const addWater = new WellBeing(0,0,
+          formValue['userWater'],0,0,0,0,
+          formValue['userDate'], sessionStorage.getItem("user")
+        );
+        this.userWaterService.addWater(addWater);
+        //this.router.navigate(['/historiqueWater']);
+    }
   }
-}

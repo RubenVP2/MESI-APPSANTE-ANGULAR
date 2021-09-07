@@ -5,7 +5,7 @@
       <label for="userWater">Quantité d'eau bu</label>
       <input type="number" class="form-control" id="userWater" formControlName="userWater" placeholder="Par exemple : 1.4 Litre(s)">
       <label for="userDate">Date de votre enregistrement : </label>
-      <input type="date" class="form-control" id="userDate" formControlName="userDate">
+      <input type="date" class="form-control" id="userDate" max="{{today}}" formControlName="userDate">
 
     </div>
     <!-- le [disabled] permet ici de rendre le bouton non cliquable tant que formulaire ne correspond pas a la demande faite dans la méthode initForms() dans le .ts-->

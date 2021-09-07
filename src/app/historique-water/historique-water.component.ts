@@ -29,7 +29,6 @@ export class HistoriqueWaterComponent implements OnInit {
       // Appel function pour récupérer le
     });
     this.initForm();
-    this.createChartsData();
   }
 
     //On calcul le taux d'eau néceissaire pour une personne suivant son poids au jour Date calculé a l'aide du poids
@@ -53,25 +52,27 @@ export class HistoriqueWaterComponent implements OnInit {
 
   initForm(){
     this.filterHistoriqueWater = this.formBuilder.group({
+      //On récupere les infos des deux filtres calender
       calendarStartFilter: ['', Validators.required],
       calendarEndFilter: ['', Validators.required]
-
     });
   }
 
   onSubmitForm(){
-    //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
+    //formValue recupere les informations du formulaire
     const formValue = this.filterHistoriqueWater.value;
-    //On créé l'instance User qu'on va ensuite ajouter a notre liste
+    //On créé l'instance wellBeingWaterFilter qui permettra de retourner notre nouvelle liste
     const wellBeingWaterFilter = new WellBeingWaterFilter(
       formValue['calendarStartFilter'],
       formValue['calendarEndFilter']
     );
+    //Appel de la méthode POST pour recueprer la liste de résultat en fonction du filtre
     this.userWaterService.getUsersWatersFilterApi(wellBeingWaterFilter).subscribe(response => {
       this.wellBeings = response;
     });
   }
 
+  //On reset les filtres
   reset() {
     window.location.reload();
   }

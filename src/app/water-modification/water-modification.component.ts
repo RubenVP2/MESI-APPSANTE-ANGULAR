@@ -13,10 +13,10 @@ export class WaterModificationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService, private route: ActivatedRoute) { }
 
-  wellBeings :WellBeing [];
+  wellBeings: WellBeing [];
   waterModifForm: FormGroup;
-  wellBeing :WellBeing={};
-  resultatNecesary : Number;
+  wellBeing: WellBeing = {};
+  resultatNecesary: Number;
   id: any;
 
   ngOnInit(): void {
