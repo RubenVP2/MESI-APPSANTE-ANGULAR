@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import {Location} from '@angular/common';
-import { Router } from '@angular/router';
-import { NewSportsprogram } from '../models/NewSportsprogram.model';
+import { NewExercice } from '../models/NewExercice.model';
 import { ProgrammessportifsService } from '../services/programmessportifs.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-createprogrammesportifs',
-  templateUrl: './createprogrammesportifs.component.html',
-  styleUrls: ['./createprogrammesportifs.component.css']
+  selector: 'app-createexercice',
+  templateUrl: './createexercice.component.html',
+  styleUrls: ['./createexercice.component.css']
 })
-export class CreateprogrammesportifsComponent implements OnInit {
+export class CreateexerciceComponent implements OnInit {
 
-  newProgram: NewSportsprogram[];
-  sportsprogramForm : FormGroup;
+  newExercice: NewExercice[];
+  exerciceForm : FormGroup;
   url = '';
   id = [];
   username = '';
   constructor(private _location: Location, private formBuilder: FormBuilder, private programmessportifsService : ProgrammessportifsService, private router : Router) { }
 
-
   ngOnInit(): void {
+    this.url = this.router.url.toString();
+    this.id = this.url.split('/', 3);
     this.initForm();
   }
 
@@ -32,10 +33,13 @@ export class CreateprogrammesportifsComponent implements OnInit {
   initForm() {
     //on créé notre formulaire au lancement de la page les variables doivent correspondres aux id du html
     //public radioValue: string = this.oneFeedback[0].etat;
-    this.sportsprogramForm = this.formBuilder.group({
-      nomProgramme: ['', Validators.required],
-      descriptionProgramme: ['', Validators.required],
-      levelProgramme: ['', Validators.required],
+    this.exerciceForm = this.formBuilder.group({
+      nomExercice: ['', Validators.required],
+      nomMuscle: ['', Validators.required],
+      nbReps: ['', Validators.required],
+      nbSeries: ['', Validators.required],
+      restExercice: ['', Validators.required],
+      restSeries: ['', Validators.required],
     });
   }
 
@@ -44,7 +48,8 @@ export class CreateprogrammesportifsComponent implements OnInit {
     const formValue = form.value;
     this.username = sessionStorage.getItem("user");
     console.log(form.value);
-    this.programmessportifsService.createSportsProgram(this.username, formValue['nomProgramme'], formValue['descriptionProgramme'], formValue['levelProgramme']);
+    this.programmessportifsService.createExercice(this.id[2], formValue['nomExercice'], formValue['nomMuscle'],
+      formValue['nbReps'], formValue['nbSeries'], formValue['restExercice'], formValue['restSeries']);
   }
 
 }

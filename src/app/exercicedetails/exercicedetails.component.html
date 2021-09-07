@@ -1,1 +1,86 @@
-<p>exercicedetails works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <a (click)="this.getBack()" class="col-2 mt-5 ml-1">Retour</a>
+  </div>
+  <h4>Mes derniers résultats : </h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Poids/Temps</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let result of results">
+            <td>{{ result.weight }}<span *ngIf="oneExercice[0].name != 'Cardio'"> Kg</span> <span *ngIf="oneExercice[0].name == 'Cardio'"> minutes</span></td>
+            <td>{{ result.date }}</td>
+            </tr>
+      </tbody>
+    </table>
+    <button (click)="open(mymodal)" id="addResult" class="btn btn-primary">Ajouter un résultat</button>
+  <div class="row mt-5">
+    <form class="col-12" #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
+      <div class="form-group row col-sm-5">
+        <label for="nomExercice">Nom de l'exercice :</label>
+        <input type="text" class="form-control" name="nomExercice" id="nomExercice" [(ngModel)]="oneExercice[0].title" readonly>
+      </div>
+      <div class="form-group row col-sm-5">
+        <!-- TODO : Select avec les différents valeurs (automatisé le truc si possible)-->
+        <label for="nomMuscle">Nom du muscle :</label>
+        <input type="text" class="form-control" name="nomMuscle" id="nomMuscle" [(ngModel)]="oneExercice[0].name" readonly>
+      </div>
+      <div class="form-group row col-sm-5">
+        <label for="nbReps">Nombre de répétitions :</label>
+        <input type="text" class="form-control" name="nbReps" id="nbReps" [(ngModel)]="oneExercice[0].nbreps">
+      </div>
+      <div class="form-group row col-7">
+        <label for="nbSeries">Nombre de séries :</label>
+        <input type="text" class="form-control" name="nbSeries" id="nbSeries" [(ngModel)]="oneExercice[0].nbseries">
+      </div>
+      <div class="form-group row col-10">
+        <label for="restExercice">Temps de repos entre chaque exercice (en sec) :</label>
+        <input type="text" class="form-control" name="restExercice" id="restExercice" [(ngModel)]="oneExercice[0].restexercices">
+      </div>
+      <div class="form-group">
+        <label for="restSeries">Temps de repos entre chaque séries (en sec) :</label>
+        <input type="text" class="form-control" name="restSeries" id="restSeries" [(ngModel)]="oneExercice[0].restseries">
+      </div>
+      <!-- Buttons -->
+      <div class="form-row">
+        <!-- Ask if user want to delete ticket -->
+        <div class="col-auto">
+          <div class="input-group">
+            <!-- to delete ticket-->
+            <button id="deleteExercice" class="btn btn-danger mr-3"><a style="color: white;text-decoration: none;" (click)="this.deleteExercice()">Suppresion</a></button>
+          </div>
+        </div>
+        <div class="col-auto">
+          <button type="submit" id="updateExercice" class="btn btn-primary">Modifier</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter un résultat</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #myform = "ngForm" (ngSubmit) = "onSubmitFormResultat(myform)">
+      <div class="form-group">
+        <label for="titre-name" class="col-form-label">Poids/Temps :</label>
+        <input type="text" class="form-control" name="weight" id="weight" placeholder="Poids/Temps" ngModel>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="modal.dismiss('Cross click')">Quitter</button>
+        <button type="submit" class="btn btn-dark" (click)="modal.close('Save click')">Créer</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

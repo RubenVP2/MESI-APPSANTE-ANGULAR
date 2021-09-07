@@ -15,7 +15,8 @@ export class ProgrammesportifsdetailsComponent implements OnInit {
   exercices : NewExercice[];
   url = '';
   id = [];
-  
+  username= '';
+
   constructor(private sportsprogramService: ProgrammessportifsService, private router : Router) { }
 
   ngOnInit(): void {
@@ -38,6 +39,11 @@ export class ProgrammesportifsdetailsComponent implements OnInit {
     );
     this.sportsprogramService.emitSportsProgramSubject();
     this.sportsprogramService.emitExerciceSubject();
+  }
+
+  deleteProgram(){
+    this.username = sessionStorage.getItem("user");
+    this.sportsprogramService.deleteSportsProgram(this.id[2], this.username);
   }
 
 }
