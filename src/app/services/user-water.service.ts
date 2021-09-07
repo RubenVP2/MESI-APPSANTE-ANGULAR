@@ -3,12 +3,9 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { WellBeing } from "../models/WellBeing.model";
 import { UserService } from "./user.service";
-import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from "@angular/router";
 import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
-
-
 
 @Injectable({
   providedIn: 'root'

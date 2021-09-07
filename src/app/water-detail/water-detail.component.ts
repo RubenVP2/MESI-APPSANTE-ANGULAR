@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-water-detail',
@@ -42,5 +41,7 @@ export class WaterDetailComponent implements OnInit {
     this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
     //console.log('Well being actuel : ' + this.wellBeing);
   }
+
+
 
 }
