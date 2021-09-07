@@ -15,9 +15,13 @@ export class LoginComponent implements OnInit {
 
   userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router : Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    // Si l'user est déjà connecté on le redirige vers la page d'accueil
+    if (sessionStorage.getItem("user") != null) {
+      this.router.navigate(['/']);
+    }
   }
 
   initForm() {
@@ -28,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmitForm(form : NgForm) {
+  onSubmitForm(form: NgForm) {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
     const formValue = form.value;
     //On créé l'instance User qu'on va ensuite ajouter a notre liste
@@ -41,7 +45,7 @@ export class LoginComponent implements OnInit {
     //sessionStorage.clear();
   }
 
-  register(){
+  register() {
     this.router.navigate(['/inscription']);
   }
 }

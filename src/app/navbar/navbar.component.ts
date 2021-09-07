@@ -9,6 +9,11 @@ import { UserService } from '../services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  username: string;
+
+  constructor() {
+    this.username = sessionStorage.getItem('user');
+  }
   users: User[];
   username: string;
 

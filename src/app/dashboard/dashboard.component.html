@@ -1,0 +1,125 @@
+<input id="usernameSession" type="hidden" value="{{username}}">
+<!-- ============================================================== -->
+<!-- Preloader -->
+<!-- ============================================================== -->
+<div class="preloader">
+  <div class="lds-ripple">
+    <div class="lds-pos"></div>
+    <div class="lds-pos"></div>
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb bg-white">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          <h4 class="page-title">Dashboard</h4>
+        </div>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+      <!-- ============================================================== -->
+      <!-- Three charts -->
+      <!-- ============================================================== -->
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-12">
+          <div class="white-box analytics-info">
+            <h3 class="box-title">Calories sur les 10 derniers jours</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+              <li>
+                <div id="sparkLineCalories" ><canvas width="67" height="30"
+                                                style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                </div>
+              </li>
+              <li class="ms-auto"><span id="avgCalories" class="counter"></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="white-box analytics-info">
+            <h3 class="box-title">Heure de sommeil sur les 10 derniers jours</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+              <li>
+                <div id="sparkLineSommeil"><canvas width="67" height="30"
+                                                 style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                </div>
+              </li>
+              <li class="ms-auto"><span id="avgSommeil" class="counter"></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="white-box analytics-info">
+            <h3 class="box-title">Consommation eau sur les 10 derniers jours</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+              <li>
+                <div id="sparkLineWater"><canvas width="67" height="30"
+                                                 style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                </div>
+              </li>
+              <li class="ms-auto"><span id="avgWater" class="counter"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- SUIVI DU POIDS -->
+      <!-- ============================================================== -->
+      <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+          <div class="white-box">
+            <h3 class="box-title">Suivi du poids</h3>
+            <div id="ct-poids" style="height: 405px;">
+              <div class="chartist-tooltip"><span
+                class="chartist-tooltip-value">6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- SUIVI DU IMC -->
+      <!-- ============================================================== -->
+      <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+          <div class="white-box">
+            <h3 class="box-title">Suivi du IMC</h3>
+            <div id="ct-imc" style="height: 405px;">
+              <div class="chartist-tooltip"><span
+                class="chartist-tooltip-value">6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Page wrapper  -->
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+

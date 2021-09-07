@@ -14,10 +14,14 @@ export class InscriptionComponent implements OnInit {
 
   userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router : Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
+    // Si l'user est déjà connecté on le redirige vers la page d'accueil
+    if (sessionStorage.getItem("user") != null) {
+      this.router.navigate(['/users']);
+    }
   }
 
   initForm() {
@@ -31,27 +35,29 @@ export class InscriptionComponent implements OnInit {
     });
   }
 
-  onSubmitForm(form : NgForm) {
+  onSubmitForm(form: NgForm) {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
     const formValue = form.value;
-    if(formValue['password'] != formValue['passwordC']){
+    if (formValue['password'] != formValue['passwordC']) {
       Swal.fire("Mots de passe différents");
+    } else if (formValue['username'] == "") {
+      Swal.fire("Veuillez entrer un nom d'utilisateur");
     }
     else {
       //On créé l'instance User qu'on va ensuite ajouter a notre liste
-    const newUser = new NewUser(
-      formValue['username'],
-      formValue['password'],
-      formValue['email'],
-      formValue['sexe'],
-      formValue['age'],
-    );
-    this.userService.addUser(newUser);
+      const newUser = new NewUser(
+        formValue['username'],
+        formValue['password'],
+        formValue['email'],
+        formValue['sexe'],
+        formValue['age'],
+      );
+      this.userService.addUser(newUser);
+    }
   }
-    }
 
-    login(){
-      this.router.navigate(['/login']);
-    }
+  login() {
+    this.router.navigate(['/login']);
+  }
 
 }
