@@ -1,4 +1,3 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +11,7 @@ import { UserWaterService } from '../services/user-water.service';
 })
 export class WaterModificationComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService, private route: ActivatedRoute) { }
 
   wellBeings :WellBeing [];
   waterModifForm: FormGroup;
@@ -46,13 +45,13 @@ export class WaterModificationComponent implements OnInit {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
       const formValue = this.waterModifForm.value;
       //On créé l'instance User qu'on va ensuite ajouter a notre liste
-      const modifWater = new WellBeing(0,0,
+      const modifWater = new WellBeing(this.id,0,
         //ici on ajouter les valeurs du formluaire dans notre formValue (a noter que l'id dans le formulaire est utilisé ici entre crochet)
         //Id = ['']
-        formValue['userWater'],0,0,0,0,this.wellBeing.date
+        formValue['userWater'],0,0,0,0,null,sessionStorage.getItem("user")
       );
      // this.userWaterService.modifWater(modifWater);
-      this.router.navigate(['/historiqueWater']);
+      this.userWaterService.modifWater(modifWater,this.id);
   }
      //Partie formulaire//
 

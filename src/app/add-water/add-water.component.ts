@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
 
+
 @Component({
   selector: 'app-add-water',
   templateUrl: './add-water.component.html',
@@ -17,7 +18,7 @@ export class AddWaterComponent implements OnInit {
   wellBeings :WellBeing[];
   wellBeing: WellBeing = new WellBeing();
 
-  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService, private router: Router, private datePipe: DatePipe) { }
+  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { }
 
   ngOnInit(): void {
     this.userWaterService.getUsersWatersApi().subscribe(response => {
@@ -37,28 +38,15 @@ export class AddWaterComponent implements OnInit {
     })
   }
 
-
-  addWater(wellBeing :WellBeing){
-    const wellBeingObject = new WellBeing();
-    wellBeingObject.water = wellBeing.water;
-    wellBeingObject.date = wellBeing.date;
-    wellBeingObject.id_well_being = wellBeing.id_well_being;
-
-    this.wellBeings.push(wellBeingObject);
-  }
-
-
   onSubmitForm(){
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
       const formValue = this.waterAddForm.value;
       //On créé l'instance User qu'on va ensuite ajouter a notre liste
        const addWater = new WellBeing(0,0,
-        formValue['userWater'],0,0,0,
-        formValue['userDate']
+        formValue['userWater'],0,0,0,0,
+        formValue['userDate'], sessionStorage.getItem("user")
       );
-     // this.addWater(addWater);
-      this.router.navigate(['/historiqueWater']);
+      this.userWaterService.addWater(addWater);
+      //this.router.navigate(['/historiqueWater']);
   }
-     //Partie formulaire//
-
 }

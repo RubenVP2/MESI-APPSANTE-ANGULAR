@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-water-detail',
@@ -10,7 +11,7 @@ import { UserWaterService } from '../services/user-water.service';
 })
 export class WaterDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private userWaterService: UserWaterService ) {}
+  constructor(private route: ActivatedRoute,private userWaterService: UserWaterService, private _location: Location) {}
   wellBeings;
   wellBeing: WellBeing = new WellBeing();
   id: any;
@@ -33,6 +34,9 @@ export class WaterDetailComponent implements OnInit {
     //this.wellBeing.weight = this.userWaterService.getweightById(+id)
   }
 
+  backClicked() {
+    this._location.back();
+  }
 
   getWaterById() {
     this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
