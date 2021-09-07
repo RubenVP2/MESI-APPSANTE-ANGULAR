@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="../">
+  <a class="navbar-brand" routerLink="/">
       <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Fit-icon.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Python" loading="lazy">
        HealthDiary
   </a>
@@ -15,19 +15,19 @@
           <a class="nav-link active" routerLink="/">Accueil</a>
         </li>
         <li class="nav-item" *ngIf="this.username != null">
-          <a class="nav-link" href="#">Lorem</a>
+          <a class="nav-link" href="#" disabled>Mon alimentation</a>
         </li>
         <li class="nav-item" *ngIf="this.username != null" >
-          <a class="nav-link" href="#">Lorem</a>
+          <a class="nav-link" routerLink="/programmesportifsliste">Mes programmes de sports</a>
         </li>
         <li class="nav-item" *ngIf="this.username != null">
-          <a class="nav-link" href="#">Lorem</a>
+          <a class="nav-link" href="#" disabled>Mon poids</a>
         </li>
         <li class="nav-item" *ngIf="this.username == null">
           <a class="nav-link" href="#" routerLink="login">Se connecter</a>
         </li>
         <li class="nav-item" *ngIf="isAdmin()">
-          <a class="nav-link" routerLink="feedbacksadmin">Feedbacks</a>
+          <a class="nav-link" routerLink="/feedbacksadmin">Les feedbacks</a>
         </li>
       </ul>
     </div>

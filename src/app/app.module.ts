@@ -12,10 +12,16 @@ import { UsersListeComponent } from './users-liste/users-liste.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { ProgrammesportifslisteComponent } from './programmesportifsliste/programmesportifsliste.component';
+import { CreateprogrammesportifsComponent } from './createprogrammesportifs/createprogrammesportifs.component';
+import { ProgrammesportifsdetailsComponent } from './programmesportifsdetails/programmesportifsdetails.component';
+import { UpdateprogrammesportifsComponent } from './updateprogrammesportifs/updateprogrammesportifs.component';
 import { SuggestionbugtrackerComponent } from './suggestionbugtracker/suggestionbugtracker.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SuggestionbugtrackeradminComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmin.component';
 import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracker/suggestionbugtrackeradmin/suggestionbugtrackeradmindetails/suggestionbugtrackeradmindetails.component';
+import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
+import { CreateexerciceComponent } from './createexercice/createexercice.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +30,16 @@ import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracke
     LoginComponent,
     IndexComponent,
     UsersListeComponent,
+    ProgrammesportifslisteComponent,
+    CreateprogrammesportifsComponent,
+    ProgrammesportifsdetailsComponent,
+    UpdateprogrammesportifsComponent,
     SuggestionbugtrackerComponent,
     SuggestionbugtrackeradminComponent,
     SuggestionbugtrackeradmindetailsComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ExercicedetailsComponent,
+    CreateexerciceComponent
   ],
   imports: [
     BrowserModule,

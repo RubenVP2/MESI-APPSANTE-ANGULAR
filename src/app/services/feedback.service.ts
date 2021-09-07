@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Location} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -12,7 +13,7 @@ export class FeedbackService {
 
   feedbackSubject = new Subject<any[]>();
 
-  constructor(private http: HttpClient,private router : Router) { }
+  constructor(private _location: Location,private http: HttpClient,private router : Router) { }
 
   private feedbacks: NewFeedback[] = [];
 
@@ -20,6 +21,10 @@ export class FeedbackService {
 
   emitFeedbackSubject() {
     this.feedbackSubject.next(this.feedbacks.slice());
+  }
+
+  getBack() {
+    this._location.back();
   }
 
   // Récupére tout les feedbacks
