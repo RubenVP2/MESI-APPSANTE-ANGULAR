@@ -15,16 +15,15 @@ export class AddWaterComponent implements OnInit {
 
   waterAddForm: FormGroup;
 
-  wellBeings :WellBeing[];
+  wellBeings: WellBeing[];
+  today = new Date().toJSON().split('T')[0];
 
   constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { }
 
   ngOnInit(): void {
     this.userWaterService.getUsersWatersApi().subscribe(response => {
       this.wellBeings = response;
-     // console.log('Tableau = ' + this.wellBeings);
       this.initForm();
-      //Appel function pour récupérer le
     });
 
   }
@@ -32,8 +31,8 @@ export class AddWaterComponent implements OnInit {
 
   initForm(){
     this.waterAddForm = this.formBuilder.group({
-      userWater: ['',Validators.required],
-      userDate: ['',Validators.required]
+      userWater: ['', Validators.required],
+      userDate: ['', Validators.required]
     });
   }
 
@@ -41,11 +40,10 @@ export class AddWaterComponent implements OnInit {
       //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
         const formValue = this.waterAddForm.value;
         //On créé l'instance User qu'on va ensuite ajouter a notre liste
-         const addWater = new WellBeing(0,0,
-          formValue['userWater'],0,0,0,0,
+         const addWater = new WellBeing(0, 0,
+          formValue['userWater'], 0, 0, 0, 0,
           formValue['userDate'], sessionStorage.getItem("user")
         );
         this.userWaterService.addWater(addWater);
-        //this.router.navigate(['/historiqueWater']);
     }
   }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-water-detail',
@@ -10,8 +12,8 @@ import { UserWaterService } from '../services/user-water.service';
 })
 export class WaterDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private userWaterService: UserWaterService, private _location: Location) {}
-  wellBeings;
+  constructor(private route: ActivatedRoute, private userWaterService: UserWaterService, private _location: Location) {}
+  wellBeings: WellBeing[];
   wellBeing: WellBeing = new WellBeing();
   id: any;
 
@@ -28,9 +30,6 @@ export class WaterDetailComponent implements OnInit {
       // Appel function pour récupérer le
       this.getWaterById();
     });
-    //this.getWaterById(id);
-
-    //this.wellBeing.weight = this.userWaterService.getweightById(+id)
   }
 
   backClicked() {
@@ -39,7 +38,7 @@ export class WaterDetailComponent implements OnInit {
 
   getWaterById() {
     this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
-    //console.log('Well being actuel : ' + this.wellBeing);
+    console.log(this.wellBeing);
   }
 
 

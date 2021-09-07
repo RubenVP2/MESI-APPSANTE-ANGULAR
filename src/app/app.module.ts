@@ -28,7 +28,8 @@ import { DatePipe } from '@angular/common';
     HistoriqueWaterComponent,
     AddWaterComponent,
     WaterModificationComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    WaterDetailComponent
   ],
   imports: [
     BrowserModule,

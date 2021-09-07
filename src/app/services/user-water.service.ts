@@ -46,9 +46,13 @@ export class UserWaterService{
             this.router.navigate(['/historiqueWater']);
           }
           else {
-            Swal.fire(message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: message
+            });
           }
-       },(error) => {
+       }, (error) => {
          console.log(error);
        });
     }
@@ -59,8 +63,21 @@ export class UserWaterService{
     this.http.post<any>(this.urlApi + "/updateWater/" + idWellBeing , body, {'headers':headers}).subscribe((response) => {
         var message = response['message'];
         if (message == "Update réussie"){
-          Swal.fire(message);
-          this.router.navigate(['/historiqueWater']);
+          Swal.fire({
+            title: 'Voulez-vous sauvegarder vos modification ?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Sauvegarder',
+            denyButtonText: `Ne pas sauvegarder`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire(message);
+              this.router.navigate(['/historiqueWater']);
+            } else if (result.isDenied) {
+              Swal.fire('Modification annulé', '', 'info');
+            }
+          });
         }
         else {
           Swal.fire(message);
