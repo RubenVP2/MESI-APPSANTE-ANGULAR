@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="this.username != null"></app-navbar>
 <router-outlet></router-outlet>
-<app-suggestionbugtracker></app-suggestionbugtracker>
+<app-suggestionbugtracker *ngIf="this.username != null"></app-suggestionbugtracker>
 <app-footer></app-footer>

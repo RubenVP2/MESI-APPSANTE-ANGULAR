@@ -18,13 +18,16 @@ import { AuthGuard } from './auth.guard';
 import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
+import {ProfilComponent} from './profil/profil.component';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
 import { WaterModificationComponent } from './water-modification/water-modification.component';
 import {FormMensurationWeightComponent} from './form-mensuration-weight/form-mensuration-weight.component';
 import {HistoriqueWeightComponent} from './historique-weight/historique-weight.component';
 import {WeightModificationComponent} from './weight-modification/weight-modification.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 const routes: Routes = [
+  { path: '', component: LandingpageComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'users', component: UsersListeComponent , canActivate: [AuthGuard]},
@@ -45,6 +48,7 @@ const routes: Routes = [
   { path: 'addWeight', component: FormMensurationWeightComponent, canActivate: [AuthGuard]},
   { path: 'historiqueWeight', component: HistoriqueWeightComponent, canActivate: [AuthGuard]} ,
   { path: 'not-found', component: FourOhFourComponent },
+  { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'not-found' }
 ];
 

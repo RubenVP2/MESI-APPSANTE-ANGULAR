@@ -23,6 +23,7 @@ import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.comp
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import {FooterComponent} from './footer/footer.component';
+import { ProfilComponent } from './profil/profil.component';
 import { AddWaterComponent } from './add-water/add-water.component';
 import { UserWaterService } from './services/user-water.service';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
@@ -34,6 +35,7 @@ import {FormMensurationWeightComponent} from './form-mensuration-weight/form-men
 import {MensurationService} from './services/mensuration.service';
 import { HistoriqueWeightComponent } from './historique-weight/historique-weight.component';
 import { WeightModificationComponent } from './weight-modification/weight-modification.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { WeightModificationComponent } from './weight-modification/weight-modifi
     CreateexerciceComponent,
     FooterComponent,
     FourOhFourComponent,
+    ProfilComponent,
     HistoriqueWaterComponent,
     AddWaterComponent,
     WaterModificationComponent,
@@ -63,7 +66,9 @@ import { WeightModificationComponent } from './weight-modification/weight-modifi
     WaterDetailComponent,
     FormMensurationWeightComponent,
     HistoriqueWeightComponent,
-    WeightModificationComponent
+    WeightModificationComponent,
+    WaterDetailComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,

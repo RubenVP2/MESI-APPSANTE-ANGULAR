@@ -14,7 +14,7 @@
           <b class="logo-icon" style="color: #1d1d1d; margin-left: auto">
             <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Fit-icon.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Python" loading="lazy">
             <!-- Dark Logo icon -->
-            Health App
+            <span class="text-danger">Health</span><span class="text-1000">App</span>
           </b>
           <!--End Logo icon -->
         </a>
@@ -51,7 +51,7 @@
           <!-- User profile and search -->
           <!-- ============================================================== -->
           <li>
-            <a class="profile-pic" href="#">
+            <a class="profile-pic" routerLink="/profil">
               <img src="https://therichpost.com/wp-content/uploads/2021/03/avatar2.png" alt="user-img" width="36"
                    class="img-circle"><span class="text-white font-medium">{{ username[0].toUpperCase() + username.substr(1, username.length) }}</span></a>
           </li>
@@ -74,11 +74,10 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
         <ul id="sidebarnav">
-          <!-- User Profile-->
-          <li class="sidebar-item pt-2">
+          <li class="sidebar-item">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/dashboard"
                aria-expanded="false">
-              <i class="far fa-clock" aria-hidden="true"></i>
+              <i class="far fa-user" aria-hidden="true"></i>
               <span class="hide-menu">Dashboard</span>
             </a>
           </li>
@@ -111,7 +110,7 @@
               <span class="hide-menu">Mon apport en eau</span>
             </a>
           </li>
-          <li class="sidebar-item" *ngIf="isAdmin()">
+          <li class="sidebar-item" *ngIf="user?.isAdmin">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/feedbacksadmin"
                aria-expanded="false">
               <i class="fa fa-table" aria-hidden="true"></i>
@@ -119,7 +118,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" (click)="deconnexion()"
                aria-expanded="false">
               <i class="fa fa-table" aria-hidden="true"></i>
               <span class="hide-menu">Se déconnecter</span>
