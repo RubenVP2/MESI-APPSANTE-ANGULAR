@@ -31,6 +31,7 @@ import { WaterModificationComponent } from './water-modification/water-modificat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
 import { DatePipe } from '@angular/common';
+import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
@@ -60,7 +61,9 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     WaterModificationComponent,
     InscriptionComponent,
     WaterDetailComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    WaterDetailComponent,
+    CalculCaloriesComponent
   ],
   imports: [
     BrowserModule,

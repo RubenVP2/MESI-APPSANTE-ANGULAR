@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import {Observable, Subject} from 'rxjs';
 import { WellBeing } from "../models/WellBeing.model";
 import { UserService } from "./user.service";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -31,9 +31,9 @@ export class UserWaterService{
     }
 
     // Recupère les informations de la tables WELL_BEING (water date poids)
-  getUsersWatersApi() {
-      return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWater']));
-    }
+    getUsersWatersApi() {
+        return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWater']));
+      }
 
     //Ajout dans la table wellBeing
     addWater(wellBeing: WellBeing) {
@@ -48,6 +48,10 @@ export class UserWaterService{
           else if(message== "Insertion réussie pour ce jour réussie ! N'oubliez pas d'ajouter vos mensurations pour ce jour"){
             Swal.fire(message);
             this.router.navigate(['/historiqueWater']);
+          }
+          else if (message === 'Ajout des calories réussi.') {
+            Swal.fire(message);
+            this.router.navigate(['/dashboard']);
           }
           else {
             Swal.fire({
@@ -107,5 +111,12 @@ export class UserWaterService{
       console.log(error);
     }));
   }
-
+  // Récupère les calories de la journée
+  getCaloriesOfDay(wellBeingFilter: WellBeingWaterFilter): Observable<any>{
+    const headers = { 'content-type': 'application/json'};
+    const body = JSON.stringify(wellBeingFilter);
+    return this.http.post<any>(`${this.urlApi}/user/water/${sessionStorage.getItem('user')}/filter`, body, {'headers':headers}).pipe(
+      map((res: any) => res['userWater'])
+    );
+  }
 }
