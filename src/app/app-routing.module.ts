@@ -16,6 +16,7 @@ import { AuthGuard } from './auth.guard';
 import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
+import {ProfilComponent} from './profil/profil.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'exercice/:id', component: ExercicedetailsComponent},
   { path: 'programmesportifsdetails/:id/createexercice', component: CreateexerciceComponent},
   { path: 'not-found', component: FourOhFourComponent },
+  { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'not-found' }
 ];
 

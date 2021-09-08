@@ -25,6 +25,7 @@ import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.comp
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import {FooterComponent} from './footer/footer.component';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {FooterComponent} from './footer/footer.component';
     ExercicedetailsComponent,
     CreateexerciceComponent,
     FooterComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
