@@ -14,13 +14,12 @@ import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
 export class HistoriqueWaterComponent implements OnInit {
 
 
-  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { }
+  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { this.username = sessionStorage.getItem('user');}
   wellBeings: WellBeing[];
   result: Number;
   resultatF = 0;
   filterHistoriqueWater: FormGroup;
-
-
+  username: string;
 
   ngOnInit(): void {
     this.userWaterService.getUsersWatersApi().subscribe(response => {

@@ -20,7 +20,9 @@ import { CreateexerciceComponent } from './createexercice/createexercice.compone
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
 import { WaterModificationComponent } from './water-modification/water-modification.component';
-import {FormMensurationWidhtComponent} from './form-mensuration-widht/form-mensuration-widht.component';
+import {FormMensurationWeightComponent} from './form-mensuration-weight/form-mensuration-weight.component';
+import {HistoriqueWeightComponent} from './historique-weight/historique-weight.component';
+import {WeightModificationComponent} from './weight-modification/weight-modification.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -39,7 +41,9 @@ const routes: Routes = [
   { path: 'historiqueWater', component: HistoriqueWaterComponent, canActivate: [AuthGuard]} ,
   { path: 'historiqueWater/modification/:id', component: WaterModificationComponent, canActivate: [AuthGuard]},
   { path: 'historiqueWater/view/:id', component: WaterDetailComponent, canActivate: [AuthGuard]},
-  { path: 'formMensuration', component: FormMensurationWidhtComponent, canActivate: [AuthGuard]},
+  { path: 'historiqueWeight/modification/:id', component: WeightModificationComponent, canActivate: [AuthGuard]},
+  { path: 'addWeight', component: FormMensurationWeightComponent, canActivate: [AuthGuard]},
+  { path: 'historiqueWeight', component: HistoriqueWeightComponent, canActivate: [AuthGuard]} ,
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

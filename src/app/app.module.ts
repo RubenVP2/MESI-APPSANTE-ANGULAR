@@ -30,8 +30,10 @@ import { WaterModificationComponent } from './water-modification/water-modificat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
 import { DatePipe } from '@angular/common';
-import { FormMensurationWidhtComponent } from './form-mensuration-widht/form-mensuration-widht.component';
+import {FormMensurationWeightComponent} from './form-mensuration-weight/form-mensuration-weight.component';
 import {MensurationService} from './services/mensuration.service';
+import { HistoriqueWeightComponent } from './historique-weight/historique-weight.component';
+import { WeightModificationComponent } from './weight-modification/weight-modification.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {MensurationService} from './services/mensuration.service';
     WaterModificationComponent,
     InscriptionComponent,
     WaterDetailComponent,
-    FormMensurationWidhtComponent
+    FormMensurationWeightComponent,
+    HistoriqueWeightComponent,
+    WeightModificationComponent
   ],
   imports: [
     BrowserModule,

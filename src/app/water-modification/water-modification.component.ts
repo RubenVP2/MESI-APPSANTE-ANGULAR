@@ -38,7 +38,7 @@ export class WaterModificationComponent implements OnInit {
   initForm(){
     this.waterModifForm = this.formBuilder.group({
       userWater: ['',Validators.required]
-    })
+    });
   }
 
   onSubmitForm(){

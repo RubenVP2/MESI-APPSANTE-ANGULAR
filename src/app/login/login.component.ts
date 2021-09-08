@@ -41,8 +41,6 @@ export class LoginComponent implements OnInit {
       formValue['password'],
     );
     this.userService.login(user);
-    //sessionStorage.setItem("email", status['message'])
-    //sessionStorage.clear();
   }
 
   register() {

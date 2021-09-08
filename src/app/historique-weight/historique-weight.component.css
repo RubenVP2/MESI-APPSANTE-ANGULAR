@@ -15,18 +15,6 @@
 #divBody #tableHistorique{
   border-top: 2px solid #2B6DEF;
   float:left;
-  margin-right:2% ;
-}
-
-#buttonDetail{
-  background-color: #458FF4;
-  border: 1px solid black;
-}
-
-#buttonModification{
-  background-color: #74FCBF;
-  border: 1px solid black;
-
 }
 
 #labelDateDebut{
@@ -41,8 +29,8 @@
   margin-left: 3%;
 }
 
-#divBody #partDeux{
-  float:right;
+#divBody #part2{
+  display: flex;
 }
 #resultEmpty{
   margin-left: 38%;
