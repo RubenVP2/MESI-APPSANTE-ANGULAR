@@ -55,6 +55,7 @@ export class SuggestionbugtrackeradmindetailsComponent implements OnInit {
       }
     );
     this.feedbackService.emitFeedbackSubject();
+    console.log(this.oneFeedback);
   }
 
   deleteFeedback() {
