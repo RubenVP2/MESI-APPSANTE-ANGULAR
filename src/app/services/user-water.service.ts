@@ -45,6 +45,10 @@ export class UserWaterService{
             Swal.fire(message);
             this.router.navigate(['/historiqueWater']);
           }
+          else if(message== "Insertion réussie pour ce jour réussie ! N'oubliez pas d'ajouter vos mensurations pour ce jour"){
+            Swal.fire(message);
+            this.router.navigate(['/historiqueWater']);
+          }
           else {
             Swal.fire({
               icon: 'error',
