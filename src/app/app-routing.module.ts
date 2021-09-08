@@ -20,6 +20,7 @@ import { CreateexerciceComponent } from './createexercice/createexercice.compone
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
 import { WaterModificationComponent } from './water-modification/water-modification.component';
+import {FormMensurationWidhtComponent} from './form-mensuration-widht/form-mensuration-widht.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'historiqueWater', component: HistoriqueWaterComponent, canActivate: [AuthGuard]} ,
   { path: 'historiqueWater/modification/:id', component: WaterModificationComponent, canActivate: [AuthGuard]},
   { path: 'historiqueWater/view/:id', component: WaterDetailComponent, canActivate: [AuthGuard]},
+  { path: 'formMensuration', component: FormMensurationWidhtComponent, canActivate: [AuthGuard]},
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

@@ -14,7 +14,12 @@ export class FourOhFourComponent implements OnInit {
   }
 
   retour(){
-    this.router.navigate(['/']);
+    if (sessionStorage.getItem("user") == null){
+      this.router.navigate(['/']);
+      return false;
+    }else {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
 }

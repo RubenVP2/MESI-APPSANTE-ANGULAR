@@ -15,7 +15,7 @@
       <!-- [formGroup]="userForm" permet de lier le formulaire a l'object créé dans le .ts / ngSubmit permet de lancer une méthode quand le bouton submit sera cliqué-->
       <form *ngIf="waterAddForm" [formGroup]="waterAddForm" (ngSubmit)="onSubmitForm()">
         <div class="form-group">
-          <label for="userWater">Quantité d'eau bu</label>
+          <label for="userWater">Quantité d'eau bu dans la journée</label>
           <input type="number" class="form-control" id="userWater" formControlName="userWater" placeholder="Par exemple : 1.4 Litre(s)">
           <label for="userDate">Date de votre enregistrement : </label>
           <input type="date" class="form-control" id="userDate" max="{{today}}" formControlName="userDate">
