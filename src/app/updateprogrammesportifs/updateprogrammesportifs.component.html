@@ -1,29 +1,40 @@
-<div class="container">
-  <div class="row">
-    <a (click)="this.getBack()" class="col-2 mt-5 ml-1">Retour</a>
-  </div>
-  <div class="row mt-5">
-    <form class="col-12" #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
-      <div class="form-group row col-sm-5">
-        <label for="nomProgramme">Nom du programme:</label>
-        <input type="text" class="form-control" name="nomProgramme" id="nomProgramme" [(ngModel)]="oneSportsProgram[0].title">
-      </div>
-      <div class="form-group row col-sm-5">
-        <label for="descriptionProgramme">Description du programme :</label>
-        <textarea class="form-control" name="descriptionProgramme" id="descriptionProgramme" [(ngModel)]="oneSportsProgram[0].description"></textarea>
-      </div>
-      <div class="form-group row col-7">
-        <label for="levelProgramme">Niveau du programme :</label>
-        <input type="text" class="form-control" name="levelProgramme" id="levelProgramme" [(ngModel)]="oneSportsProgram[0].level">
-      </div>
-      <!-- Buttons -->
-      <div class="form-row">
-        <!-- Ask if user want to delete ticket -->
-        <div class="col-auto">
-          <button type="submit" id="updateExercice" class="btn btn-primary">Modifier</button>
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div class="page-wrapper">
+    <div class="page-breadcrumb bg-white">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          <h4 class="page-title">Modifier le programme</h4>
         </div>
       </div>
-    </form>
-
-  </div>
-</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 white-box">
+          <div class="white-box">
+            <div style="height: 405px;">
+              <form class="col-12" #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
+                <div class="form-group row col-sm-5">
+                  <label for="nomProgramme" style="margin-left :-10px;">Nom du programme:</label>
+                  <input type="text" class="form-control" name="nomProgramme" id="nomProgramme" [(ngModel)]="oneSportsProgram[0].title">
+                </div>
+                <div class="form-group row col-sm-5">
+                  <label for="descriptionProgramme" style="margin-left :-10px;">Description du programme :</label>
+                  <textarea class="form-control" name="descriptionProgramme" id="descriptionProgramme" [(ngModel)]="oneSportsProgram[0].description"></textarea>
+                </div>
+                <div class="form-group row col-7">
+                  <label for="levelProgramme" style="margin-left :-10px;">Niveau du programme :</label>
+                  <input type="text" class="form-control" name="levelProgramme" id="levelProgramme" [(ngModel)]="oneSportsProgram[0].level">
+                </div>
+                <!-- Buttons -->
+                <div class="form-row">
+                  <!-- Ask if user want to delete ticket -->
+                  <div class="col-auto" style="margin-left : -19px;">
+                    <a (click)="this.getBack()" class="col-2 mt-5 ml-1"><button type="button" class="btn btn-primary">Retour</button></a>
+                    <button type="submit" id="updateExercice" class="btn btn-primary">Modifier</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>

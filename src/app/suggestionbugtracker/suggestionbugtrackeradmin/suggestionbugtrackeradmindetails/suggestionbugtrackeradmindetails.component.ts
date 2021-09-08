@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import {Location} from '@angular/common';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/models/Feedback.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
@@ -16,7 +17,7 @@ export class SuggestionbugtrackeradmindetailsComponent implements OnInit {
   url = '';
   id = [];
   username = '';
-  constructor(private formBuilder: FormBuilder, private feedbackService : FeedbackService, private router : Router) { }
+  constructor(private _location: Location, private formBuilder: FormBuilder, private feedbackService : FeedbackService, private router : Router) { }
 
   ngOnInit(): void {
     this.url = this.router.url.toString();
@@ -24,6 +25,11 @@ export class SuggestionbugtrackeradmindetailsComponent implements OnInit {
     this.feedbackService.getFeedbackById(this.id[2]);
     this.getFeedback();
     this.initForm();
+  }
+
+
+  getBack() {
+    this._location.back();
   }
 
   initForm() {

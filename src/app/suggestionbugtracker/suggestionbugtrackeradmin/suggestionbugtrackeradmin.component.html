@@ -1,42 +1,43 @@
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
   <div class="page-wrapper">
-    <div class="back">
-      <div class="center">
-        <div class="form">
-          <div class="text">
-            <div>
-              <p class="col-9">Liste des suggestion/bug</p>
-              <!-- <p>{{ users[0] }}</p> -->
-            </div>
-
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Bug/Suggestion</th>
-                  <th scope="col">Envoyé le</th>
-                  <th scope="col">Utilisateur</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Titre</th>
-                  <th scope="col">Etat</th>
-                  <th scope="col">Détails</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let feedback of feedbacks ">
-                  <td>{{ feedback.nature }}</td>
-                  <td>{{ feedback.date }}</td>
-                  <td>{{ feedback.username }}</td>
-                  <td>{{ feedback.mail }}</td>
-                  <td>{{ feedback.title }}</td>
-                  <td>{{ feedback.etat }}</td>
-                  <td><a routerLink="../feedbacksadmindetails/{{feedback.id}}"><button class="btn btn btn-primary">Détails</button></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <div class="page-breadcrumb bg-white">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          <h4 class="page-title">Liste des suggestion/bug</h4>
         </div>
       </div>
+      <!-- /.col-lg-12 -->
     </div>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="white-box">
+          <div style="height: 405px;">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Bug/Suggestion</th>
+                        <th scope="col">Envoyé le</th>
+                        <th scope="col">Utilisateur</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Etat</th>
+                        <th scope="col">Détails</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let feedback of feedbacks ">
+                        <td>{{ feedback.nature }}</td>
+                        <td>{{ feedback.date }}</td>
+                        <td>{{ feedback.username }}</td>
+                        <td>{{ feedback.mail }}</td>
+                        <td>{{ feedback.title }}</td>
+                        <td>{{ feedback.etat }}</td>
+                        <td><a routerLink="../feedbacksadmindetails/{{feedback.id}}"><button class="btn btn btn-primary">Détails</button></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
