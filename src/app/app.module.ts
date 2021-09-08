@@ -30,6 +30,7 @@ import { WaterModificationComponent } from './water-modification/water-modificat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
 import { DatePipe } from '@angular/common';
+import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DatePipe } from '@angular/common';
     AddWaterComponent,
     WaterModificationComponent,
     InscriptionComponent,
-    WaterDetailComponent
+    WaterDetailComponent,
+    CalculCaloriesComponent
   ],
   imports: [
     BrowserModule,
