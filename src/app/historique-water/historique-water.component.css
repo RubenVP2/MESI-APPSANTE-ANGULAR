@@ -44,9 +44,7 @@
   display: flex;
 }
 #resultEmpty{
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  margin-left: 38%;
 }
 #imgLegende{
   width: 30px;

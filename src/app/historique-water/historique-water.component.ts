@@ -33,12 +33,12 @@ export class HistoriqueWaterComponent implements OnInit {
 
     // On calcul le taux d'eau néceissaire pour une personne suivant son poids au jour Date calculé a l'aide du poids
   getTotalNecessary(id: number){
-    if (this.wellBeings[id].water != null){
+    if (this.wellBeings[id].water != null && this.wellBeings[id].weight != null){
       // On recupere le poids de la personne sur l'id envoyé en param a l'aide de la méthode getColor(id :number)
       this.resultatF = ((this.wellBeings[id].weight - 20) * 15 + 1500) / 1000;
       this.resultatF =  Math.round(this.resultatF * 10) / 10;
       return this.resultatF;
-    }else if (this.wellBeings[id].water == null) {
+    }else if (this.wellBeings[id].water == null || this.wellBeings[id].weight == null) {
       return this.resultatF = 0;
     }
   }

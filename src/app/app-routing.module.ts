@@ -34,12 +34,12 @@ const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'exercice/:id', component: ExercicedetailsComponent},
   { path: 'programmesportifsdetails/:id/createexercice', component: CreateexerciceComponent},
-  { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: 'not-found' },
   { path: 'addWater', component: AddWaterComponent, canActivate: [AuthGuard]},
   { path: 'historiqueWater', component: HistoriqueWaterComponent, canActivate: [AuthGuard]} ,
   { path: 'historiqueWater/modification/:id', component: WaterModificationComponent, canActivate: [AuthGuard]},
-  { path: 'historiqueWater/view/:id', component: WaterDetailComponent, canActivate: [AuthGuard]}
+  { path: 'historiqueWater/view/:id', component: WaterDetailComponent, canActivate: [AuthGuard]},
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
