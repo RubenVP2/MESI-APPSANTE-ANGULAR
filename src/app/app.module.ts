@@ -31,6 +31,7 @@ import { WaterModificationComponent } from './water-modification/water-modificat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
 import { DatePipe } from '@angular/common';
+import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
 import {FormMensurationWeightComponent} from './form-mensuration-weight/form-mensuration-weight.component';
 import {MensurationService} from './services/mensuration.service';
 import { HistoriqueWeightComponent } from './historique-weight/historique-weight.component';
@@ -64,6 +65,9 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     WaterModificationComponent,
     InscriptionComponent,
     WaterDetailComponent,
+    LandingpageComponent,
+    WaterDetailComponent,
+    CalculCaloriesComponent,
     FormMensurationWeightComponent,
     HistoriqueWeightComponent,
     WeightModificationComponent,

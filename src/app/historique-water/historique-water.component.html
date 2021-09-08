@@ -37,7 +37,11 @@
 
     <body>
       <div id="divBody">
-          <!--Création de la div  qui permet de vérifier si aucun résultat n'est trouvé-->
+        <!--Création de la div  qui permet de vérifier si aucun résultat n'est trouvé-->
+        <div *ngIf="wellBeings.length===0" id="resultEmpty">
+          <p> <strong>Aucun Résultat trouvé</strong></p>
+        </div>
+         <!--Création de la div  qui permet de vérifier si aucun résultat n'est trouvé-->
           <div *ngIf="wellBeings.length===0" id="resultEmpty">
             <p> <strong>Aucun Résultat trouvé</strong></p>
           </div>
