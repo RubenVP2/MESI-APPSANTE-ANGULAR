@@ -13,7 +13,6 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FooterComponent } from './footer/footer.component';
 import { ProgrammesportifslisteComponent } from './programmesportifsliste/programmesportifsliste.component';
 import { CreateprogrammesportifsComponent } from './createprogrammesportifs/createprogrammesportifs.component';
 import { ProgrammesportifsdetailsComponent } from './programmesportifsdetails/programmesportifsdetails.component';
@@ -36,7 +35,6 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     DashboardComponent,
     UsersListeComponent,
     InscriptionComponent,
-    FooterComponent,
     ProgrammesportifslisteComponent,
     CreateprogrammesportifsComponent,
     ProgrammesportifsdetailsComponent,
@@ -45,8 +43,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     SuggestionbugtrackeradminComponent,
     SuggestionbugtrackeradmindetailsComponent,
     ExercicedetailsComponent,
-    CreateexerciceComponent,
-    FourOhFourComponent
+    CreateexerciceComponent
   ],
   imports: [
     BrowserModule,

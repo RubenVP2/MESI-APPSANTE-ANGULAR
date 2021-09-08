@@ -11,13 +11,12 @@ export class NavbarComponent implements OnInit {
 
   username: string;
 
-  constructor() {
-    this.username = sessionStorage.getItem('user');
-  }
   users: User[];
-  username: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.username = sessionStorage.getItem('user');
+
+  }
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem("user");
