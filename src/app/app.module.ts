@@ -32,6 +32,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
 import { DatePipe } from '@angular/common';
 import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
+import {FormMensurationWeightComponent} from './form-mensuration-weight/form-mensuration-weight.component';
+import {MensurationService} from './services/mensuration.service';
+import { HistoriqueWeightComponent } from './historique-weight/historique-weight.component';
+import { WeightModificationComponent } from './weight-modification/weight-modification.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
@@ -63,7 +67,12 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     WaterDetailComponent,
     LandingpageComponent,
     WaterDetailComponent,
-    CalculCaloriesComponent
+    CalculCaloriesComponent,
+    FormMensurationWeightComponent,
+    HistoriqueWeightComponent,
+    WeightModificationComponent,
+    WaterDetailComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +86,8 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
   providers: [
     UserService,
     UserWaterService,
-    DatePipe
+    DatePipe,
+    MensurationService
   ],
   bootstrap: [AppComponent],
   entryComponents: [WaterDetailComponent]

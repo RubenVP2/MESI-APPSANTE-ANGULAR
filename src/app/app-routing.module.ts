@@ -22,6 +22,9 @@ import {ProfilComponent} from './profil/profil.component';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
 import { WaterModificationComponent } from './water-modification/water-modification.component';
 import {CalculCaloriesComponent} from './calcul-calories/calcul-calories.component';
+import {FormMensurationWeightComponent} from './form-mensuration-weight/form-mensuration-weight.component';
+import {HistoriqueWeightComponent} from './historique-weight/historique-weight.component';
+import {WeightModificationComponent} from './weight-modification/weight-modification.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 
 const routes: Routes = [
@@ -43,6 +46,9 @@ const routes: Routes = [
   { path: 'historiqueWater/modification/:id', component: WaterModificationComponent, canActivate: [AuthGuard]},
   { path: 'historiqueWater/view/:id', component: WaterDetailComponent, canActivate: [AuthGuard]},
   { path: 'calculCalorique', component: CalculCaloriesComponent, canActivate: [AuthGuard]},
+  { path: 'historiqueWeight/modification/:id', component: WeightModificationComponent, canActivate: [AuthGuard]},
+  { path: 'addWeight', component: FormMensurationWeightComponent, canActivate: [AuthGuard]},
+  { path: 'historiqueWeight', component: HistoriqueWeightComponent, canActivate: [AuthGuard]} ,
   { path: 'not-found', component: FourOhFourComponent },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'not-found' }
