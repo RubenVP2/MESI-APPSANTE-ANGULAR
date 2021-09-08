@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateprogrammesportifsComponent } from './createprogrammesportifs/createprogrammesportifs.component';
+import { AddWaterComponent } from './add-water/add-water.component';
+import { HistoriqueWaterComponent } from './historique-water/historique-water.component';
 import { IndexComponent } from './index/index.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +19,8 @@ import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.comp
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 import {ProfilComponent} from './profil/profil.component';
+import { WaterDetailComponent } from './water-detail/water-detail.component';
+import { WaterModificationComponent } from './water-modification/water-modification.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -31,6 +35,10 @@ const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'exercice/:id', component: ExercicedetailsComponent},
   { path: 'programmesportifsdetails/:id/createexercice', component: CreateexerciceComponent},
+  { path: 'addWater', component: AddWaterComponent, canActivate: [AuthGuard]},
+  { path: 'historiqueWater', component: HistoriqueWaterComponent, canActivate: [AuthGuard]} ,
+  { path: 'historiqueWater/modification/:id', component: WaterModificationComponent, canActivate: [AuthGuard]},
+  { path: 'historiqueWater/view/:id', component: WaterDetailComponent, canActivate: [AuthGuard]},
   { path: 'not-found', component: FourOhFourComponent },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'not-found' }

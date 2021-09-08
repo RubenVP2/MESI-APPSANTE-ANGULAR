@@ -1,41 +1,56 @@
-<app-navbar></app-navbar>
-<div class="container">
-  <h4>{{ sportsprogram[0].title }}</h4>
-  <div class="row">
-    <a routerLink="/programmesportifsliste" class="col-2 mt-5 ml-1">Retour</a>
-  </div>
-  <div class="row mt-5">
-    <p class="col-9">Liste des exercices du programme : </p>
-  </div>
-  <!-- This form by post can update values of ticket -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div class="page-wrapper">
+    <div class="page-breadcrumb bg-white">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          <h4 class="page-title">{{ sportsprogram[0].title }}</h4>
+        </div>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
     <div class="row">
-      <div class="col-sm-4" *ngFor="let exercice of exercices">
-        <div class="card" style="width: 18rem;">
-          <!-- <img src="{{ exercice.imagehelp }}" class="card-img-top" alt="..."> -->
-          <div class="card-body">
-            <h5 class="card-title">{{ exercice.title}}</h5>
-            <p class="card-text">
-              {{ exercice.name }} <br>
-              {{ exercice.nbreps }} répétitions <br>
-              {{ exercice.nbseries }} séries <br>
-              {{ exercice.restseries }} sec de repos entre les séries <br>
-              {{ exercice.restexercice }} sec de repos entre les exercices <br>
-            </p>
-            <a routerLink="/exercice/{{ exercice.id_exercice }}" class="btn btn-primary">Détails</a>
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 white-box">
+        <div class="white-box">
+          <div style="height: 100%;">
+            <p class="col-9">Liste des exercices du programme : </p>
+            <!-- This form by post can update values of ticket -->
+              <div class="row">
+                <div class="col-sm-4" *ngFor="let exercice of exercices">
+                  <div class="card" style="width: 18rem;">
+                    <!-- <img src="{{ exercice.imagehelp }}" class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                      <h5 class="card-title">{{ exercice.title}}</h5>
+                      <p class="card-text">
+                        {{ exercice.name }} <br>
+                        {{ exercice.nbreps }} répétitions <br>
+                        {{ exercice.nbseries }} séries <br>
+                        {{ exercice.restseries }} sec de repos entre les séries <br>
+                        {{ exercice.restexercice }} sec de repos entre les exercices <br>
+                      </p>
+                      <a routerLink="/exercice/{{ exercice.id_exercice }}" class="btn btn-primary">Détails</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <br>
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">
+                <a routerLink="/programmesportifsliste"><button type="button" class="btn btn-primary">Retour</button></a>
+              </div>
+              <div class="col-sm-3">
+                <button (click)="this.deleteProgram()" type="button" class="btn btn-danger">Supprimer le programme</button>
+              </div>
+              <div class="col-sm-3">
+                <a routerLink="/programmesportifsdetails/{{ this.id[2] }}/updateprogrammesportifs"><button type="button" class="btn btn-primary">Modifier le programme</button></a>
+              </div>
+              <div class="col-sm-3">
+                <a routerLink="/programmesportifsdetails/{{ this.id[2] }}/createexercice"><button type="button" class="btn btn-primary">Ajouter un exercice</button></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  <br>
-  <div class="row justify-content-md-center">
-    <div class="col-sm-3">
-      <button (click)="this.deleteProgram()" type="button" class="btn btn-danger">Supprimer le programme</button>
-    </div>
-    <div class="col-sm-3">
-      <a routerLink="/programmesportifsdetails/{{ this.id[2] }}/updateprogrammesportifs"><button type="button" class="btn btn-primary">Modifier le programme</button></a>
-    </div>
-    <div class="col-sm-3">
-      <a routerLink="/programmesportifsdetails/{{ this.id[2] }}/createexercice"><button type="button" class="btn btn-primary">Ajouter un exercice</button></a>
-    </div>
-  </div>
-  </div>
+
+
