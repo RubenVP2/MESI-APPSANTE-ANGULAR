@@ -72,7 +72,7 @@ export class UserService {
               var user = response['user'];
               Swal.fire("Bienvenue "+ user);
               sessionStorage.setItem("user",user)
-              this.router.navigate(['/']);
+              this.router.navigate(['/dashboard']);
             }
             else {
               Swal.fire(message);
