@@ -1,33 +1,37 @@
-<app-navbar></app-navbar>
-<div class="back">
-  <div class="center">
-    <div class="form">
-      <div class="text">
-        <div>
-          <p class="col-9">Liste de mes programmes</p>
-          <!-- <p>{{ users[0] }}</p> -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div class="page-wrapper">
+    <div class="back">
+      <div class="center">
+        <div class="form">
+          <div class="text">
+            <div>
+              <p class="col-9">Liste de mes programmes</p>
+              <!-- <p>{{ users[0] }}</p> -->
+            </div>
+            <a routerLink="../createprogrammessportifs"><button type="button" class="btn btn-primary">Créer un nouveau programme</button></a>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Créer par</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Niveau</th>
+                  <th scope="col">Détails</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let onesportsprogram of sportsprogram">
+                    <td>{{ onesportsprogram.creator }}</td>
+                    <td>{{ onesportsprogram.title }}</td>
+                    <td>{{ onesportsprogram.description }}</td>
+                    <td>{{ onesportsprogram.level }}</td>
+                    <td><a routerLink="../programmesportifsdetails/{{onesportsprogram.id_sports_program}}"><button class="btn btn btn-primary">Détails</button></a></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <a routerLink="../createprogrammessportifs"><button type="button" class="btn btn-primary">Créer un nouveau programme</button></a>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Créer par</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Description</th>
-              <th scope="col">Niveau</th>
-              <th scope="col">Détails</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let onesportsprogram of sportsprogram">
-                <td>{{ onesportsprogram.creator }}</td>
-                <td>{{ onesportsprogram.title }}</td>
-                <td>{{ onesportsprogram.description }}</td>
-                <td>{{ onesportsprogram.level }}</td>
-                <td><a routerLink="../programmesportifsdetails/{{onesportsprogram.id_sports_program}}"><button class="btn btn btn-primary">Détails</button></a></td>
-              </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>

@@ -9,29 +9,25 @@ import { UserService } from '../services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  user: User;
   username: string;
 
-  users: User[];
-
   constructor(private userService: UserService) {
-    this.username = sessionStorage.getItem('user');
-
   }
 
   ngOnInit(): void {
-    this.username = sessionStorage.getItem("user");
+    this.username = sessionStorage.getItem('user');
     this.userService.isAdmin(this.username);
     this.isAdmin();
   }
 
-  isAdmin() : boolean{
+  isAdmin(): boolean{
     this.userService.userSubject.subscribe(
       (response: any[]) => {
-        this.users = response;
-        //console.log(this.users);
+        this.user = response[0];
       }
     );
     this.userService.emitUserSubject();
-    return this.users[0].isAdmin;
+    return this.user.isAdmin;
   }
 }

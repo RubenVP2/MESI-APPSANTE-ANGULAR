@@ -1,15 +1,6 @@
 <div *ngIf="username" id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
   <!-- ============================================================== -->
-  <!-- Preloader -->
-  <!-- ============================================================== -->
-  <div class="preloader">
-    <div class="lds-ripple">
-      <div class="lds-pos"></div>
-      <div class="lds-pos"></div>
-    </div>
-  </div>
-  <!-- ============================================================== -->
   <!-- Topbar header -->
   <!-- ============================================================== -->
   <header class="topbar" data-navbarbg="skin5">
@@ -18,18 +9,14 @@
         <!-- ============================================================== -->
         <!-- Logo -->
         <!-- ============================================================== -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" routerLink="/dashboard">
           <!-- Logo icon -->
-          <b class="logo-icon">
+          <b class="logo-icon" style="color: #1d1d1d; margin-left: auto">
+            <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Fit-icon.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Python" loading="lazy">
             <!-- Dark Logo icon -->
-            TheRichPost
+            Health App
           </b>
           <!--End Logo icon -->
-          <!-- Logo text -->
-          <span class="logo-text">
-                                <!-- dark Logo text -->
-                               Admin
-                            </span>
         </a>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -89,7 +76,7 @@
         <ul id="sidebarnav">
           <!-- User Profile-->
           <li class="sidebar-item pt-2">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/dashboard"
                aria-expanded="false">
               <i class="far fa-clock" aria-hidden="true"></i>
               <span class="hide-menu">Dashboard</span>
@@ -99,17 +86,30 @@
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                aria-expanded="false">
               <i class="fa fa-user" aria-hidden="true"></i>
-              <span class="hide-menu">Profile</span>
+              <span class="hide-menu">Mon alimentation</span>
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/programmesportifsliste"
                aria-expanded="false">
-              <i class="fa fa-table" aria-hidden="true"></i>
-              <span class="hide-menu">Basic Table</span>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span class="hide-menu">Mes programmes de sport</span>
             </a>
           </li>
-
+          <li class="sidebar-item" *ngIf="isAdmin()">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/feedbacksadmin"
+               aria-expanded="false">
+              <i class="fa fa-table" aria-hidden="true"></i>
+              <span class="hide-menu">Feedbacks</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout"
+               aria-expanded="false">
+              <i class="fa fa-table" aria-hidden="true"></i>
+              <span class="hide-menu">Se déconnecter</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- End Sidebar navigation -->

@@ -24,6 +24,7 @@ import { SuggestionbugtrackeradmindetailsComponent } from './suggestionbugtracke
 import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import {FooterComponent} from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     SuggestionbugtrackeradminComponent,
     SuggestionbugtrackeradmindetailsComponent,
     ExercicedetailsComponent,
-    CreateexerciceComponent
+    CreateexerciceComponent,
+    FooterComponent,
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,

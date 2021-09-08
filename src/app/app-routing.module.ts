@@ -18,15 +18,15 @@ import { CreateexerciceComponent } from './createexercice/createexercice.compone
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'users', component: UsersListeComponent , canActivate: [AuthGuard]},
   { path: 'programmesportifsliste', component: ProgrammesportifslisteComponent},
   { path: 'programmesportifsdetails/:id', component: ProgrammesportifsdetailsComponent},
   { path: 'createprogrammessportifs', component: CreateprogrammesportifsComponent},
   { path: 'programmesportifsdetails/:id/updateprogrammesportifs', component: UpdateprogrammesportifsComponent},
-  { path: 'feedbacksadmin', component: SuggestionbugtrackeradminComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
-  { path: 'feedbacksadmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent,canActivate: [AuthGuard]}, // TODO : authguard admin
+  { path: 'feedbacksadmin', component: SuggestionbugtrackeradminComponent, canActivate: [AuthGuard]}, // TODO : authguard admin
+  { path: 'feedbacksadmindetails/:id', component: SuggestionbugtrackeradmindetailsComponent, canActivate: [AuthGuard]}, // TODO : authguard admin
   { path: 'inscription', component: InscriptionComponent },
   { path: 'exercice/:id', component: ExercicedetailsComponent},
   { path: 'programmesportifsdetails/:id/createexercice', component: CreateexerciceComponent},
