@@ -17,8 +17,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem('user');
-    this.userService.isAdmin(this.username);
-    this.isAdmin();
+    this.userService.isAdmin(this.username).then(r => this.isAdmin());
   }
 
   isAdmin(): boolean{

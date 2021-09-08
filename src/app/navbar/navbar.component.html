@@ -102,7 +102,7 @@
               <span class="hide-menu">Mes programmes de sport</span>
             </a>
           </li>
-          <li class="sidebar-item" *ngIf="isAdmin()">
+          <li class="sidebar-item" *ngIf="user?.isAdmin">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/feedbacksadmin"
                aria-expanded="false">
               <i class="fa fa-table" aria-hidden="true"></i>

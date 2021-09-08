@@ -82,17 +82,14 @@ export class UserService {
     });
   }
 
-  isAdmin(pUsername: string) {
-    const headers = { 'content-type': 'application/json'};
-    const body = JSON.stringify({ username: pUsername});
+  async isAdmin(pUsername: string) {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify({username: pUsername});
     console.log(body);
-    this.http.post<any>(this.urlApi + `/isAdmin`, body, {'headers' : headers}).subscribe((response) => {
+    await this.http.post<any>(this.urlApi + `/isAdmin`, body, {'headers': headers}).toPromise().then((response) => {
       this.users = response['role'];
       //console.log(this.users[0]);
       this.emitUserSubject();
-    },(error) =>
-    {
-      console.log(error);
     });
   }
 
