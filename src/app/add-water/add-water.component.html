@@ -1,0 +1,15 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <!-- [formGroup]="userForm" permet de lier le formulaire a l'object créé dans le .ts / ngSubmit permet de lancer une méthode quand le bouton submit sera cliqué-->
+  <form *ngIf="waterAddForm" [formGroup]="waterAddForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="userWater">Quantité d'eau bu</label>
+      <input type="number" class="form-control" id="userWater" formControlName="userWater" placeholder="Par exemple : 1.4 Litre(s)">
+      <label for="userDate">Date de votre enregistrement : </label>
+      <input type="date" class="form-control" id="userDate" max="{{today}}" formControlName="userDate">
+
+    </div>
+    <!-- le [disabled] permet ici de rendre le bouton non cliquable tant que formulaire ne correspond pas a la demande faite dans la méthode initForms() dans le .ts-->
+    <button class="btn btn-primary" type="submit" [disabled]="waterAddForm.invalid">Ajouter</button>
+  </form>
+  <button class="btn btn-primary" type="submit" routerLink = "/historiqueWater" >Retour</button>
+</div>
