@@ -27,6 +27,7 @@ import {HistoriqueWeightComponent} from './historique-weight/historique-weight.c
 import {WeightModificationComponent} from './weight-modification/weight-modification.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { NutritionComponent } from './nutrition/nutrition.component';
+import { WeightAndSleepComponent } from './weight-and-sleep/weight-and-sleep.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent},
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'not-found', component: FourOhFourComponent },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   { path: 'nutrition', component: NutritionComponent },
+  { path: 'weightAndSleep', component: WeightAndSleepComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
 
