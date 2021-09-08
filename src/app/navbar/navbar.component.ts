@@ -44,10 +44,10 @@ export class NavbarComponent implements OnInit {
     ).then((deconnexion) => {
       if (deconnexion.value) {
         sessionStorage.removeItem('user');
-        Swal.fire(
-          'Vous avez été déconnecté.',
-          'success'
-        ).then( () => {
+        Swal.fire({
+          text: 'Vous avez été déconnecté.',
+          type : 'success'
+        }).then( () => {
           window.location.reload();
         });
       }
