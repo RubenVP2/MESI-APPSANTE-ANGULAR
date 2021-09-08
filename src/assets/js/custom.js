@@ -1,5 +1,5 @@
 
-if(location.pathname==="/dashboard") {
+if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" || location.pathname==="/historiqueWeight" ) {
   $(function() {
     "use strict";
     const usernameSession = $('#usernameSession').val();
