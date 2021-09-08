@@ -20,8 +20,10 @@ import { CreateexerciceComponent } from './createexercice/createexercice.compone
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
 import { WaterModificationComponent } from './water-modification/water-modification.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 const routes: Routes = [
+  { path: '', component: LandingpageComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'users', component: UsersListeComponent , canActivate: [AuthGuard]},
