@@ -23,6 +23,7 @@ import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.comp
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import {FooterComponent} from './footer/footer.component';
+import { ProfilComponent } from './profil/profil.component';
 import { AddWaterComponent } from './add-water/add-water.component';
 import { UserWaterService } from './services/user-water.service';
 import { WaterDetailComponent } from './water-detail/water-detail.component';
@@ -52,6 +53,7 @@ import { DatePipe } from '@angular/common';
     CreateexerciceComponent,
     FooterComponent,
     FourOhFourComponent,
+    ProfilComponent,
     HistoriqueWaterComponent,
     AddWaterComponent,
     WaterModificationComponent,

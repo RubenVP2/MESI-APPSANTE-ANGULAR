@@ -9,6 +9,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { Subject } from 'rxjs';
 import { LogUser } from '../models/LogUser.model';
+import {error} from 'protractor';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -80,18 +82,24 @@ export class UserService {
     });
   }
 
-  isAdmin(pUsername: string) {
-    const headers = { 'content-type': 'application/json'};
-    const body = JSON.stringify({ username: pUsername});
+  async isAdmin(pUsername: string) {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify({username: pUsername});
     console.log(body);
-    this.http.post<any>(this.urlApi + `/isAdmin`, body, {'headers' : headers}).subscribe((response) => {
+    await this.http.post<any>(this.urlApi + `/isAdmin`, body, {'headers': headers}).toPromise().then((response) => {
       this.users = response['role'];
       //console.log(this.users[0]);
       this.emitUserSubject();
-    },(error) =>
-    {
-      console.log(error);
     });
+  }
+
+  async updateProfil(oldUsername: string, user: LogUser) {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify({user});
+    await this.http.post<any>(`${this.urlApi}/user/${oldUsername}`, body, {'headers': headers})
+      .pipe(map(res => {
+        sessionStorage.setItem('user', user.username);
+      })).toPromise();
   }
 
 }
