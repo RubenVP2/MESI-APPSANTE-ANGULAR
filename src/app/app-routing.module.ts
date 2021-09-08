@@ -15,6 +15,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { ExercicedetailsComponent } from './exercicedetails/exercicedetails.component';
 import { CreateexerciceComponent } from './createexercice/createexercice.component';
+import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'exercice/:id', component: ExercicedetailsComponent},
   { path: 'programmesportifsdetails/:id/createexercice', component: CreateexerciceComponent},
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
