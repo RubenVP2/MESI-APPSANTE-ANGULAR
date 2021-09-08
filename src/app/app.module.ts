@@ -39,6 +39,7 @@ import { WeightModificationComponent } from './weight-modification/weight-modifi
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { NutritionComponent } from './nutrition/nutrition.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,9 @@ import { NutritionComponent } from './nutrition/nutrition.component';
     WeightModificationComponent,
     WaterDetailComponent,
     LandingpageComponent,
-    NutritionComponent
+    NutritionComponent,
+    WaterDetailComponent
+
   ],
   imports: [
     BrowserModule,
