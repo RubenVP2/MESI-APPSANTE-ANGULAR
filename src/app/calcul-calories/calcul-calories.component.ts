@@ -20,7 +20,7 @@ export class CalculCaloriesComponent implements OnInit {
   totalCalories = 0;
   page = 1;
   limit = 15;
-  maxSize = 3;
+  maxSize = 25;
   totalPage: number;
   offset = 0;
   caloriesDuJour?: number;
@@ -66,14 +66,19 @@ export class CalculCaloriesComponent implements OnInit {
         }
       }
     } else {
-      let tempPage = this.page - 1;
+      let tempPage = this.maxSize;
+      let count = 1;
       for (let i = this.totalPage; i > tempPage; i--) {
-        if (tempPage >= 1) {
-          items.push(tempPage--);
+        if (count === this.maxSize) {
+          break;
         }
+        if (tempPage >= 1) {
+          items.push(this.totalPage - count);
+        }
+        count++;
       }
+      items.reverse();
     }
-
     return items;
   }
 
@@ -91,9 +96,9 @@ export class CalculCaloriesComponent implements OnInit {
 
   pageNumber(item: number): void {
     if (item > this.page) {
-      this.offset += 25;
+      this.offset = (item + 1) * this.limit;
     } else {
-      this.offset -= 25;
+      this.offset = (item - 1) * this.limit;
     }
     this.page = item;
     this.getAliments(this.limit, this.offset);
