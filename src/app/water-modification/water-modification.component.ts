@@ -56,18 +56,8 @@ export class WaterModificationComponent implements OnInit {
      //Partie formulaire//
 
 
-  getUserWater() {
-    this.userWaterService.wellBeingWaterSubject.subscribe(
-      (response: any[]) => {
-        this.wellBeings = response;
-        //console.log(this.users);
-      }
-    );
-    this.userWaterService.emitUserWaterSubject();
-  }
-
   getWaterById() {
     this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
-    //console.log('Well being actuel : ' + this.wellBeing);
+    console.log('Well being actuel : ' + this.wellBeing);
   }
 }

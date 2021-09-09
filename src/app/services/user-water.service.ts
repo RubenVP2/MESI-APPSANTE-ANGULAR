@@ -36,7 +36,7 @@ export class UserWaterService{
       }
   // Recupère les informations de la tables WELL_BEING (water date poids)
     getUsersWatersApi() {
-      return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res));
+      return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWater']));
     }
 
     //Ajout dans la table wellBeing
