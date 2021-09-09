@@ -44,7 +44,7 @@ export class CalculCaloriesComponent implements OnInit {
   getAliments(limit: number, offset: number): void {
     this.alimentService.getAllAliments(this.limit, this.offset).subscribe((res) => {
       this.aliments = res.aliments;
-      this.totalPage = Math.round(res.total / this.limit);
+      this.totalPage = Math.ceil(Math.round(res.total / this.limit));
     });
   }
 
@@ -58,10 +58,22 @@ export class CalculCaloriesComponent implements OnInit {
 
   createRange(): number[] {
     const items: number[] = [];
-    let tempPage = this.page + 1;
-    for (let i = 0; i < this.maxSize; i++) {
-      items.push(tempPage++);
+    if (this.page < this.totalPage) {
+      let tempPage = this.page + 1;
+      for (let i = 0; i < this.maxSize; i++) {
+        if (tempPage <= this.totalPage) {
+          items.push(tempPage++);
+        }
+      }
+    } else {
+      let tempPage = this.page - 1;
+      for (let i = this.totalPage; i > tempPage; i--) {
+        if (tempPage >= 1) {
+          items.push(tempPage--);
+        }
+      }
     }
+
     return items;
   }
 
@@ -78,7 +90,11 @@ export class CalculCaloriesComponent implements OnInit {
   }
 
   pageNumber(item: number): void {
-    this.offset += 25;
+    if (item > this.page) {
+      this.offset += 25;
+    } else {
+      this.offset -= 25;
+    }
     this.page = item;
     this.getAliments(this.limit, this.offset);
   }

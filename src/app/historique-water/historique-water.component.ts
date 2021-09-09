@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { WellBeingWaterFilter } from '../models/WellBeingWaterFilter.model';
 
 
 
@@ -35,34 +35,34 @@ export class HistoriqueWaterComponent implements OnInit {
     this.initForm();
   }
 
-    // On calcul le taux d'eau néceissaire pour une personne suivant son poids au jour Date calculé a l'aide du poids
-  getTotalNecessary(id: number){
-    if (this.wellBeings[id].water != null && this.wellBeings[id].weight != null){
+  // On calcul le taux d'eau néceissaire pour une personne suivant son poids au jour Date calculé a l'aide du poids
+  getTotalNecessary(id: number) {
+    if (this.wellBeings[id].water != null && this.wellBeings[id].weight != null) {
       // On recupere le poids de la personne sur l'id envoyé en param a l'aide de la méthode getColor(id :number)
       this.resultatF = ((this.wellBeings[id].weight - 20) * 15 + 1500) / 1000;
-      this.resultatF =  Math.round(this.resultatF * 10) / 10;
+      this.resultatF = Math.round(this.resultatF * 10) / 10;
       return this.resultatF;
-    }else if (this.wellBeings[id].water == null || this.wellBeings[id].weight == null) {
+    } else if (this.wellBeings[id].water == null || this.wellBeings[id].weight == null) {
       return this.resultatF = 0;
     }
   }
 
-    getColor(id: number){
-      // Appelle de la méthode getTotalNecessary(id) avec l'id de la liste (le 'i' dans le html) en param
-        this.result = this.getTotalNecessary(id);
-        console.log(this.result);
-        if (this.result == 0){
-          return 'green';
-        }
-        else if (this.wellBeings[id].water >= this.result){
-          return '#458FF4';
-        }
-        else if (this.wellBeings[id].water < this.result){
-          return 'red';
-        }
+  getColor(id: number) {
+    // Appelle de la méthode getTotalNecessary(id) avec l'id de la liste (le 'i' dans le html) en param
+    this.result = this.getTotalNecessary(id);
+    console.log(this.result);
+    if (this.result == 0) {
+      return 'green';
     }
+    else if (this.wellBeings[id].water >= this.result) {
+      return '#458FF4';
+    }
+    else if (this.wellBeings[id].water < this.result) {
+      return 'red';
+    }
+  }
 
-  initForm(){
+  initForm() {
     this.filterHistoriqueWater = this.formBuilder.group({
       // On récupere les infos des deux filtres calender
       calendarStartFilter: ['', Validators.required],
@@ -70,7 +70,7 @@ export class HistoriqueWaterComponent implements OnInit {
     });
   }
 
-  onSubmitForm(){
+  onSubmitForm() {
     // formValue recupere les informations du formulaire
     const formValue = this.filterHistoriqueWater.value;
     // On créé l'instance wellBeingWaterFilter qui permettra de retourner notre nouvelle liste
@@ -81,7 +81,7 @@ export class HistoriqueWaterComponent implements OnInit {
     // Appel de la méthode POST pour recueprer la liste de résultat en fonction du filtre
     this.userWaterService.getUsersWatersFilterApi(wellBeingWaterFilter).subscribe(response => {
       this.wellBeings = response;
-      this.totalPage = Math.ceil(response.total / this.limit);
+      this.totalPage = Math.ceil(Math.round(response.total / this.limit));
     });
   }
 
@@ -92,13 +92,19 @@ export class HistoriqueWaterComponent implements OnInit {
 
   createRange(): number[] {
     const items: number[] = [];
-    let tempPage = this.page + 1;
-    for (let i = 0; i < this.maxSize; i++) {
-      if (tempPage<=this.totalPage){
-        items.push(tempPage++);
+    if (this.page < this.totalPage) {
+      let tempPage = this.page + 1;
+      for (let i = 0; i < this.maxSize; i++) {
+        if (tempPage <= this.totalPage) {
+          items.push(tempPage++);
+        }
       }
-      else{
-        items.push(tempPage--);
+    } else {
+      let tempPage = this.page - 1;
+      for (let i = this.totalPage; i > tempPage; i--) {
+        if (tempPage >= 1) {
+          items.push(tempPage--);
+        }
       }
     }
     return items;
@@ -117,16 +123,19 @@ export class HistoriqueWaterComponent implements OnInit {
   }
 
   pageNumber(item: number): void {
-    this.offset += 5;
+    if (item > this.page) {
+      this.offset += 5;
+    } else {
+      this.offset -= 5;
+    }
     this.page = item;
     this.getAllWaterHist(this.limit, this.offset);
   }
 
-  getAllWaterHist(limit: number, offset: number){
+  getAllWaterHist(limit: number, offset: number) {
     this.userWaterService.getUsersWatersApiPageable(this.limit, this.offset).subscribe(response => {
       this.wellBeings = response.userWater;
-      this.totalPage = Math.ceil(response.total / this.limit);
-      console.log("laalal" + this.totalPage);
+      this.totalPage = Math.ceil(Math.round(response.total / this.limit));
     });
   }
 }

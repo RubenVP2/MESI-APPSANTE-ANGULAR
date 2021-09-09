@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  user: User;
+  user?: User;
   username: string;
 
   constructor(private userService: UserService, private router: Router) {
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem('user');
-    this.userService.isAdmin(this.username).then(r => this.isAdmin());
+    this.userService.isAdmin(this.username).then(_ => this.isAdmin());
   }
 
   isAdmin(): boolean {
@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
       }
     );
     this.userService.emitUserSubject();
+    console.log(this.user);
     return this.user.isAdmin;
   }
 
