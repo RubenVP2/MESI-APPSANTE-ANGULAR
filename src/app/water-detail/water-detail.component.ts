@@ -24,7 +24,6 @@ export class WaterDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.userWaterService.getUsersWatersApi().subscribe(response => {
       this.wellBeings = response;
-      console.log('Tableau = ' + this.wellBeings);
       // Appel function pour récupérer le
       this.getWaterById();
     });

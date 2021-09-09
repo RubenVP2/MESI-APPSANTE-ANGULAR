@@ -60,8 +60,12 @@ export class UserWaterService{
             this.router.navigate(['/historiqueWater']);
           }
           else if (message === 'Ajout des calories réussi.') {
-            Swal.fire(message);
-            this.router.navigate(['/dashboard']);
+            Swal.fire('Ajout des ' + wellBeing.calories + ' calories réussi.\n Pour le ' + wellBeing.date + '.').then( (value) => {
+              if (value.isConfirmed){
+                this.router.navigate(['/calculCalorique']);
+                window.location.reload();
+              }
+            });
           }
           else {
             Swal.fire({
