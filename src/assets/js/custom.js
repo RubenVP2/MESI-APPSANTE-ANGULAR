@@ -81,7 +81,6 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
         if(counter===6){
           return false;
         }
-        console.log(v);
         labelArraySparkline.push(v.date);
         caloriesArray.push(v.calories);
         sommeilArray.push(v.sleep);
@@ -108,7 +107,6 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
           labelInterpolationFnc: function (value) {
             let strDate = new Date(value).toLocaleDateString();
             let arrayDate = strDate.split("/");
-            console.log(arrayDate);
             return arrayDate[0] + '/' + arrayDate[1];
           }
         },
