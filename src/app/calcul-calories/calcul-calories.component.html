@@ -9,7 +9,7 @@
     </div>
 
     <div class="row mb-4 alert alert-info" role="alert">
-      <p>Aujourd'hui vous avez déjà mangé : <b>{{ caloriesDuJour }} Kcal</b></p>
+      <p>Aujourd'hui vous avez déjà mangé : <b>{{ caloriesDuJour != null ? caloriesDuJour : 0 }} Kcal</b></p>
     </div>
 
     <form [formGroup]="filterWellBeing">
