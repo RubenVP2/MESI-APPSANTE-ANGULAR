@@ -1,0 +1,52 @@
+<input id="usernameSession" type="hidden" value="{{username}}">
+<!-- ============================================================== -->
+<!-- Main wrapper -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+<div>
+<table class="table table-striped" style="width: 600px;display: inline-block;vertical-align: top;">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Poids (en Kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let weight of weights">
+        <td>{{ weight.date }}</td>
+        <td>{{ weight.weight }}</td>
+      </tr>
+  </tbody>
+</table>
+
+    <table class="table table-striped" style="width: 600px;display: inline-block;vertical-align: top;">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Heure de sommeil (format hh.mm)</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let sleep of sleeps">
+            <td>{{ sleep.date }}</td>
+            <td>{{ sleep.sleep }}</td>
+            
+          </tr>
+      </tbody>
+    </table>
+    </div>
+
+  <div>
+    <button type="button" class="btn btn-primary" (click)="insertWeight()">Saisir mon poids</button>
+    <button type="button" class="btn btn-primary" style="margin-left: 450px;" (click)="insertSleep()">Saisir mon sommeil</button>
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>

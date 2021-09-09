@@ -26,6 +26,8 @@ import {FormMensurationWeightComponent} from './form-mensuration-weight/form-men
 import {HistoriqueWeightComponent} from './historique-weight/historique-weight.component';
 import {WeightModificationComponent} from './weight-modification/weight-modification.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { NutritionComponent } from './nutrition/nutrition.component';
+import { WeightAndSleepComponent } from './weight-and-sleep/weight-and-sleep.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent},
@@ -51,6 +53,8 @@ const routes: Routes = [
   { path: 'historiqueWeight', component: HistoriqueWeightComponent, canActivate: [AuthGuard]} ,
   { path: 'not-found', component: FourOhFourComponent },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
+  { path: 'nutrition', component: NutritionComponent },
+  { path: 'weightAndSleep', component: WeightAndSleepComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
 

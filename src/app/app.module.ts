@@ -37,6 +37,8 @@ import {MensurationService} from './services/mensuration.service';
 import { HistoriqueWeightComponent } from './historique-weight/historique-weight.component';
 import { WeightModificationComponent } from './weight-modification/weight-modification.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { NutritionComponent } from './nutrition/nutrition.component';
+import { WeightAndSleepComponent } from './weight-and-sleep/weight-and-sleep.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,11 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     HistoriqueWeightComponent,
     WeightModificationComponent,
     WaterDetailComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    NutritionComponent,
+    WaterDetailComponent,
+    NutritionComponent,
+    WeightAndSleepComponent,
   ],
   imports: [
     BrowserModule,
