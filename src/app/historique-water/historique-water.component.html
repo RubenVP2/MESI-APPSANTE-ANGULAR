@@ -52,9 +52,9 @@
                           'list-group-item-danger': getColor(i) === 'red',
                           'list-group-item-info': getColor(i) === 'green'}" >
                           <div id="ligneTableHistorique">
-                              <h3 [ngStyle]="{color: getColor(i)}"> Date : {{wellBeing.date}}</h3>
+                              <h3 [ngStyle]="{color: getColor(i)}"> Date : {{wellBeing.date | date: 'd/M/yy'}}</h3>
                               <div *ngIf="wellBeing.water==null">
-                                <p>Pour la date <strong>{{wellBeing.date}}</strong> vous n'avez renseigné aucune donnée ! <img src="https://img.icons8.com/color/48/000000/bottle-of-water.png"/></p>
+                                <p>Pour la date <strong>{{wellBeing.date   | date: 'd/M/yy'}}</strong> vous n'avez renseigné aucune donnée ! <img src="https://img.icons8.com/color/48/000000/bottle-of-water.png"/></p>
                                 <div class="float-left" >
                                   <p>Utilisez le button d'ajout pour suivre vos données pour ce jour</p>
                                   <button id="buttonAjout" type="button" routerLink="/addWater" class="btn btn-secondary">Ajouter</button>
@@ -65,7 +65,7 @@
                                 <div *ngIf="wellBeing.weight==null" class="float-left">
                                   <p>Veuillez saisir votre <strong>poids</strong> pour cette date dans l'onglet correspondant pour recevoir une estimation de la quantité d'eau nécessaire pour une bonne forme !</p>
 
-                                  <button type="button" class="btn btn-secondary">Saisir mon poids</button>
+                                  <button type="button" class="btn btn-secondary" routerLink="historiqueWeight/addWeight">Saisir mon poids</button>
                                 </div>
                                 <div *ngIf="wellBeing.weight!=null" class="float-left" >
                                   <p>Nous vous conseillons de boire au minimum : {{this.result}} <strong>Litre(s)</strong> pour ce jour</p>
@@ -89,9 +89,6 @@
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                               </a>
-                            </li>
-                            <li *ngFor="let item of createRange()" class="page-item">
-                              <a class="page-link" (click)="pageNumber(item)">{{ item }}</a>
                             </li>
                             <li class="page-item" [class.disabled]="page === totalPage ? 'disabled' : ''">
                               <a class="page-link" (click)="pageNext()" aria-label="Next">

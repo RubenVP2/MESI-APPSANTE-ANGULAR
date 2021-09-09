@@ -17,17 +17,19 @@ export class HistoriqueWeightComponent implements OnInit, OnDestroy {
   filterHistoriqueWeight: FormGroup;
   username: string;
 
+  page = 1;
+  limit = 4;
+  maxSize = 3;
+  totalPage: number;
+  offset = 0;
+
 
   ngOnInit(): void {
     if (localStorage.getItem('reload') !== 'true') {
       window.location.reload();
       localStorage.setItem('reload', 'true');
     }
-    this.mensurationService.getUsersWeightsApi().subscribe(response => {
-      this.wellBeings = response;
-      console.log('Tableau = ' + this.wellBeings);
-      // Appel function pour récupérer le
-    });
+    this.getAllWeightHist(this.limit, this.offset);
     this.initForm();
   }
 
@@ -52,7 +54,7 @@ export class HistoriqueWeightComponent implements OnInit, OnDestroy {
       formValue.calendarEndFilter
     );
     // Appel de la méthode POST pour recueprer la liste de résultat en fonction du filtre
-    this.mensurationService.getUsersWeightFilterApi(wellBeingWaterFilter).subscribe(response => {
+    this.mensurationService.getUsersWeightFilterApi(wellBeingWaterFilter, this.limit, this.offset).subscribe(response => {
       this.wellBeings = response;
     });
   }
@@ -60,6 +62,56 @@ export class HistoriqueWeightComponent implements OnInit, OnDestroy {
 // On reset les filtres
   reset() {
     window.location.reload();
+  }
+
+  createRange(): number[] {
+    const items: number[] = [];
+    if (this.page < this.totalPage) {
+      let tempPage = this.page + 1;
+      for (let i = 0; i < this.maxSize; i++) {
+        if (tempPage <= this.totalPage) {
+          items.push(tempPage++);
+        }
+      }
+    } else {
+      let tempPage = this.page - 1;
+      for (let i = this.totalPage; i > tempPage; i--) {
+        if (tempPage >= 1) {
+          items.push(tempPage--);
+        }
+      }
+    }
+    return items;
+  }
+
+  pagePrevious(): void {
+    this.offset -= 5;
+    this.page--;
+    this.getAllWeightHist(this.limit, this.offset);
+  }
+
+  pageNext(): void {
+    this.offset += 5;
+    this.page++;
+    this.getAllWeightHist(this.limit, this.offset);
+  }
+
+  pageNumber(item: number): void {
+    if (item > this.page) {
+      this.offset += 5;
+    } else {
+      this.offset -= 5;
+    }
+    this.page = item;
+    this.getAllWeightHist(this.limit, this.offset);
+  }
+
+  getAllWeightHist(limit: number, offset: number) {
+    this.mensurationService.getUsersWeightsApiPageable(this.limit, this.offset).subscribe(response => {
+      this.wellBeings = response;
+      this.totalPage = Math.ceil(Math.round(response.total / this.limit));
+      // Appel function pour récupérer le
+    });
   }
 
 }

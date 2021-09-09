@@ -15,7 +15,7 @@
       <form *ngIf="weightModifForm" [formGroup]="weightModifForm" (ngSubmit)="onSubmitForm()">
         <div class="form-group">
           <label for="userWater">Votre poids le {{this.wellBeing.date | date: 'd/M/yy'}} est de {{this.wellBeing.weight}} <strong>kg</strong></label>
-          <input type="number" class="form-control" id="userWater" formControlName="userWeight" placeholder="ancienne valeur : {{this.wellBeing.water}} Kg">
+          <input type="number" class="form-control" id="userWater" formControlName="userWeight" placeholder="ancienne valeur : {{this.wellBeing.weight}} Kg">
         </div>
         <!-- le [disabled] permet ici de rendre le bouton non cliquable tant que formulaire ne correspond pas a la demande faite dans la méthode initForms() dans le .ts-->
         <button class="btn btn-primary" type="submit" [disabled]="weightModifForm.invalid">Modifier</button>

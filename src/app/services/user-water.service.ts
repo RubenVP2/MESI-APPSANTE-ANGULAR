@@ -109,7 +109,7 @@ export class UserWaterService{
   getUsersWatersFilterApi(wellBeingWaterFilter: WellBeingWaterFilter) {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify(wellBeingWaterFilter);
-    return this.http.post<any>(this.urlApi + '/user/water/' + sessionStorage.getItem("user")+ '/filter', body, {'headers':headers}).pipe(map((res: any) => {
+    return this.http.post<any>(this.urlApi + '/user/water/' + sessionStorage.getItem("user") + '/filter', body, {'headers':headers}).pipe(map((res: any) => {
       var message = res['message'];
       if (message == "Filtrage réussie"){
         Swal.fire({
