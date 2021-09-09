@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { WellBeing } from '../models/WellBeing.model';
 import { UserWaterService } from '../services/user-water.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ import { WellBeingWaterFilter } from '../models/WellBeingWaterFilter.model';
   templateUrl: './historique-water.component.html',
   styleUrls: ['./historique-water.component.css']
 })
-export class HistoriqueWaterComponent implements OnInit {
+export class HistoriqueWaterComponent implements OnInit, OnDestroy {
 
 
   constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { this.username = sessionStorage.getItem('user'); }
@@ -33,6 +33,10 @@ export class HistoriqueWaterComponent implements OnInit {
     }
     this.getAllWaterHist(this.limit, this.offset);
     this.initForm();
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('reload');
   }
 
   // On calcul le taux d'eau néceissaire pour une personne suivant son poids au jour Date calculé a l'aide du poids

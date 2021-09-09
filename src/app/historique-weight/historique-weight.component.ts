@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WellBeing} from '../models/WellBeing.model';
 import {MensurationService} from '../services/mensuration.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -9,7 +9,7 @@ import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
   templateUrl: './historique-weight.component.html',
   styleUrls: ['./historique-weight.component.css']
 })
-export class HistoriqueWeightComponent implements OnInit {
+export class HistoriqueWeightComponent implements OnInit, OnDestroy {
 
   constructor(private mensurationService: MensurationService, private formBuilder: FormBuilder) {this.username = sessionStorage.getItem('user'); }
 
@@ -29,6 +29,10 @@ export class HistoriqueWeightComponent implements OnInit {
       // Appel function pour récupérer le
     });
     this.initForm();
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('reload');
   }
 
   initForm(){
