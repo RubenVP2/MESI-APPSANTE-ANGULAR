@@ -19,6 +19,10 @@ export class HistoriqueWeightComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if (localStorage.getItem('reload') !== 'true') {
+      window.location.reload();
+      localStorage.setItem('reload', 'true');
+    }
     this.mensurationService.getUsersWeightsApi().subscribe(response => {
       this.wellBeings = response;
       console.log('Tableau = ' + this.wellBeings);

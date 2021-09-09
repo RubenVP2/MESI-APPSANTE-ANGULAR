@@ -17,6 +17,4 @@ export class AlimentService {
   getAllAliments(limit: number, offset: number): Observable<any> {
     return this.http.get<Aliment[]>(`${this.urlApi}/aliments?limit=${limit}&offset=${offset}`).pipe(map((res: any) =>  res ));
   }
-
-  addCaloriesTo
 }

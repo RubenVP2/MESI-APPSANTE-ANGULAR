@@ -31,9 +31,13 @@ export class UserWaterService{
     }
 
     // Recupère les informations de la tables WELL_BEING (water date poids)
-    getUsersWatersApi() {
-        return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWater']));
+    getUsersWatersApiPageable(limit: number, offset: number) {
+        return this.http.get(this.urlApi + '/user/water/pageable/' + sessionStorage.getItem("user") + `?limit=${limit}&offset=${offset}`).pipe(map((res: any) => res));
       }
+  // Recupère les informations de la tables WELL_BEING (water date poids)
+    getUsersWatersApi() {
+      return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res));
+    }
 
     //Ajout dans la table wellBeing
     addWater(wellBeing: WellBeing) {
@@ -42,11 +46,17 @@ export class UserWaterService{
       this.http.post<any>(this.urlApi + "/addWater", body, {'headers':headers}).subscribe((response) => {
           var message = response['message'];
           if (message == "Insertion réussie"){
-            Swal.fire(message);
+            Swal.fire({
+              icon: 'success',
+              title: message
+            });
             this.router.navigate(['/historiqueWater']);
           }
-          else if(message== "Insertion réussie pour ce jour réussie ! N'oubliez pas d'ajouter vos mensurations pour ce jour"){
-            Swal.fire(message);
+          else if (message == "Insertion réussie pour ce jour ! N'oubliez pas d'ajouter vos mensurations pour ce jour"){
+            Swal.fire({
+              icon: 'info',
+              title: message
+            });
             this.router.navigate(['/historiqueWater']);
           }
           else if (message === 'Ajout des calories réussi.') {
@@ -59,6 +69,7 @@ export class UserWaterService{
               title: 'Oops...',
               text: message
             });
+            this.router.navigate(['/historiqueWater']);
           }
        }, (error) => {
          console.log(error);
@@ -101,7 +112,13 @@ export class UserWaterService{
     return this.http.post<any>(this.urlApi + '/user/water/' + sessionStorage.getItem("user")+ '/filter', body, {'headers':headers}).pipe(map((res: any) => {
       var message = res['message'];
       if (message == "Filtrage réussie"){
-        Swal.fire(message, 'success');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          text: message,
+          showConfirmButton: false,
+          timer: 1500
+        });
         return res['userWater'];
       }
       else {

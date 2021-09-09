@@ -21,11 +21,7 @@ export class AddWaterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { }
 
   ngOnInit(): void {
-    this.userWaterService.getUsersWatersApi().subscribe(response => {
-      this.wellBeings = response;
       this.initForm();
-    });
-
   }
 
 

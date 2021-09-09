@@ -14,7 +14,8 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
     let avgWater = 0;
 
     // Récupération des WELL BEING
-    $.get( `http://localhost:5000/wellBeing/${usernameSession}` , function( data ) {
+    console.log(usernameSession);
+    $.get( 'http://localhost:5000/wellBeing/' + usernameSession, function( data ) {
       $.each(JSON.parse(data).well_being, function(k, v) {
         //console.log(k,v)
         seriesPoidsArray.push(v.weight);

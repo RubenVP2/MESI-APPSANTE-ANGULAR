@@ -80,6 +80,7 @@ export class MensurationService{
           title: 'Oops...',
           text: message
         });
+        this.router.navigate(['/historiqueWeight']);
       }
     }, (error) => {
       console.log(error);

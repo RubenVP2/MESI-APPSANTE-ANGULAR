@@ -14,19 +14,24 @@ import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
 export class HistoriqueWaterComponent implements OnInit {
 
 
-  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { this.username = sessionStorage.getItem('user');}
+  constructor(private formBuilder: FormBuilder, private userWaterService: UserWaterService) { this.username = sessionStorage.getItem('user'); }
   wellBeings: WellBeing[];
   result: Number;
   resultatF = 0;
   filterHistoriqueWater: FormGroup;
   username: string;
+  page = 1;
+  limit = 3;
+  maxSize = 3;
+  totalPage: number;
+  offset = 0;
 
   ngOnInit(): void {
-    this.userWaterService.getUsersWatersApi().subscribe(response => {
-      this.wellBeings = response;
-      console.log('Tableau = ' + this.wellBeings);
-      // Appel function pour récupérer le
-    });
+    if (localStorage.getItem('reload') !== 'true') {
+      window.location.reload();
+      localStorage.setItem('reload', 'true');
+    }
+    this.getAllWaterHist(this.limit, this.offset);
     this.initForm();
   }
 
@@ -76,6 +81,7 @@ export class HistoriqueWaterComponent implements OnInit {
     // Appel de la méthode POST pour recueprer la liste de résultat en fonction du filtre
     this.userWaterService.getUsersWatersFilterApi(wellBeingWaterFilter).subscribe(response => {
       this.wellBeings = response;
+      this.totalPage = Math.ceil(response.total / this.limit);
     });
   }
 
@@ -84,4 +90,43 @@ export class HistoriqueWaterComponent implements OnInit {
     window.location.reload();
   }
 
+  createRange(): number[] {
+    const items: number[] = [];
+    let tempPage = this.page + 1;
+    for (let i = 0; i < this.maxSize; i++) {
+      if (tempPage<=this.totalPage){
+        items.push(tempPage++);
+      }
+      else{
+        items.push(tempPage--);
+      }
+    }
+    return items;
+  }
+
+  pagePrevious(): void {
+    this.offset -= 5;
+    this.page--;
+    this.getAllWaterHist(this.limit, this.offset);
+  }
+
+  pageNext(): void {
+    this.offset += 5;
+    this.page++;
+    this.getAllWaterHist(this.limit, this.offset);
+  }
+
+  pageNumber(item: number): void {
+    this.offset += 5;
+    this.page = item;
+    this.getAllWaterHist(this.limit, this.offset);
+  }
+
+  getAllWaterHist(limit: number, offset: number){
+    this.userWaterService.getUsersWatersApiPageable(this.limit, this.offset).subscribe(response => {
+      this.wellBeings = response.userWater;
+      this.totalPage = Math.ceil(response.total / this.limit);
+      console.log("laalal" + this.totalPage);
+    });
+  }
 }

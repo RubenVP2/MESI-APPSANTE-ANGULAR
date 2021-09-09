@@ -20,7 +20,7 @@ export class WellBeingService {
     this.http.post<any[]>(this.urlApi + '/weightAndSleep', body, {'headers' : headers}).subscribe(
       (response) => {
         this.wellBeing = response;
-        this.router.navigate(['/weightAndSleep'])
+        this.router.navigate(['/weightAndSleep']);
       },
       (error) => {
         console.log(error);
@@ -33,8 +33,8 @@ insertWeight(user : string, wght : number ){
   const body = JSON.stringify({ username: user, weight: wght});
   this.http.post<any[]>(this.urlApi + '/weightAndSleep/addWeight', body, {'headers' : headers}).subscribe(
     (response) => {
-      Swal.fire(response['message'])
-      this.router.navigate(['/weightAndSleep'])
+      Swal.fire(response['message']);
+      this.router.navigate(['/weightAndSleep']);
     },
     (error) => {
       console.log(error);
@@ -47,8 +47,8 @@ insertSleep(user : string, slp : number ){
   const body = JSON.stringify({ username: user, sleep: slp});
   this.http.post<any[]>(this.urlApi + '/weightAndSleep/addWeight', body, {'headers' : headers}).subscribe(
     (response) => {
-      Swal.fire(response['message'])
-      this.router.navigate(['/weightAndSleep'])
+      Swal.fire(response['message']);
+      this.router.navigate(['/weightAndSleep']);
     },
     (error) => {
       console.log(error);
