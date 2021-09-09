@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         sessionStorage.removeItem('user');
+        localStorage.removeItem('reload');
         Swal.fire({
           title: 'Vous avez été déconnecté.',
           icon: 'success'
