@@ -26,7 +26,8 @@
               </tbody>
             </table>
             <button (click)="open(mymodal)" id="addResult" class="btn btn-primary">Ajouter un résultat</button>
-          <div class="row mt-5">
+            <img height="auto" width="auto" style="float: right" src="{{oneExercice[0].imagehelp}}" alt="image_exercice">
+            <div class="row mt-5">
             <form class="col-12" #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
               <div class="form-group row col-sm-5">
                 <label for="nomExercice">Nom de l'exercice :</label>
