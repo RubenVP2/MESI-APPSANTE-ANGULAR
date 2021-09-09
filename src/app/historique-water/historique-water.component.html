@@ -44,7 +44,6 @@
           <!--Création de la div, si des résultats existe alors on affiche les éléments  -->
           <div *ngIf="wellBeings.length>0">
             <div class="row">
-
               <div class="col-md" id="tableHistorique">
                       <ul class="list-group">
                         <li *ngFor="let wellBeing of wellBeings ; let i=index"
@@ -104,7 +103,7 @@
                         </nav>
                   </div>
               <!--Création de la div pour la légende du tableau -->
-                <div id="partDeux" class="col-md col-sm-12">
+                <div class="col-md col-sm-12">
                     <span class="badge badge-pill badge-primary" id="legende">légende</span>
                     <div  id="legend">
                       <ul class="list-group">
@@ -117,8 +116,8 @@
                       <h3 class="box-title">Consommation eau sur les 5 derniers jours</h3>
                       <ul class="list-inline two-part d-flex align-items-center mb-0">
                         <li>
-                          <div id="sparkLineWater"><canvas width="50" height="30"
-                                                           style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                          <div id="sparkLineWater">
+                            <canvas height="30" style="display: inline-block; vertical-align: top;"></canvas>
                           </div>
                         </li>
                         <li class="ms-auto"><span id="avgWater" class="counter"></span>
