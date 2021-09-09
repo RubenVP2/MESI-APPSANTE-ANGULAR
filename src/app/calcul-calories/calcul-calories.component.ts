@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Aliment} from '../models/Aliment.model';
-import {AlimentService} from '../services/aliment.service';
-import {WellBeing} from '../models/WellBeing.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { Aliment } from '../models/Aliment.model';
+import { AlimentService } from '../services/aliment.service';
+import { WellBeing } from '../models/WellBeing.model';
 import { DatePipe } from '@angular/common';
-import {UserWaterService} from '../services/user-water.service';
+import { UserWaterService } from '../services/user-water.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import {WellBeingWaterFilter} from '../models/WellBeingWaterFilter.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { WellBeingWaterFilter } from '../models/WellBeingWaterFilter.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calcul-calories',
@@ -27,7 +27,7 @@ export class CalculCaloriesComponent implements OnInit {
   dateInput = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
   filterWellBeing: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private alimentService: AlimentService, private datepipe: DatePipe, private userWaterService: UserWaterService ) {
+  constructor(private formBuilder: FormBuilder, private alimentService: AlimentService, private datepipe: DatePipe, private userWaterService: UserWaterService) {
     // Récupération des aliments
     this.getAliments(this.limit, this.offset);
     // Récupération des calories du jour
@@ -48,7 +48,7 @@ export class CalculCaloriesComponent implements OnInit {
     });
   }
 
-  private getCaloriesOfDay(dateOfDay: Date): void {
+  getCaloriesOfDay(dateOfDay: Date): void {
     const wellBeingFilter = new WellBeingWaterFilter(
       dateOfDay,
       dateOfDay
@@ -95,22 +95,21 @@ export class CalculCaloriesComponent implements OnInit {
   }
 
   insererLesCalories(): void {
+
     Swal.fire({
-        title: 'Confirmation',
-        text: 'Confirmez-vous l\'ajout de ces aliments ?',
-        type: 'info',
-        showCancelButton: true,
-        confirmButtonText: 'Ajouter'
-      }
-    ).then((value) => {
-      if (value.value) {
+      title: 'Confirmation',
+      text: 'Confirmez-vous l\'ajout de ces aliments ?',
+      showCancelButton: true,
+      confirmButtonText: 'Sauvegarder',
+      icon: 'question',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
         const wellBeing = new WellBeing(0, this.totalCalories,
           0, 0, 0, 0, 0, this.filterWellBeing.value.calendarDate, sessionStorage.getItem('user')
         );
-        console.log(wellBeing);
         this.userWaterService.addWater(wellBeing);
       }
     });
   }
-
 }

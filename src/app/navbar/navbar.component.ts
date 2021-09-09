@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/User.model';
 import { UserService } from '../services/user.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
     this.userService.isAdmin(this.username).then(r => this.isAdmin());
   }
 
-  isAdmin(): boolean{
+  isAdmin(): boolean {
     this.userService.userSubject.subscribe(
       (response: any[]) => {
         this.user = response[0];
@@ -35,19 +35,17 @@ export class NavbarComponent implements OnInit {
 
   deconnexion(): void {
     Swal.fire({
-        title: 'Confirmation',
-        text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Déconnexion'
-    }
-    ).then((deconnexion) => {
-      if (deconnexion.value) {
+      title: 'Confirmation',
+      text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+      showCancelButton: true,
+      confirmButtonText: 'Déconexion',
+    }).then((result) => {
+      if (result.value) {
         sessionStorage.removeItem('user');
         Swal.fire({
-          text: 'Vous avez été déconnecté.',
-          type : 'success'
-        }).then( () => {
+          title: 'Vous avez été déconnecté.',
+          icon: 'success'
+        }).then(() => {
           window.location.reload();
         });
       }
