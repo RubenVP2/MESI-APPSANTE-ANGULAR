@@ -13,7 +13,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class InscriptionComponent implements OnInit {
 
   userForm: FormGroup;
-
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -31,13 +30,14 @@ export class InscriptionComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]], // ici on fait une array comme avant sauf que comme on veux mettre plusieurs validators on fait une liste!
       age: ['', Validators.required],
-      sexe: ['', Validators.required],
+      sexe: ['--Choisissez une option--', Validators.required],
+      passwordC: ['', Validators.required]
     });
   }
 
-  onSubmitForm(form: NgForm) {
+  onSubmitForm() {
     //formValue recupere les informations du formulaire grace a userForm qui est un object de type FormGroup
-    const formValue = form.value;
+    const formValue = this.userForm.value;
     if (formValue['password'] != formValue['passwordC']) {
       Swal.fire("Mots de passe différents");
     } else if (formValue['username'] == "") {
@@ -52,6 +52,7 @@ export class InscriptionComponent implements OnInit {
         formValue['sexe'],
         formValue['age'],
       );
+      console.log(newUser);
       this.userService.addUser(newUser);
     }
   }
