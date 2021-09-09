@@ -5,6 +5,7 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
     const usernameSession = $('#usernameSession').val();
     const seriesPoidsArray = [];
     const labelsArray = [];
+    const labelArraySparkline = [];
     const seriesImcArray = [];
     const caloriesArray = [];
     const sommeilArray = [];
@@ -74,11 +75,18 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
     var chart = [chart];
 
     $.get(`http://localhost:5000/wellBeing/${usernameSession}/stats`, function (data) {
+      let counter = 1;
       $.each(JSON.parse(data).well_being_stats, function(k, v) {
         //console.log(k,v)
+        if(counter===6){
+          return false;
+        }
+        console.log(v);
+        labelArraySparkline.push(v.date);
         caloriesArray.push(v.calories);
         sommeilArray.push(v.sleep);
         waterArray.push(v.water);
+        counter++;
       });
       $.each(JSON.parse(data).well_being_avg, function(k, v) {
         avgCalories = v.avgCalories;
@@ -92,7 +100,7 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
 
     var sparklineLogin = function () {
       var dataCalories = {
-        labels: labelsArray,
+        labels: labelArraySparkline,
         series: [caloriesArray]
       };
       var options = {
@@ -100,6 +108,7 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
           labelInterpolationFnc: function (value) {
             let strDate = new Date(value).toLocaleDateString();
             let arrayDate = strDate.split("/");
+            console.log(arrayDate);
             return arrayDate[0] + '/' + arrayDate[1];
           }
         },
@@ -108,13 +117,13 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
       new Chartist.Bar('#sparkLineCalories', dataCalories, options);
 
       var dataSommeil = {
-        labels: labelsArray,
+        labels: labelArraySparkline,
         series: [sommeilArray]
       };
       new Chartist.Bar('#sparkLineSommeil', dataSommeil, options);
 
       var dataWater = {
-        labels: waterArray,
+        labels: labelArraySparkline,
         series: [waterArray]
       }
       new Chartist.Bar("#sparkLineWater", dataWater, options)
