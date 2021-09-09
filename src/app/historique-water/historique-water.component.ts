@@ -83,7 +83,7 @@ export class HistoriqueWaterComponent implements OnInit, OnDestroy {
       formValue.calendarEndFilter
     );
     // Appel de la méthode POST pour recueprer la liste de résultat en fonction du filtre
-    this.userWaterService.getUsersWatersFilterApi(wellBeingWaterFilter,this.limit,this.offset).subscribe(response => {
+    this.userWaterService.getUsersWatersFilterApi(wellBeingWaterFilter).subscribe(response => {
       this.wellBeings = response;
       this.totalPage = Math.ceil(Math.round(response.total / this.limit));
     });
