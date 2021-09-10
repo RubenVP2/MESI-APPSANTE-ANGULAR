@@ -1,14 +1,5 @@
 <input id="usernameSession" type="hidden" value="{{username}}">
 <!-- ============================================================== -->
-<!-- Preloader -->
-<!-- ============================================================== -->
-<div class="preloader">
-  <div class="lds-ripple">
-    <div class="lds-pos"></div>
-    <div class="lds-pos"></div>
-  </div>
-</div>
-<!-- ============================================================== -->
 <!-- Main wrapper -->
 <!-- ============================================================== -->
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
@@ -41,11 +32,11 @@
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-12">
           <div class="white-box analytics-info">
-            <h3 class="box-title">Calories sur les 10 derniers jours</h3>
+            <h3 class="box-title">Calories sur les 5 derniers jours</h3>
             <ul class="list-inline two-part d-flex align-items-center mb-0">
               <li>
-                <div id="sparkLineCalories" ><canvas width="67" height="30"
-                                                style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                <div id="sparkLineCalories" ><canvas height="30"
+                                                style="display: inline-block;vertical-align: top;"></canvas>
                 </div>
               </li>
               <li class="ms-auto"><span id="avgCalories" class="counter"></span></li>
@@ -54,11 +45,11 @@
         </div>
         <div class="col-lg-4 col-md-12">
           <div class="white-box analytics-info">
-            <h3 class="box-title">Heure de sommeil sur les 10 derniers jours</h3>
+            <h3 class="box-title">Heure de sommeil sur les 5 derniers jours</h3>
             <ul class="list-inline two-part d-flex align-items-center mb-0">
               <li>
-                <div id="sparkLineSommeil"><canvas width="67" height="30"
-                                                 style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                <div id="sparkLineSommeil"><canvas height="30"
+                                                 style="display: inline-block;vertical-align: top;"></canvas>
                 </div>
               </li>
               <li class="ms-auto"><span id="avgSommeil" class="counter"></span></li>
@@ -67,11 +58,11 @@
         </div>
         <div class="col-lg-4 col-md-12">
           <div class="white-box analytics-info">
-            <h3 class="box-title">Consommation eau sur les 10 derniers jours</h3>
+            <h3 class="box-title">Consommation eau sur les 5 derniers jours</h3>
             <ul class="list-inline two-part d-flex align-items-center mb-0">
               <li>
-                <div id="sparkLineWater"><canvas width="67" height="30"
-                                                 style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                <div id="sparkLineWater"><canvas height="30"
+                                                 style="display: inline-block;vertical-align: top;"></canvas>
                 </div>
               </li>
               <li class="ms-auto"><span id="avgWater" class="counter"></span>

@@ -1,38 +1,42 @@
 <div class="sidenav">
     <div class="login-main-text">
-       <h2>HealthDiary<br> Inscription</h2>
+       <h2>HealthApp<br> Inscription</h2>
        <p>Inscrivez-vous pour accéder à l'application.</p>
     </div>
   </div>
   <div class="main">
     <div class="col-md-6 col-sm-12">
        <div class="login-form">
-          <form #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
+          <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
              <div class="form-group">
                 <label>Nom d'utilisateur</label>
-                <input type="text" class="form-control" name="username" id="username" placeholder="Nom d'utilisateur" ngModel>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Nom d'utilisateur" formControlName="username">
              </div>
              <div class="form-group">
                 <label>Email </label>
-                <input type="mail" class="form-control" name="email" id="email" placeholder="Mon adresse Email" ngModel>
+                <input type="mail" class="form-control" name="email" id="email" placeholder="Mon adresse Email" formControlName="email">
              </div>
              <div class="form-group">
                 <label>Age </label>
-                <input type="text" class="form-control" name="age" id="age" placeholder="Mon age" ngModel>
+                <input type="text" class="form-control" name="age" id="age" placeholder="Mon age" formControlName="age">
              </div>
              <div class="form-group">
-                <label>Sexe </label>
-                <input type="text" class="form-control" name="sexe" id="sexe" placeholder="Mon Sexe" ngModel>
+               <label class="my-1 mr-2" for="sexe">Sexe</label>
+               <select class="custom-select my-1 mr-sm-2" name="sexe" id="sexe" formControlName="sexe">
+                 <option selected disabled>--Choisissez une option--</option>
+                 <option value="Homme">Homme</option>
+                 <option value="Femme">Femme</option>
+               </select>
              </div>
              <div class="form-group">
                 <label>Mot de passe </label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" ngModel>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" formControlName="password">
              </div>
              <div class="form-group">
                 <label>Confirmation Mot de passe </label>
-                <input type="password" class="form-control" name="passwordC" id="passwordC" placeholder="Confirmer votre mot de passe" ngModel>
+                <input type="password" class="form-control" name="passwordC" id="passwordC" placeholder="Confirmer votre mot de passe" formControlName="passwordC">
              </div>
-             <button type="submit" class="btn btn-secondary">Inscription</button>
+             <button type="submit" class="btn btn-secondary" style="margin-right: 10px;">Inscription</button>
              <button class="btn btn-secondary" (click)="login()">Déjà inscrit? Connectez vous!</button>
           </form>
        </div>

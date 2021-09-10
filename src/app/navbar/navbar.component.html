@@ -1,15 +1,6 @@
 <div *ngIf="username" id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
   <!-- ============================================================== -->
-  <!-- Preloader -->
-  <!-- ============================================================== -->
-  <div class="preloader">
-    <div class="lds-ripple">
-      <div class="lds-pos"></div>
-      <div class="lds-pos"></div>
-    </div>
-  </div>
-  <!-- ============================================================== -->
   <!-- Topbar header -->
   <!-- ============================================================== -->
   <header class="topbar" data-navbarbg="skin5">
@@ -18,18 +9,14 @@
         <!-- ============================================================== -->
         <!-- Logo -->
         <!-- ============================================================== -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" routerLink="/dashboard">
+          <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Fit-icon.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Python" loading="lazy">
           <!-- Logo icon -->
-          <b class="logo-icon">
+          <b class="logo-icon" style="color: #1d1d1d;margin-left: 25px">
             <!-- Dark Logo icon -->
-            TheRichPost
+            <span class="text-danger">Health</span><span class="text-1000">App</span>
           </b>
           <!--End Logo icon -->
-          <!-- Logo text -->
-          <span class="logo-text">
-                                <!-- dark Logo text -->
-                               Admin
-                            </span>
         </a>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -54,7 +41,7 @@
           <!-- ============================================================== -->
           <li class=" in">
             <form role="search" class="app-search d-none d-md-block me-3">
-              <input type="text" placeholder="Search..." class="form-control mt-0">
+              <input type="text" placeholder="Search..." class="form-control mt-0" disabled>
               <a href="" class="active">
                 <i class="fa fa-search"></i>
               </a>
@@ -64,7 +51,7 @@
           <!-- User profile and search -->
           <!-- ============================================================== -->
           <li>
-            <a class="profile-pic" href="#">
+            <a class="profile-pic" routerLink="/profil">
               <img src="https://therichpost.com/wp-content/uploads/2021/03/avatar2.png" alt="user-img" width="36"
                    class="img-circle"><span class="text-white font-medium">{{ username[0].toUpperCase() + username.substr(1, username.length) }}</span></a>
           </li>
@@ -87,29 +74,80 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
         <ul id="sidebarnav">
-          <!-- User Profile-->
-          <li class="sidebar-item pt-2">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/dashboard"
                aria-expanded="false">
-              <i class="far fa-clock" aria-hidden="true"></i>
+              <img id="imgWeight" src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHBhdGggZD0ibTE2NC4yMzQgMzQ3Ljc5NGM0OS4zNSAwIDg5LjQ5OS00MC4xMjEgODkuNDk5LTg5LjQzNiAwLTUuNTIzLTQuNDc4LTEwLTEwLTEwaC02OS40OTl2LTY5LjQzNmMwLTUuNTIzLTQuNDc4LTEwLTEwLTEwLTQ5LjM1MSAwLTg5LjUgNDAuMTIxLTg5LjUgODkuNDM2czQwLjE1IDg5LjQzNiA4OS41IDg5LjQzNnptLTEwLTE1OC4xNTR2NjguNzE5YzAgNS41MjMgNC40NzggMTAgMTAgMTBoNjguNzhjLTQuODY3IDMzLjU2NS0zMy44NTYgNTkuNDM2LTY4Ljc4IDU5LjQzNi0zOC4zMjIgMC02OS41LTMxLjE0OC02OS41LTY5LjQzNiAwLTM0Ljg5NyAyNS44OTctNjMuODYyIDU5LjUtNjguNzE5eiIvPjxwYXRoIGQ9Im0yMDEuNjY5IDIzMC45NDFoNzkuNDk5YzUuNTIyIDAgMTAtNC40NzcgMTAtMTAgMC00OS4zMTUtNDAuMTQ5LTg5LjQzNi04OS40OTktODkuNDM2LTUuNTIyIDAtMTAgNC40NzctMTAgMTB2NzkuNDM2YzAgNS41MjMgNC40NzcgMTAgMTAgMTB6bTEwLTc4LjcxOWMzMC4zMzMgNC4zODQgNTQuMzg2IDI4LjQxNSA1OC43OCA1OC43MTloLTU4Ljc4eiIvPjxwYXRoIGQ9Im01MDIgNS43M2gtNDkyYy01LjUyMiAwLTEwIDQuNDc3LTEwIDEwdjUzLjA3MWMwIDUuNTIzIDQuNDc4IDEwIDEwIDEwaDEyLjM4OXYzMDYuNjQzYzAgMTkuMzMgMTUuNzIyIDM1LjA1NSAzNS4wNDYgMzUuMDU1aDE4OC41NjV2MTMuODQ5Yy0xNS4zOTYgNC4zNTgtMjYuNzA3IDE4LjUyLTI2LjcwNyAzNS4yNyAwIDIwLjIxIDE2LjQ2NyAzNi42NTIgMzYuNzA3IDM2LjY1MnMzNi43MDctMTYuNDQyIDM2LjcwNy0zNi42NTJjMC0xNi43NS0xMS4zMTEtMzAuOTEyLTI2LjcwNy0zNS4yN3YtMTMuODQ5aDE4OC41NjNjMTkuMzI1IDAgMzUuMDQ4LTE1LjcyNiAzNS4wNDgtMzUuMDU1di0zMDYuNjQzaDEyLjM4OWM1LjUyMiAwIDEwLTQuNDc3IDEwLTEwdi01My4wNzFjMC01LjUyMy00LjQ3OC0xMC0xMC0xMHptLTIyOS4yOTMgNDYzLjg4OGMwIDkuMTgyLTcuNDk1IDE2LjY1Mi0xNi43MDcgMTYuNjUycy0xNi43MDctNy40Ny0xNi43MDctMTYuNjUyIDcuNDk1LTE2LjY1MiAxNi43MDctMTYuNjUyIDE2LjcwNyA3LjQ3IDE2LjcwNyAxNi42NTJ6bTE5Ni45MDQtODQuMTc0YzAgOC4zMDEtNi43NSAxNS4wNTUtMTUuMDQ4IDE1LjA1NWgtMzk3LjEyOGMtOC4yOTYgMC0xNS4wNDYtNi43NTQtMTUuMDQ2LTE1LjA1NXYtMzA2LjY0M2g0MjcuMjIzdjMwNi42NDN6bTIyLjM4OS0zMjYuNjQzaC00NzJ2LTMzLjA3MWg0NzJ6Ii8+PHBhdGggZD0ibTMyNS4yNTUgMTgzLjQ2OGgxMDIuMTI4YzUuNTIyIDAgMTAtNC40NzcgMTAtMTBzLTQuNDc4LTEwLTEwLTEwaC0xMDIuMTI4Yy01LjUyMiAwLTEwIDQuNDc3LTEwIDEwczQuNDc3IDEwIDEwIDEweiIvPjxwYXRoIGQ9Im0zMjUuMjU1IDIyNS4yMTNoMTAyLjEyOGM1LjUyMiAwIDEwLTQuNDc3IDEwLTEwcy00LjQ3OC0xMC0xMC0xMGgtMTAyLjEyOGMtNS41MjIgMC0xMCA0LjQ3Ny0xMCAxMHM0LjQ3NyAxMCAxMCAxMHoiLz48cGF0aCBkPSJtMjg1LjEyOCAyOTkuMjU1YzAgNS41MjMgNC40NzggMTAgMTAgMTBoMTMyLjI1NWM1LjUyMiAwIDEwLTQuNDc3IDEwLTEwcy00LjQ3OC0xMC0xMC0xMGgtMTMyLjI1NWMtNS41MjMgMC0xMCA0LjQ3Ny0xMCAxMHoiLz48L2c+PC9zdmc+" />
               <span class="hide-menu">Dashboard</span>
             </a>
           </li>
+          <!--
           <li class="sidebar-item">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                aria-expanded="false">
               <i class="fa fa-user" aria-hidden="true"></i>
-              <span class="hide-menu">Profile</span>
+              <span class="hide-menu">Mon alimentation</span>
+            </a>
+          </li>
+-->
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/historiqueWeight"
+               aria-expanded="false">
+              <img id="imgWeight" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00NjcgMGgtNDIyYy0yNC44MTI1IDAtNDUgMjAuMTg3NS00NSA0NXY0MjJjMCAyNC44MTI1IDIwLjE4NzUgNDUgNDUgNDVoNDIyYzI0LjgxMjUgMCA0NS0yMC4xODc1IDQ1LTQ1di00MjJjMC0yNC44MTI1LTIwLjE4NzUtNDUtNDUtNDV6bTE1IDQ2N2MwIDguMjY5NTMxLTYuNzMwNDY5IDE1LTE1IDE1aC00MjJjLTguMjY5NTMxIDAtMTUtNi43MzA0NjktMTUtMTV2LTQyMmMwLTguMjY5NTMxIDYuNzMwNDY5LTE1IDE1LTE1aDQyMmM4LjI2OTUzMSAwIDE1IDYuNzMwNDY5IDE1IDE1em0wIDAiLz48cGF0aCBkPSJtNDI5IDExOS42NTIzNDRjLTUwLjI4OTA2Mi0zNy43MTQ4NDQtMTEwLjExMzI4MS01Ny42NTIzNDQtMTczLTU3LjY1MjM0NHMtMTIyLjcxMDkzOCAxOS45Mzc1LTE3MyA1Ny42NTIzNDRjLTMuMTgzNTk0IDIuMzkwNjI1LTUuMjg5MDYyIDUuOTQ1MzEyLTUuODUxNTYyIDkuODg2NzE4LS41NTg1OTQgMy45NDE0MDcuNDY4NzUgNy45NDUzMTMgMi44NTkzNzQgMTEuMTI4OTA3bDc5LjE4MzU5NCAxMDUuMzQzNzVjMi45NDkyMTkgMy45MjE4NzUgNy40NDkyMTkgNS45ODgyODEgMTIuMDAzOTA2IDUuOTg4MjgxIDMuMTI4OTA3IDAgNi4yODkwNjMtLjk3NjU2MiA4Ljk4ODI4Mi0zIDIyLjAzOTA2Mi0xNi41MjczNDQgNDguMjUzOTA2LTI1LjI2NTYyNSA3NS44MTY0MDYtMjUuMjY1NjI1IDI3LjU1ODU5NCAwIDUzLjc3NzM0NCA4LjczODI4MSA3NS44MTY0MDYgMjUuMjY1NjI1IDYuNjIxMDk0IDQuOTY4NzUgMTYuMDE1NjI1IDMuNjI4OTA2IDIwLjk4ODI4Mi0yLjk4ODI4MWw3OS4xODM1OTMtMTA1LjM0Mzc1YzIuMzk0NTMxLTMuMTgzNTk0IDMuNDIxODc1LTcuMTg3NSAyLjg1OTM3NS0xMS4xMjg5MDctLjU1ODU5NC0zLjkzNzUtMi42NjQwNjItNy40OTYwOTMtNS44NDc2NTYtOS44ODY3MTh6bS05MS41OTM3NSA5Ni45MTc5NjhjLTIwLjIzNDM3NS0xMi4zODI4MTItNDIuNzgxMjUtMTkuODgyODEyLTY2LjQwNjI1LTIyLjExNzE4N3YtNDUuNzE4NzVjMC04LjI4NTE1Ni02LjcxNDg0NC0xNS0xNS0xNXMtMTUgNi43MTQ4NDQtMTUgMTV2NDUuNzE4NzVjLTIzLjYyNSAyLjIzNDM3NS00Ni4xNzE4NzUgOS43MzQzNzUtNjYuNDA2MjUgMjIuMTE3MTg3bC02MS4zMjQyMTktODEuNTg1OTM3YzQyLjM3ODkwNy0yOC4xNjc5NjkgOTEuNDE3OTY5LTQyLjk4NDM3NSAxNDIuNzMwNDY5LTQyLjk4NDM3NXMxMDAuMzUxNTYyIDE0LjgxNjQwNiAxNDIuNzMwNDY5IDQyLjk4NDM3NXptMCAwIi8+PC9zdmc+" />
+              <span class="hide-menu">Mon poids</span>
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/historiqueWater"
                aria-expanded="false">
-              <i class="fa fa-table" aria-hidden="true"></i>
-              <span class="hide-menu">Basic Table</span>
+              <img id="imgWeight" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0zNjcuODU5LDMzOS42NjNjMC0xMS4zOTEtNS4zMjUtMjEuNTQtMTMuNjgtMjguMDU1YzguMzU0LTYuNTE1LDEzLjc3NC0xNi42NjQsMTMuNzc0LTI4LjA1NQ0KCQkJYzAtMTEuOTkzLTYuMjA3LTIyLjYxMS0xNS4zMjgtMjkuMDU4YzkuMTgzLTcuMjU0LDE0Ljg1OC0xOC40NzYsMTQuODU4LTMxLjA2VjE0OC43NGwtNzEuOTA5LTkzLjYzMmgxNS44VjBIMjAwLjE1NnY1NS4xMDgNCgkJCWgxNi44MDFsLTcyLjkxLDkzLjYzMnY3NC42OTdjMCwxMi41ODQsNi4xNjEsMjMuODA1LDE1LjM0NCwzMS4wNmMtOS4xMjEsNi40NDctMTQuOTY4LDE3LjA2NC0xNC45NjgsMjkuMDU4DQoJCQljMCwxMS4zOTEsNS40NTEsMjEuNTQsMTMuODA1LDI4LjA1NWMtOC4zNTQsNi41MTUtMTMuNzExLDE2LjY2NC0xMy43MTEsMjguMDU1YzAsMTEuOTkzLDUuNzM3LDIyLjYxMSwxNC44NTgsMjkuMDU4DQoJCQljLTkuMTgzLDcuMjU0LTE1LjMyOCwxOC40NzYtMTUuMzI4LDMxLjA2djY0LjEyNWMwLDIxLjgyMywxOC4yNTYsNDAuMDc4LDQwLjA3OCw0MC4wNzhoNDAuMDc4di0wLjY1OQ0KCQkJYzYuNjcxLDUuMTIsMTUuMDA3LDguNjc1LDI0LjA0Nyw4LjY3NWgxNi4wMzFjOS4wNCwwLDE3LjM3Ni0zLjU1NCwyNC4wNDctOC42NzV2MC42NTloNDAuMDc4DQoJCQljMjEuODIzLDAsMzkuMDc2LTE4LjI1NiwzOS4wNzYtNDAuMDc4di02NC4xMjVjMC0xMi41ODQtNS42Ni0yMy44MDUtMTQuODQzLTMxLjA2DQoJCQlDMzYxLjc2MSwzNjIuMjc1LDM2Ny44NTksMzUxLjY1NywzNjcuODU5LDMzOS42NjN6IE0yMTUuMTg2LDQwLjA3OFYxNS4wMjloODEuMTU5djI1LjA0OUgyMTUuMTg2eiBNMjM1LjkxOSw1NS4xMDhoNDAuNjkyDQoJCQlsNjguNTk2LDg5LjE3NEgxNjcuMzIzTDIzNS45MTksNTUuMTA4eiBNMzMyLjQxNSwzMTkuNjI0YzExLjMyNiwwLDIwLjU0LDkuMjE0LDIwLjU0LDIwLjU0cy05LjIxNCwyMC41NC0yMC41NCwyMC41NGgtMjAuMDM5DQoJCQl2MTUuMDI5aDE2LjAzMWMxMy41MzYsMCwyNC4wNDcsMTAuNTExLDI0LjA0NywyNC4wNDd2NjQuMTI1YzAsMTMuNTM2LTEwLjUxLDI1LjA0OS0yNC4wNDcsMjUuMDQ5aC0yOC4xOA0KCQkJYzIuMzI1LTYuMDEyLDMuNjMyLTExLjEzNCwzLjYzMi0xNy4wMzNIMjg4LjgzYzAsMTMuNTM2LTExLjAxMiwyNS4wNDktMjQuNTQ4LDI1LjA0OUgyNDguMjUNCgkJCWMtMTMuNTM1LDAtMjQuNTQ4LTExLjUxMi0yNC41NDgtMjUuMDQ5aC0xNS4wMjljMCw1LjksMS4zMDcsMTEuMDIyLDMuNjMyLDE3LjAzM2gtMjguMThjLTEzLjUzNSwwLTI1LjA0OS0xMS41MTItMjUuMDQ5LTI1LjA0OQ0KCQkJdi02NC4xMjVjMC0xMy41MzYsMTEuNTEzLTI0LjA0NywyNS4wNDktMjQuMDQ3aDgwLjE1N3YtMTUuMDI5aC04NC4xNjRjLTExLjMyNiwwLTIwLjU0LTkuMjE0LTIwLjU0LTIwLjU0DQoJCQlzOS4yMTQtMjAuNTQsMjAuNTQtMjAuNTRoODQuMTY0di0xNS4wMjloLTg0LjE2NGMtMTEuMzI2LDAtMjAuNTQtOS4yMTQtMjAuNTQtMjAuNTRzOS4yMTQtMjAuNTQsMjAuNTQtMjAuNTRoODQuMTY0di0xNS4wMjkNCgkJCWgtODAuMTU3Yy0xMy41MzUsMC0yNS4wNDktMTEuNTEyLTI1LjA0OS0yNS4wNDl2LTY0LjEyNWgxOTMuMzc4djY0LjEyNWMwLDEzLjUzNi0xMC41MSwyNS4wNDktMjQuMDQ3LDI1LjA0OWgtMTYuMDMxdjE1LjAyOQ0KCQkJaDIwLjAzOWMxMS4zMjYsMCwyMC41NCw5LjIxNCwyMC41NCwyMC41NHMtOS4yMTQsMjAuNTQtMjAuNTQsMjAuNTRoLTIwLjAzOXYxNS4wMjlIMzMyLjQxNXoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCgk8Zz4NCgkJPHJlY3QgeD0iMjAwLjE2IiB5PSIxMTIuMjE5IiB3aWR0aD0iMTYuMDMxIiBoZWlnaHQ9IjE1LjAyOSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnPg0KCQk8cmVjdCB4PSIyMTYuMTkyIiB5PSI5Ni4xODgiIHdpZHRoPSIxNi4wMzEiIGhlaWdodD0iMTUuMDI5Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQoJPGc+DQoJCTxyZWN0IHg9IjI4MC4zMTciIHk9IjMwNC41OTUiIHdpZHRoPSIxNi4wMzEiIGhlaWdodD0iMTUuMDI5Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQoJPGc+DQoJCTxyZWN0IHg9IjI4MC4zMTciIHk9IjI0OC40ODUiIHdpZHRoPSIxNi4wMzEiIGhlaWdodD0iMTUuMDI5Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQoJPGc+DQoJCTxyZWN0IHg9IjI4MC4zMTciIHk9IjM2MC43MDQiIHdpZHRoPSIxNi4wMzEiIGhlaWdodD0iMTUuMDI5Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" />
+              <span class="hide-menu">Mon apport en eau</span>
             </a>
           </li>
+          <li class="sidebar-item" *ngIf="isAdmin()">
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/calculCalorique"
+               aria-expanded="false">
+              <i class="fa fa-calculator" aria-hidden="true"></i>
+              <span class="hide-menu">Calcul calorique</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
 
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/sleeps"
+               aria-expanded="false">
+              <i class="fa fa-table" aria-hidden="true"></i>
+              <span class="hide-menu">Mon sommeil</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/programmesportifsliste"
+               aria-expanded="false">
+              <img id="imgWeight" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjUwMC4wNDNweCIgaGVpZ2h0PSI1MDAuMDQzcHgiIHZpZXdCb3g9IjAgMCA1MDAuMDQzIDUwMC4wNDMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUwMC4wNDMgNTAwLjA0MzsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik00OTEuNDQ1LDIwNi44NTdjLTQuNzUyLDAtOC42MDUsNC44NTctOC42MDUsMTAuODM0YzAsMTYuNTgyLDAsNDguMSwwLDY0LjY3MmMwLDUuOTc3LDMuODU0LDEwLjgyNCw4LjYxNSwxMC44MjQNCgkJCWM0Ljc1MiwwLDguNTg4LTQuODQ4LDguNTg4LTEwLjgyNGMwLTE2LjU2MiwwLTQ4LjA4MSwwLTY0LjY4MkM1MDAuMDQzLDIxMS43MTQsNDk2LjE5NywyMDYuODU3LDQ5MS40NDUsMjA2Ljg1N3oiLz4NCgkJPHBhdGggZD0iTTguNjE2LDIwNi44NTdjLTQuNzUyLDAtOC42MTYsNC44NTctOC42MTYsMTAuODM0YzAsMTYuNjAxLDAsNDguMDcxLDAuMDEsNjQuNjUzYzAsNS45NzcsMy44NTQsMTAuODI0LDguNjA2LDEwLjg0NA0KCQkJYzQuNzUzLDAsOC41OTctNC44NDgsOC41OTctMTAuODI0YzAtMTYuNTcyLDAtNDguMDgxLDAuMDEtNjQuNjgyQzE3LjIyMiwyMTEuNzE0LDEzLjM2OSwyMDYuODU3LDguNjE2LDIwNi44NTd6Ii8+DQoJCTxwYXRoIGQ9Ik0xMTQuNTY4LDEwOC44MTJjLTE1Ljg1NCwwLTI4LjcxNiwxNC41NDQtMjguNzE2LDMyLjQ3NGMwLDU0LjM1NCwwLjAxLDE2My4xMzcsMC4wMiwyMTcuNDcxDQoJCQljMCwxNy45MywxMi44NDIsMzIuNDczLDI4LjY5NywzMi40NzNzMjguNzE2LTE0LjU1MywyOC43MTYtMzIuNDczYzAtMjEuMzE2LDAtNTEuMDQ1LDAtODIuNTQ1YzE2LjU1MywwLDE2NC43MTMsMCwyMDguODc0LDANCgkJCWMwLDMxLjUxLDAsNjEuMjI5LDAsODIuNTU1YzAsMTcuOTIsMTIuODYxLDMyLjQ2MywyOC43MTcsMzIuNDYzYzE1Ljg1NCwwLDI4LjY5Ny0xNC41NTMsMjguNjk3LTMyLjQ3Mw0KCQkJYzAtNTQuMzU0LDAtMTYzLjEzNywwLTIxNy40NzFjMC0xNy45MzktMTIuODQ0LTMyLjQ3NC0yOC42OTctMzIuNDc0Yy0xNS44NTUsMC0yOC43MTcsMTQuNTI1LTI4LjcxNywzMi40NzQNCgkJCWMwLDIxLjMxNSwwLDUxLjAzNSwwLDgyLjU0M2MtNDQuMTc4LDAtMTkyLjMyMSwwLTIwOC44NzQsMGMwLTMxLjUwOCwwLTYxLjIyOSwwLTgyLjU1Mw0KCQkJQzE0My4yODUsMTIzLjMzOCwxMzAuNDMzLDEwOC44MTIsMTE0LjU2OCwxMDguODEyeiIvPg0KCQk8cGF0aCBkPSJNNDQ3LjYwMiwxNTIuMTg4Yy0wLjkzOCwwLTEuODY1LDAtMi44MTEsMGMtMTEuOTQ1LDAtMjEuNjQxLDkuNjY4LTIxLjY0MSwyMS42M2MwLDM3LjY0NywwLDExNC43NiwwLDE1Mi40MDYNCgkJCWMwLDExLjk1Myw5LjY5NSwyMS42NSwyMS42NDgsMjEuNjVjMC45MzgsMCwxLjg4NSwwLDIuODEyLDBjMTEuOTUzLDAsMjEuNjQ4LTkuNjY4LDIxLjY0OC0yMS42MzENCgkJCWMwLTM3LjYzNywwLTExNC43NTktMC4wMDgtMTUyLjQwN0M0NjkuMjYsMTYxLjg3NSw0NTkuNTU1LDE1Mi4xODgsNDQ3LjYwMiwxNTIuMTg4eiIvPg0KCQk8cGF0aCBkPSJNNTIuMTE2LDE1Mi4xODhjLTAuOTM3LDAtMS44ODQsMC0yLjgyMSwwYy0xMS45NTMsMC0yMS42NCw5LjY2OC0yMS42NCwyMS42M2MwLDM3LjY0NywwLDExNC43NiwwLDE1Mi40MDYNCgkJCWMwLDExLjk2Myw5LjY4NywyMS42NSwyMS42NCwyMS42NWMwLjkzNywwLDEuODg0LDAsMi44MTEsMGMxMS45NTMsMCwyMS42NC05LjY2OCwyMS42NC0yMS42MzFjMC0zNy42MzcsMC0xMTQuNzU5LDAtMTUyLjQwNw0KCQkJQzczLjc1NiwxNjEuODc1LDY0LjA2OSwxNTIuMTg4LDUyLjExNiwxNTIuMTg4eiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" />
+              <span class="hide-menu">Mes programmes de sport</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/nutrition"
+               aria-expanded="false">
+              <i class="fa fa-utensils" aria-hidden="true"></i>
+              <span class="hide-menu">Aide à la nutrition</span>
+            </a>
+          </li>
+          <li class="sidebar-item" *ngIf="isAdmin()">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/feedbacksadmin"
+               aria-expanded="false">
+              <img id="imgWeight" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDMyNC44NzYgMzI0Ljg3NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzI0Ljg3NiAzMjQuODc2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8cGF0aCBkPSJNNTYuOTM4LDE4Mi40MzhWNzguMjIyYzAtNS4yMTIsNC45MDYtOS43ODQsMTAuNDk5LTkuNzg0aDE1NC41MDF2MTYuODgzYzAsNi4xMzIsMy43NjgsMTAuNDE2LDkuMTYxLDEwLjQxNg0KCQljMi4wNjYsMCw0LjE1Ny0wLjY0OSw2LjIxMi0xLjkzbDU5LjMxNC0zNi45MzZjMy41MDctMi4xODUsNS41Mi01LjQ3MSw1LjUyLTkuMDE2YzAtMy41MzctMi4wMDMtNi44MTMtNS40OTctOC45OUwyMzcuMzEyLDEuOTMNCgkJQzIzNS4yNTYsMC42NDksMjMzLjE2NiwwLDIzMS4xLDBjLTUuMzk1LDAtOS4xNjIsNC4yODMtOS4xNjIsMTAuNDE1djE4LjAyM0g2Ny40MzdjLTI3Ljg0NSwwLTUwLjQ5OSwyMi4zMzMtNTAuNDk5LDQ5Ljc4NHYxMDQuMjE2DQoJCWMwLDExLjA0Niw4Ljk1NCwyMCwyMCwyMFM1Ni45MzgsMTkzLjQ4NCw1Ni45MzgsMTgyLjQzOHoiLz4NCgk8cGF0aCBkPSJNMjg3LjkzOCwxMjIuNDM4Yy0xMS4wNDYsMC0yMCw4Ljk1NC0yMCwyMHYxMDQuMjE2YzAsNS4zMDQtNC42OTMsOS43ODQtMTAuMjQ4LDkuNzg0SDEwMi45Mzh2LTE2Ljg4Mw0KCQljMC03LjE1Ni00LjY5OS0xMC40MTYtOS4wNjQtMTAuNDE2Yy0yLjA0OCwwLTQuMTI5LDAuNjUtNi4xODUsMS45MzFsLTU5LjI4MywzNi45MzZjLTMuNDk4LDIuMTc4LTUuNTAzLDUuNDU4LTUuNTAzLDguOTk3DQoJCWMwLDMuNTQyLDIuMDA5LDYuODI2LDUuNTExLDkuMDA4bDU5LjI3NSwzNi45MzZjMi4wNTYsMS4yODEsNC4xMzYsMS45Myw2LjE4NCwxLjkzYzQuMzY2LDAsOS4wNjQtMy4yNTksOS4wNjQtMTAuNDE1di0xOC4wMjMNCgkJSDI1Ny42OWMyNy43MDcsMCw1MC4yNDgtMjIuMzMzLDUwLjI0OC00OS43ODRWMTQyLjQzOEMzMDcuOTM4LDEzMS4zOTIsMjk4Ljk4NCwxMjIuNDM4LDI4Ny45MzgsMTIyLjQzOHoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" />
+              <span class="hide-menu">Feedbacks</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" (click)="deconnexion()"
+               aria-expanded="false">
+              <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+              <span class="hide-menu">Se déconnecter</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- End Sidebar navigation -->

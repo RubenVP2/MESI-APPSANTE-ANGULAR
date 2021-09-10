@@ -1,0 +1,101 @@
+<input id="usernameSession" type="hidden" value="{{username}}">
+<!-- ============================================================== -->
+<!-- Main wrapper -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+
+
+    <div  class="row align-items-center" id="topHTML">
+      <div class="col-8">
+        <h3 id="titreHTML">   Historique de ma consommation d'eau </h3>
+      </div>
+      <div class="col-4">
+        <button id="buttonAjout" type="button" routerLink="/addWeight" class="btn btn-secondary">Ajouter</button>
+      </div>
+    </div>
+
+    <form [formGroup]="filterHistoriqueWeight" (ngSubmit)="onSubmitForm()">
+      <span class="badge badge-pill badge-primary" id="labelDateDebut">Date Début</span>
+      <input type="date" id="calendarStartFilter" formControlName="calendarStartFilter"
+             min="2018-01-01" max="{{dateValueMax.value}}" #dateValueMin>
+      <span class="badge badge-pill badge-primary ml-4" id="labelDateFin">Date Fin</span>
+      <input type="date" id="calendarEndFilter" formControlName="calendarEndFilter"
+             min="{{dateValueMin.value}}" max="2023-12-31" #dateValueMax>
+      <button type="button" id="filterButton" class="btn btn-primary mr-4 ml-4" type="submit" [disabled]="filterHistoriqueWeight.invalid">Filtrer</button>
+      <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+    </form>
+
+    <body>
+      <div id="divBody">
+        <!--Création de la div  qui permet de vérifier si aucun résultat n'est trouvé-->
+        <div *ngIf="wellBeings.length===0" id="resultEmpty">
+          <p> <strong>Aucun Résultat trouvé</strong></p>
+        </div>
+        <div class="row">
+          <div *ngIf="wellBeings.length>0">
+            <div class="col-md" id="tableHistorique">
+              <ul class="list-group">
+                <li *ngFor="let wellBeing of wellBeings" class="list-group-item list-group-item-secondary">
+                  <div id="ligneHistoriqueWeight">
+                    <h3> Date : {{wellBeing.date  | date: 'd/M/yy'}}</h3>
+                    <div *ngIf="wellBeing.weight==null">
+                      <p>Pour cette date vous n'avez renseigné aucune donnée ! <img id ="imgLegende" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00NjcgMGgtNDIyYy0yNC44MTI1IDAtNDUgMjAuMTg3NS00NSA0NXY0MjJjMCAyNC44MTI1IDIwLjE4NzUgNDUgNDUgNDVoNDIyYzI0LjgxMjUgMCA0NS0yMC4xODc1IDQ1LTQ1di00MjJjMC0yNC44MTI1LTIwLjE4NzUtNDUtNDUtNDV6bTE1IDQ2N2MwIDguMjY5NTMxLTYuNzMwNDY5IDE1LTE1IDE1aC00MjJjLTguMjY5NTMxIDAtMTUtNi43MzA0NjktMTUtMTV2LTQyMmMwLTguMjY5NTMxIDYuNzMwNDY5LTE1IDE1LTE1aDQyMmM4LjI2OTUzMSAwIDE1IDYuNzMwNDY5IDE1IDE1em0wIDAiLz48cGF0aCBkPSJtNDI5IDExOS42NTIzNDRjLTUwLjI4OTA2Mi0zNy43MTQ4NDQtMTEwLjExMzI4MS01Ny42NTIzNDQtMTczLTU3LjY1MjM0NHMtMTIyLjcxMDkzOCAxOS45Mzc1LTE3MyA1Ny42NTIzNDRjLTMuMTgzNTk0IDIuMzkwNjI1LTUuMjg5MDYyIDUuOTQ1MzEyLTUuODUxNTYyIDkuODg2NzE4LS41NTg1OTQgMy45NDE0MDcuNDY4NzUgNy45NDUzMTMgMi44NTkzNzQgMTEuMTI4OTA3bDc5LjE4MzU5NCAxMDUuMzQzNzVjMi45NDkyMTkgMy45MjE4NzUgNy40NDkyMTkgNS45ODgyODEgMTIuMDAzOTA2IDUuOTg4MjgxIDMuMTI4OTA3IDAgNi4yODkwNjMtLjk3NjU2MiA4Ljk4ODI4Mi0zIDIyLjAzOTA2Mi0xNi41MjczNDQgNDguMjUzOTA2LTI1LjI2NTYyNSA3NS44MTY0MDYtMjUuMjY1NjI1IDI3LjU1ODU5NCAwIDUzLjc3NzM0NCA4LjczODI4MSA3NS44MTY0MDYgMjUuMjY1NjI1IDYuNjIxMDk0IDQuOTY4NzUgMTYuMDE1NjI1IDMuNjI4OTA2IDIwLjk4ODI4Mi0yLjk4ODI4MWw3OS4xODM1OTMtMTA1LjM0Mzc1YzIuMzk0NTMxLTMuMTgzNTk0IDMuNDIxODc1LTcuMTg3NSAyLjg1OTM3NS0xMS4xMjg5MDctLjU1ODU5NC0zLjkzNzUtMi42NjQwNjItNy40OTYwOTMtNS44NDc2NTYtOS44ODY3MTh6bS05MS41OTM3NSA5Ni45MTc5NjhjLTIwLjIzNDM3NS0xMi4zODI4MTItNDIuNzgxMjUtMTkuODgyODEyLTY2LjQwNjI1LTIyLjExNzE4N3YtNDUuNzE4NzVjMC04LjI4NTE1Ni02LjcxNDg0NC0xNS0xNS0xNXMtMTUgNi43MTQ4NDQtMTUgMTV2NDUuNzE4NzVjLTIzLjYyNSAyLjIzNDM3NS00Ni4xNzE4NzUgOS43MzQzNzUtNjYuNDA2MjUgMjIuMTE3MTg3bC02MS4zMjQyMTktODEuNTg1OTM3YzQyLjM3ODkwNy0yOC4xNjc5NjkgOTEuNDE3OTY5LTQyLjk4NDM3NSAxNDIuNzMwNDY5LTQyLjk4NDM3NXMxMDAuMzUxNTYyIDE0LjgxNjQwNiAxNDIuNzMwNDY5IDQyLjk4NDM3NXptMCAwIi8+PC9zdmc+" /></p>
+                      <div class="float-left" >
+                        <p>Utilisez le button d'ajout pour suivre vos données pour ce jour</p>
+                        <button id="buttonAjout" type="button" routerLink="/addWeight" class="btn btn-secondary">Ajouter</button>
+                      </div>
+                    </div>
+                    <div *ngIf="wellBeing.weight!=null">
+                      <p>Mon poids est de: <strong>{{wellBeing.weight}}kg</strong><img id ="imgLegende" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00NjcgMGgtNDIyYy0yNC44MTI1IDAtNDUgMjAuMTg3NS00NSA0NXY0MjJjMCAyNC44MTI1IDIwLjE4NzUgNDUgNDUgNDVoNDIyYzI0LjgxMjUgMCA0NS0yMC4xODc1IDQ1LTQ1di00MjJjMC0yNC44MTI1LTIwLjE4NzUtNDUtNDUtNDV6bTE1IDQ2N2MwIDguMjY5NTMxLTYuNzMwNDY5IDE1LTE1IDE1aC00MjJjLTguMjY5NTMxIDAtMTUtNi43MzA0NjktMTUtMTV2LTQyMmMwLTguMjY5NTMxIDYuNzMwNDY5LTE1IDE1LTE1aDQyMmM4LjI2OTUzMSAwIDE1IDYuNzMwNDY5IDE1IDE1em0wIDAiLz48cGF0aCBkPSJtNDI5IDExOS42NTIzNDRjLTUwLjI4OTA2Mi0zNy43MTQ4NDQtMTEwLjExMzI4MS01Ny42NTIzNDQtMTczLTU3LjY1MjM0NHMtMTIyLjcxMDkzOCAxOS45Mzc1LTE3MyA1Ny42NTIzNDRjLTMuMTgzNTk0IDIuMzkwNjI1LTUuMjg5MDYyIDUuOTQ1MzEyLTUuODUxNTYyIDkuODg2NzE4LS41NTg1OTQgMy45NDE0MDcuNDY4NzUgNy45NDUzMTMgMi44NTkzNzQgMTEuMTI4OTA3bDc5LjE4MzU5NCAxMDUuMzQzNzVjMi45NDkyMTkgMy45MjE4NzUgNy40NDkyMTkgNS45ODgyODEgMTIuMDAzOTA2IDUuOTg4MjgxIDMuMTI4OTA3IDAgNi4yODkwNjMtLjk3NjU2MiA4Ljk4ODI4Mi0zIDIyLjAzOTA2Mi0xNi41MjczNDQgNDguMjUzOTA2LTI1LjI2NTYyNSA3NS44MTY0MDYtMjUuMjY1NjI1IDI3LjU1ODU5NCAwIDUzLjc3NzM0NCA4LjczODI4MSA3NS44MTY0MDYgMjUuMjY1NjI1IDYuNjIxMDk0IDQuOTY4NzUgMTYuMDE1NjI1IDMuNjI4OTA2IDIwLjk4ODI4Mi0yLjk4ODI4MWw3OS4xODM1OTMtMTA1LjM0Mzc1YzIuMzk0NTMxLTMuMTgzNTk0IDMuNDIxODc1LTcuMTg3NSAyLjg1OTM3NS0xMS4xMjg5MDctLjU1ODU5NC0zLjkzNzUtMi42NjQwNjItNy40OTYwOTMtNS44NDc2NTYtOS44ODY3MTh6bS05MS41OTM3NSA5Ni45MTc5NjhjLTIwLjIzNDM3NS0xMi4zODI4MTItNDIuNzgxMjUtMTkuODgyODEyLTY2LjQwNjI1LTIyLjExNzE4N3YtNDUuNzE4NzVjMC04LjI4NTE1Ni02LjcxNDg0NC0xNS0xNS0xNXMtMTUgNi43MTQ4NDQtMTUgMTV2NDUuNzE4NzVjLTIzLjYyNSAyLjIzNDM3NS00Ni4xNzE4NzUgOS43MzQzNzUtNjYuNDA2MjUgMjIuMTE3MTg3bC02MS4zMjQyMTktODEuNTg1OTM3YzQyLjM3ODkwNy0yOC4xNjc5NjkgOTEuNDE3OTY5LTQyLjk4NDM3NSAxNDIuNzMwNDY5LTQyLjk4NDM3NXMxMDAuMzUxNTYyIDE0LjgxNjQwNiAxNDIuNzMwNDY5IDQyLjk4NDM3NXptMCAwIi8+PC9zdmc+" /></p>
+                      <div class="float-right" >
+                        <div *ngIf="wellBeing.weight!=null">
+                          <div class="panel-body">
+                            <button type="button" id="buttonModification" class="btn btn-secondary" routerLink="modification/{{wellBeing.id_well_being}}">Modifier</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item" [class.disabled]="offset == 0 ? 'disabled' : ''">
+                    <a class="page-link" (click)="pagePrevious()" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item" [class.disabled]="page === totalPage ? 'disabled' : ''">
+                    <a class="page-link" (click)="pageNext()" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            </div>
+            <div id="part2">
+              <div class="col-lg col-md">
+                <div class="white-box">
+                  <h3 class="box-title">10 dernières prises de poids</h3>
+                  <div id="ct-poids" style="height: 405px;">
+                    <div class="chartist-tooltip"><span
+                      class="chartist-tooltip-value">100</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+  </div>
+</div>
+

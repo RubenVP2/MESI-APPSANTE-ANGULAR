@@ -1,0 +1,26 @@
+<!-- ============================================================== -->
+<!-- Main wrapper -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb -->
+    <!-- ============================================================== -->
+      <div class="col-sm-8 col-sm-offset-2">
+        <!-- [formGroup]="userForm" permet de lier le formulaire a l'object créé dans le .ts / ngSubmit permet de lancer une méthode quand le bouton submit sera cliqué-->
+        <form *ngIf="waterModifForm" [formGroup]="waterModifForm" (ngSubmit)="onSubmitForm()">
+          <div class="form-group">
+            <label for="userWater">Quantité d'eau au bu le {{this.wellBeing?.date  | date: 'd/M/yy'}} {{this.resultatNecesary}}</label>
+            <input type="number" class="form-control" id="userWater" formControlName="userWater" placeholder="ancienne valeur : {{this.wellBeing?.water}} Litre(s)">
+          </div>
+          <!-- le [disabled] permet ici de rendre le bouton non cliquable tant que formulaire ne correspond pas a la demande faite dans la méthode initForms() dans le .ts-->
+          <button class="btn btn-primary" type="submit" [disabled]="waterModifForm.invalid">Modifier</button>
+          <button class="btn btn-primary" type="submit" routerLink="/historiqueWater" >Retour</button>
+        </form>
+      </div>
+  </div>
+</div>

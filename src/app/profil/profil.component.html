@@ -1,0 +1,42 @@
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div class="page-wrapper">
+    <div class="container">
+      <!-- Circle avatar -->
+      <div class="row justify-content-center">
+        <div class="circle mt-4 mb-4">
+          <span class="initials">
+              <img src="https://therichpost.com/wp-content/uploads/2021/03/avatar2.png" alt="user-img" width="250"
+                   class="img-circle">
+          </span>
+        </div>
+      </div>
+      <!-- Form -->
+      <div class="row justify-content-center">
+        <form *ngIf="profilForm" [formGroup]="profilForm" class="form" method="POST" (ngSubmit)="onSubmitForm()">
+          <!-- Username input -->
+          <div class="form-group">
+            <label for="username">Pseudonyme</label>
+            <input type="text" class="form-control" formControlName="username" id="username" >
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-link" (click)="changePassword = !changePassword">Changer mon mot de passe</button>
+          </div>
+          <div class="form-group" *ngIf="changePassword">
+            <label for="username">Nouveau mot de passe</label>
+            <input type="password" class="form-control" formControlName="password" id="password" minlength="6">
+            <small></small>
+          </div>
+          <div class="form-group" *ngIf="changePassword">
+            <label for="username">Confirmer le mot de passe</label>
+            <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" minlength="6">
+            <small></small>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="profilForm.invalid">Modifier</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

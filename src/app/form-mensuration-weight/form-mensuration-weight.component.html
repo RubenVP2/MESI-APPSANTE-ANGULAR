@@ -1,0 +1,25 @@
+<!-- ============================================================== -->
+<!-- Main wrapper -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb -->
+    <!-- ============================================================== -->
+    <span class="badge badge-primary">Vous allez rentrer votre poids pour un jour donnée</span>
+    <form *ngIf="mensurationForm" [formGroup]="mensurationForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="weight">Votre poids du jour</label>
+        <input type="number" class="form-control" id="weight" formControlName="weight" placeholder="Par exemple : 73kg">
+        <label for="date">Date de votre enregistrement : </label>
+        <input type="date" class="form-control" id="date" max="{{today}}" formControlName="date">
+      </div>
+      <!-- le [disabled] permet ici de rendre le bouton non cliquable tant que formulaire ne correspond pas a la demande faite dans la méthode initForms() dans le .ts-->
+      <button class="btn btn-primary" type="submit" [disabled]="mensurationForm.invalid">Ajouter</button>
+    </form>
+  </div>
+</div>

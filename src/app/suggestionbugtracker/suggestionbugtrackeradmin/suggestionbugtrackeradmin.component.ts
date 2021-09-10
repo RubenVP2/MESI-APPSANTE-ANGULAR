@@ -23,7 +23,6 @@ export class SuggestionbugtrackeradminComponent implements OnInit {
     this.feedbackService.feedbackSubject.subscribe(
       (response: any[]) => {
         this.feedbacks = response;
-        //console.log(this.feedbacks);
       }
     );
     this.feedbackService.emitFeedbackSubject();

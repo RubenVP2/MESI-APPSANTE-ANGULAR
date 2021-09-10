@@ -35,7 +35,7 @@ export class CreateexerciceComponent implements OnInit {
     //public radioValue: string = this.oneFeedback[0].etat;
     this.exerciceForm = this.formBuilder.group({
       nomExercice: ['', Validators.required],
-      nomMuscle: ['', Validators.required],
+      muscle: ['--Choisissez un muscle--', Validators.required],
       nbReps: ['', Validators.required],
       nbSeries: ['', Validators.required],
       restExercice: ['', Validators.required],
@@ -43,12 +43,10 @@ export class CreateexerciceComponent implements OnInit {
     });
   }
 
-  onSubmitForm(form : NgForm) {
-    console.log('onSubmitForm');
-    const formValue = form.value;
+  onSubmitForm() {
+    const formValue = this.exerciceForm.value;
     this.username = sessionStorage.getItem("user");
-    console.log(form.value);
-    this.programmessportifsService.createExercice(this.id[2], formValue['nomExercice'], formValue['nomMuscle'],
+    this.programmessportifsService.createExercice(this.id[2], formValue['nomExercice'], formValue['muscle'],
       formValue['nbReps'], formValue['nbSeries'], formValue['restExercice'], formValue['restSeries']);
   }
 

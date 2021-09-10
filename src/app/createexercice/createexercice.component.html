@@ -1,53 +1,64 @@
-<app-navbar></app-navbar>
-<div class="container">
-  <div class="row">
-    <a (click)="this.getBack()" class="col-2 mt-5 ml-1">Retour</a>
-  </div>
-  <div class="row mt-5">
-    <form class="col-12" #myform = "ngForm" (ngSubmit) = "onSubmitForm(myform)">
-      <div class="form-group row col-sm-5">
-        <label for="nomExercice">Nom de l'exercice :</label>
-        <input type="text" class="form-control" name="nomExercice" id="nomExercice" ngModel>
-      </div>
-      <div class="form-group row col-sm-5">
-        <!-- TODO : Select avec les différents valeurs (automatisé le truc si possible)-->
-        <label for="nomMuscle">Nom du muscle :</label>
-        <select class="form-control" id="nomMuscle" name="nomMuscle" ngModel>
-          <option value="Ceinture abdominale">Ceinture abdominale</option>
-          <option value="Bras">Bras</option>
-          <option value="Dos">Dos</option>
-          <option value="Pectoraux">Pectoraux</option>
-          <option value="Jambes">Jambes</option>
-          <option value="Epaules">Epaules</option>
-          <option value="Corps entier">Corps entier</option>
-          <option value="Cardio">Cardio</option>
-          <option value="Autre">Autre</option>
-        </select>
-      </div>
-      <div class="form-group row col-sm-5">
-        <label for="nbReps">Nombre de répétitions :</label>
-        <input type="text" class="form-control" name="nbReps" id="nbReps" ngModel>
-      </div>
-      <div class="form-group row col-7">
-        <label for="nbSeries">Nombre de séries :</label>
-        <input type="text" class="form-control" name="nbSeries" id="nbSeries" ngModel>
-      </div>
-      <div class="form-group row col-10">
-        <label for="restExercice">Temps de repos entre chaque exercice (en sec) :</label>
-        <input type="text" class="form-control" name="restExercice" id="restExercice" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="restSeries">Temps de repos entre chaque séries (en sec) :</label>
-        <input type="text" class="form-control" name="restSeries" id="restSeries" ngModel>
-      </div>
-      <!-- Buttons -->
-      <div class="form-row">
-        <!-- Ask if user want to delete ticket -->
-        <div class="col-auto">
-          <button type="submit" id="createExercice" class="btn btn-primary">Créer</button>
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div class="page-wrapper">
+    <div class="page-breadcrumb bg-white">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          <h4 class="page-title">Créer un exercice</h4>
         </div>
       </div>
-    </form>
-
-  </div>
-</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 white-box">
+        <div class="white-box">
+          <div style="height: 810px;">
+            <form class="col-12" [formGroup]="exerciceForm" (ngSubmit)="onSubmitForm()">
+              <div class="form-group row col-sm-5">
+                <label for="nomExercice" style="margin-left :-10px;">Nom de l'exercice :</label>
+                <input type="text" class="form-control" name="nomExercice" id="nomExercice" formControlName="nomExercice">
+              </div>
+              <div class="form-group row col-sm-5">
+                <!-- TODO : Select avec les différents valeurs (automatisé le truc si possible)-->
+                <label for="muscle" style="  margin-left :-10px;">Nom du muscle :</label>
+                <select class="custom-select my-1 mr-sm-2" name="muscle" id="muscle" formControlName="muscle">
+                  <option disabled>--Choisissez un muscle--</option>
+                  <option value="Ceinture abdominale">Ceinture abdominale</option>
+                  <option value="Bras">Bras</option>
+                  <option value="Dos">Dos</option>
+                  <option value="Pectoraux">Pectoraux</option>
+                  <option value="Jambes">Jambes</option>
+                  <option value="Epaules">Epaules</option>
+                  <option value="Corps entier">Corps entier</option>
+                  <option value="Cardio">Cardio</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+              <div class="form-group row col-sm-5">
+                <label for="nbReps" style="margin-left :-10px;">Nombre de répétitions :</label>
+                <input type="text" class="form-control" name="nbReps" id="nbReps" formControlName="nbReps">
+              </div>
+              <div class="form-group row col-7">
+                <label for="nbSeries" style="margin-left :-10px;">Nombre de séries :</label>
+                <input type="text" class="form-control" name="nbSeries" id="nbSeries" formControlName="nbSeries">
+              </div>
+              <div class="form-group">
+                <label for="restSeries">Temps de repos entre chaque séries (en sec) :</label>
+                <input type="text" class="form-control" name="restSeries" id="restSeries" formControlName="restSeries">
+              </div>
+              <div class="form-group row col-10">
+                <label for="restExercice" style="margin-left :-10px;">Temps de repos entre chaque exercice (en sec) :</label>
+                <input type="text" class="form-control" name="restExercice" id="restExercice" ngModel>
+              </div>
+              <!-- Buttons -->
+              <div class="form-row">
+                <!-- Ask if user want to delete ticket -->
+                <div class="col-auto" style="margin-left : -19px;">
+                  <a (click)="this.getBack()" class="col-2 mt-5 ml-1"><button type="button" class="btn btn-primary">Retour</button></a>
+                  <button type="submit" id="createExercice" class="btn btn-primary">Créer</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
