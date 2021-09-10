@@ -1,10 +1,10 @@
-
 if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" || location.pathname==="/historiqueWeight" ) {
   $(function() {
     "use strict";
     const usernameSession = $('#usernameSession').val();
     const seriesPoidsArray = [];
     const labelsArray = [];
+
     const labelArraySparkline = [];
     const seriesImcArray = [];
     const caloriesArray = [];
@@ -16,6 +16,7 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
 
     // Récupération des WELL BEING
     $.get( 'http://localhost:5000/wellBeing/' + usernameSession, function( data ) {
+
       $.each(JSON.parse(data).well_being, function(k, v) {
         //console.log(k,v)
         seriesPoidsArray.push(v.weight);
@@ -92,6 +93,7 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
         avgSommeil = v.avgSleep;
         avgWater = v.avgWater;
       });
+
       $("#avgCalories").text( avgCalories != null ? avgCalories + ' Kcal' : 0 + ' Kcal');
       $("#avgSommeil").text( avgSommeil != null ? avgSommeil + 'h' : 0 + 'h');
       $("#avgWater").text( avgWater != null ? avgWater + 'L' : 0 + 'L');
@@ -137,12 +139,14 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
     $(".preloader").fadeOut();
     // this is for close icon when navigation open in mobile view
     $(".nav-toggler").on('click', function() {
+
       $("#main-wrapper").toggleClass("show-sidebar");
       $(".nav-toggler i").toggleClass("ti-menu");
     });
     $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
       $(".app-search").toggle(200);
       $(".app-search input").focus();
+
     });
 
     // ==============================================================
@@ -155,15 +159,18 @@ if(location.pathname==="/dashboard" || location.pathname==="/historiqueWater" ||
     /* This is for the mini-sidebar if width is less then 1170*/
     //****************************
     var setsidebartype = function() {
+
       var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
       if (width < 1170) {
         $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
       } else {
         $("#main-wrapper").attr("data-sidebartype", "full");
       }
+
     };
     $(window).ready(setsidebartype);
     $(window).on("resize", setsidebartype);
+
 
   });
 }

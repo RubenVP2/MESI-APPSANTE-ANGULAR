@@ -52,7 +52,6 @@ export class InscriptionComponent implements OnInit {
         formValue['sexe'],
         formValue['age'],
       );
-      console.log(newUser);
       this.userService.addUser(newUser);
     }
   }
