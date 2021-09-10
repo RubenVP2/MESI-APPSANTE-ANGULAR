@@ -8,27 +8,22 @@
   <!-- Page wrapper  -->
   <!-- ============================================================== -->
   <div class="page-wrapper">
-<div>
-<table class="table table-striped" style="width: 600px;display: inline-block;vertical-align: top;">
-  <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Poids (en Kg)</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let weight of weights">
-        <td>{{ weight.date }}</td>
-        <td>{{ weight.weight }}</td>
-      </tr>
-  </tbody>
-</table>
 
-    <table class="table table-striped" style="width: 600px;display: inline-block;vertical-align: top;">
+    <div  class="row align-items-center" id="topHTML">
+      <div class="col-8">
+        <h3 id="titreHTML">   Historique de mon sommeil </h3>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-primary" (click)="insertSleep()">Saisir mon sommeil</button>
+      </div>
+    </div>
+<body>
+<div>
+    <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Heure de sommeil (format hh.mm)</th>
+          <th scope="col">Date (aaaa-mm-jj)</th>
+          <th scope="col">Heures de sommeil (format hh.mm)</th>
         </tr>
       </thead>
       <tbody>
@@ -40,11 +35,7 @@
       </tbody>
     </table>
     </div>
-
-  <div>
-    <button type="button" class="btn btn-primary" (click)="insertWeight()">Saisir mon poids</button>
-    <button type="button" class="btn btn-primary" style="margin-left: 450px;" (click)="insertSleep()">Saisir mon sommeil</button>
-  </div>
+  </body>
 </div>
 <!-- ============================================================== -->
 <!-- End Page wrapper  -->
