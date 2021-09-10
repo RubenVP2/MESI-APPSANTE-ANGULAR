@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
       title: 'Confirmation',
       text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
       showCancelButton: true,
-      confirmButtonText: 'Déconexion',
+      confirmButtonText: 'Déconnexion',
     }).then((result) => {
       if (result.value) {
         sessionStorage.removeItem('user');
