@@ -21,8 +21,8 @@ export class WeightAndSleepComponent implements OnInit {
   ngOnInit(): void {
     this.getAllSleeps(this.username);
   }
-  
-  
+
+
   insertSleep(){
     return Swal.fire({
       title: 'Saisir la durée de votre sommeil',
@@ -43,7 +43,7 @@ export class WeightAndSleepComponent implements OnInit {
 
   getAllSleeps(username: string){
     this.wellBeingService.getUserSleeps(username).subscribe(response => {
-    this.sleeps = []; 
+    this.sleeps = [];
     const se = response;
     for( let i = 0; i< 10 ; i++){
       const wellBeingS = new WellBeingReduced(se[i]['weight'],se[i]['sleep'],se[i]['date']);
