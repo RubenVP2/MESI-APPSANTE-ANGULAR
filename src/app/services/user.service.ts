@@ -1,16 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../models/User.model';
-import { NewUser } from '../models/NewUser.model';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from '../models/User.model';
+import {NewUser} from '../models/NewUser.model';
+import {Router} from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-
-
-
-import { Subject } from 'rxjs';
-import { LogUser } from '../models/LogUser.model';
-import { error } from 'protractor';
-import { map } from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {LogUser} from '../models/LogUser.model';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -85,11 +81,7 @@ export class UserService {
   async isAdmin(pUsername: string) {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify({ username: pUsername });
-    console.log(body);
-    await this.http.post<any>(this.urlApi + `/isAdmin`, body, { 'headers': headers }).toPromise().then((response) => {
-      this.users = response['role'];
-      this.emitUserSubject();
-    });
+    return await this.http.post<any>(this.urlApi + `/isAdmin`, body, {'headers': headers}).toPromise();
   }
 
   async updateProfil(oldUsername: string, user: LogUser) {

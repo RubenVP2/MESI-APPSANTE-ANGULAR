@@ -55,6 +55,11 @@ export class MensurationService{
   }
 
   // Recupère les informations de la tables WELL_BEING (water date poids)
+  getUsersWeightsApiPageable(limit: number, offset: number) {
+    return this.http.get(this.urlApi + '/user/weight/pageable/' + sessionStorage.getItem("user")  + `?limit=${limit}&offset=${offset}`).pipe(map((res: any) => res['userWeight']));
+  }
+
+  // Recupère les informations de la tables WELL_BEING (water date poids)
   getUsersWeightsApi() {
     return this.http.get(this.urlApi + '/user/weight/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWeight']));
   }
@@ -117,10 +122,10 @@ export class MensurationService{
     });
   }
   // Recupère les informations de la tables WELL_BEING (water date poids) en fonction du filtre - Date Debut / Date Fin
-  getUsersWeightFilterApi(wellBeingWaterFilter: WellBeingWaterFilter) {
+  getUsersWeightFilterApi(wellBeingWaterFilter: WellBeingWaterFilter, limit: number, offset: number) {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify(wellBeingWaterFilter);
-    return this.http.post<any>(this.urlApi + '/user/weight/' + sessionStorage.getItem("user")+ '/filter', body, {'headers':headers}).pipe(map((res: any) => {
+    return this.http.post<any>(this.urlApi + '/user/weight/' + sessionStorage.getItem("user") + '/filter'  + `?limit=${limit}&offset=${offset}`, body, {'headers':headers}).pipe(map((res: any) => {
       var message = res['message'];
       if (message == "Filtrage réussie"){
         Swal.fire(message, 'success');

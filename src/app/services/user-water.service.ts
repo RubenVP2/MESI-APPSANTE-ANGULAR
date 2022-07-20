@@ -36,7 +36,7 @@ export class UserWaterService{
       }
   // Recupère les informations de la tables WELL_BEING (water date poids)
     getUsersWatersApi() {
-      return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res));
+      return this.http.get(this.urlApi + '/user/water/' + sessionStorage.getItem("user")).pipe(map((res: any) => res['userWater']));
     }
 
     //Ajout dans la table wellBeing
@@ -60,8 +60,12 @@ export class UserWaterService{
             this.router.navigate(['/historiqueWater']);
           }
           else if (message === 'Ajout des calories réussi.') {
-            Swal.fire(message);
-            this.router.navigate(['/dashboard']);
+            Swal.fire('Ajout des ' + wellBeing.calories + ' calories réussi.\n Pour le ' + wellBeing.date + '.').then( (value) => {
+              if (value.isConfirmed){
+                this.router.navigate(['/calculCalorique']);
+                window.location.reload();
+              }
+            });
           }
           else {
             Swal.fire({
@@ -109,7 +113,7 @@ export class UserWaterService{
   getUsersWatersFilterApi(wellBeingWaterFilter: WellBeingWaterFilter) {
     const headers = { 'content-type': 'application/json'};
     const body = JSON.stringify(wellBeingWaterFilter);
-    return this.http.post<any>(this.urlApi + '/user/water/' + sessionStorage.getItem("user")+ '/filter', body, {'headers':headers}).pipe(map((res: any) => {
+    return this.http.post<any>(this.urlApi + '/user/water/' + sessionStorage.getItem("user") + '/filter', body, {'headers':headers}).pipe(map((res: any) => {
       var message = res['message'];
       if (message == "Filtrage réussie"){
         Swal.fire({

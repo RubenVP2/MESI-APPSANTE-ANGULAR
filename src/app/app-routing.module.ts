@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: 'not-found', component: FourOhFourComponent },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   { path: 'nutrition', component: NutritionComponent },
-  { path: 'weightAndSleep', component: WeightAndSleepComponent },
+  { path: 'sleeps', component: WeightAndSleepComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
 

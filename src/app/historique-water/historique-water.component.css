@@ -14,8 +14,6 @@
 
 #divBody #tableHistorique{
   border-top: 2px solid #2B6DEF;
-  float:left;
-  margin-right:2% ;
 }
 
 #buttonDetail{
@@ -41,9 +39,6 @@
   margin-left: 3%;
 }
 
-#divBody #partDeux{
-  float:right;
-}
 #resultEmpty{
   margin-left: 38%;
 }

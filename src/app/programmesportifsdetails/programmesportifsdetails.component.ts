@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { NewExercice } from '../models/NewExercice.model';
 import { NewSportsprogram } from '../models/NewSportsprogram.model';
 import { ProgrammessportifsService } from '../services/programmessportifs.service';
@@ -42,8 +43,16 @@ export class ProgrammesportifsdetailsComponent implements OnInit {
   }
 
   deleteProgram(){
-    this.username = sessionStorage.getItem("user");
-    this.sportsprogramService.deleteSportsProgram(this.id[2], this.username);
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Êtes-vous sûr de supprimer ce programme ?',
+      showCancelButton: true,
+      confirmButtonText: 'Supprimer',
+    }).then((result) => {
+      if (result.value) {
+        this.username = sessionStorage.getItem("user");
+        this.sportsprogramService.deleteSportsProgram(this.id[2], this.username);
+      }
+    });
   }
-
 }

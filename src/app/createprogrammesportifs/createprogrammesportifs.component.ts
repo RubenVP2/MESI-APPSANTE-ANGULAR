@@ -35,15 +35,14 @@ export class CreateprogrammesportifsComponent implements OnInit {
     this.sportsprogramForm = this.formBuilder.group({
       nomProgramme: ['', Validators.required],
       descriptionProgramme: ['', Validators.required],
-      levelProgramme: ['', Validators.required],
+      levelProgramme: ['--Choisissez une difficulté--', Validators.required],
     });
   }
 
-  onSubmitForm(form : NgForm) {
+  onSubmitForm() {
     console.log('onSubmitForm');
-    const formValue = form.value;
+    const formValue = this.sportsprogramForm.value;
     this.username = sessionStorage.getItem("user");
-    console.log(form.value);
     this.programmessportifsService.createSportsProgram(this.username, formValue['nomProgramme'], formValue['descriptionProgramme'], formValue['levelProgramme']);
   }
 

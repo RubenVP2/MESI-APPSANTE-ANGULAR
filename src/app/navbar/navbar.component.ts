@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  user?: User;
+  user?: User = new User();
+
   username: string;
 
   constructor(private userService: UserService, private router: Router) {
@@ -20,29 +21,21 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem('user');
-    this.userService.isAdmin(this.username).then(_ => this.isAdmin());
+    this.userService.isAdmin(this.username).then((res) => this.user.isAdmin = res.role[0].isAdmin);
   }
 
-  isAdmin(): boolean {
-    this.userService.userSubject.subscribe(
-      (response: any[]) => {
-        this.user = response[0];
-      }
-    );
-    this.userService.emitUserSubject();
-    console.log(this.user);
-    return this.user.isAdmin;
-  }
+
 
   deconnexion(): void {
     Swal.fire({
       title: 'Confirmation',
       text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
       showCancelButton: true,
-      confirmButtonText: 'Déconexion',
+      confirmButtonText: 'Déconnexion',
     }).then((result) => {
       if (result.value) {
         sessionStorage.removeItem('user');
+        localStorage.removeItem('reload');
         Swal.fire({
           title: 'Vous avez été déconnecté.',
           icon: 'success'
@@ -51,5 +44,9 @@ export class NavbarComponent implements OnInit {
         });
       }
     });
+  }
+
+  isAdmin(): boolean {
+    return this.user.isAdmin;
   }
 }

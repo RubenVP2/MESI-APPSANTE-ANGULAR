@@ -21,12 +21,9 @@ export class WaterDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //On recupere le parametre :id qu'on a mis dans app-routing.module.ts
     this.id = this.route.snapshot.params['id'];
-
     this.userWaterService.getUsersWatersApi().subscribe(response => {
       this.wellBeings = response;
-      console.log('Tableau = ' + this.wellBeings);
       // Appel function pour récupérer le
       this.getWaterById();
     });
@@ -38,9 +35,6 @@ export class WaterDetailComponent implements OnInit {
 
   getWaterById() {
     this.wellBeing = this.wellBeings.find(x => x.id_well_being == this.id);
-    console.log(this.wellBeing);
+    console.log('Well being actuel : ' + this.wellBeing);
   }
-
-
-
 }
